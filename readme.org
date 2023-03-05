@@ -11,6 +11,8 @@ a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[h
 *** Navigation
 [[./data/layers/nav.png]]
 
+*** Num
+[[./data/layers/num.png]]
 
 * Reference
 - https://github.com/manna-harbour/miryoku/blob/master/docs/reference/readme.org
