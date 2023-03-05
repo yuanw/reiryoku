@@ -10,9 +10,11 @@ a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[h
 [[./data/layers/media.png]]
 *** Navigation
 [[./data/layers/nav.png]]
-
+*** Sym
+[[./data/layers/sym.png]]
 *** Num
 [[./data/layers/num.png]]
+
 
 * Reference
 - https://github.com/manna-harbour/miryoku/blob/master/docs/reference/readme.org
