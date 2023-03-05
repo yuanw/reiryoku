@@ -8,6 +8,9 @@ a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[h
 
 *** Media
 [[./data/layers/media.png]]
+*** Navigation
+[[./data/layers/nav.png]]
+
 
 * Reference
 - https://github.com/manna-harbour/miryoku/blob/master/docs/reference/readme.org
