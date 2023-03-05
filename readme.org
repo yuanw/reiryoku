@@ -5,3 +5,6 @@ a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[h
 *** Base
 
 [[./data/layers/base.png]]
+
+*** Media
+[[./data/layers/media.png]]
