@@ -1,0 +1,7 @@
+* my keymap and qmk code
+a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[https://github.com/Apsu/Adept][adept]]
+
+
+*** Base
+
+[[./data/layers/base.png]]
