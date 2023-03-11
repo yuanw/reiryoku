@@ -1,0 +1,59 @@
+layout: {qmk_keyboard: bastardkb/charybdis/3x5/v2/splinky_3, qmk_layout: LAYOUT}
+layers:
+  L0:
+  - [/, W, M, P, Q, Z, K, ',', ., ;]
+  - - {t: R, h: LGUI}
+    - {t: S, h: LALT}
+    - {t: N, h: LCTL}
+    - {t: T, h: LSFT}
+    - G
+    - V
+    - {t: H, h: RSFT}
+    - {t: A, h: RCTL}
+    - {t: I, h: LALT}
+    - {t: O, h: RGUI}
+  - - {t: X, h: LLAYER_POINTER}
+    - C
+    - F
+    - D
+    - B
+    - J
+    - L
+    - U
+    - Y
+    - {t: '''', h: LLAYER_POINTER}
+  - - {t: ESC, h: LLAYER_MEDIA}
+    - {t: SPC, h: LLAYER_NAVIGATION}
+    - {t: BSPC, h: LLAYER_FUNCTION}
+    - {t: ENT, h: LLAYER_SYMBOLS}
+    - {t: E, h: LLAYER_NUMERAL}
+  L1:
+  - ['', '', '', '', '', '', '', '{', '}', \]
+  - [LGUI, LALT, LCTL, LSFT, '', SCRL, LAG(1), LAG(2), LAG(3), LAG(4)]
+  - ['', '', '', '', '', PAUS, LSG(1), LSG(2), LSG(3), LSG(4)]
+  - ['', '', '', '', TAB]
+  L2:
+  - ['', '', '', '', '', '', '', (, ), '|']
+  - [LGUI, LALT, LCTL, LSFT, '', CAPS, LEFT, DOWN, UP, RGHT]
+  - ['', '', '', '', '', RDO, PST, CPY, CUT, UND]
+  - ['', '', '', '', TAB]
+  L3:
+  - ['', RGB RMOD, RGB TOG, RGB MOD, '', '', V, '[', ']', \]
+  - [MPRV, VOLD, MUTE, VOLU, MNXT, '', H, J, K, L]
+  - ['', '', '', EE CLR, QK BOOT, QK BOOT, G, '', '', '']
+  - ['', '', '', '', TAB]
+  L4:
+  - ['[', '7', '8', '9', ']', '', '', '', '', '']
+  - [;, '4', '5', '6', '=', '', LSFT, LCTL, LALT, LGUI]
+  - ['`', '1', '2', '3', \, '', '', '', '', '']
+  - [., '0', '-', '', '']
+  L5:
+  - ['', '', '', '', '', '', '', '', '', '']
+  - [LGUI, LALT, LCTL, LSFT, '', '', LSFT, LCTL, LALT, LGUI]
+  - ['', '', '', EE CLR, QK BOOT, QK BOOT, EE CLR, '', '', '']
+  - [BTN2, BTN1, BTN3, BTN3, BTN1]
+  L6:
+  - ['{', '&', '*', (, '}', '', '', '', '', '']
+  - [':', $, '%', ^, +, '', LSFT, LCTL, LALT, LGUI]
+  - ['~', '!', '@', '#', '|', '', '', '', '', '']
+  - [(, ), _, '', '']
