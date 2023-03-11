@@ -18,7 +18,7 @@ jobs:
     # NOTE Workaround for artifacts and deploy not liking symlinks to
     # read-only paths.
     - name: "Copy artifacts"
-      run: "mkdir dist && cp -r result/*  dist/ && chmod +w -R dist/"
+      run: "mkdir dist && cp -r result/*  dist/ && chmod +w dist/"
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
