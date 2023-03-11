@@ -1,0 +1,28 @@
+name: CI
+
+on: [push, pull_request]
+
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v20
+      with:
+        extra_nix_config: |
+          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+    - uses: cachix/cachix-action@v12
+    - name: Nix build
+      run: nix build .#firmware
+    # NOTE Workaround for artifacts and deploy not liking symlinks to
+    # read-only paths.
+    - name: "Copy artifacts"
+      run: "mkdir dist && cp -r result/*  dist/ && chmod +w -R dist/"
+    - name: Archive Production Artifact
+      uses: actions/upload-artifact@master
+      with:
+          name: dist
+          path: dist
+
