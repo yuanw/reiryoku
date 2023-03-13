@@ -70,7 +70,7 @@
       in rec {
         packages.firmware = pkgs.symlinkJoin {
           name = "reiryoku-firmware";
-          path = [ firmware flash ];
+          paths = [ firmware flash ];
         };
         packages.drawer = drawer;
         packages.flash = flash;
