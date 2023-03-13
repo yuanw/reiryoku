@@ -62,7 +62,7 @@
             mv reiryoku.yaml $out/share
           '';
         };
-        flash = pkgs.writeScript "reiryoku-flash" ''
+        flash = pkgs.writeScriptBin "reiryoku-flash" ''
           cd ${qmk_firmware}
           ${pkgs.qmk}/bin/qmk flash ${firmware}/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
         '';
