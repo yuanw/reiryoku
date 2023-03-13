@@ -64,7 +64,7 @@
         };
         flash = pkgs.writeScript "reiryoku-flash" ''
           cd ${qmk_firmware}
-          ${pkgs.qmk}/bin/qmk flash ${packages.firmware}/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
+          ${pkgs.qmk}/bin/qmk flash ${firmware}/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
         '';
 
       in rec {
