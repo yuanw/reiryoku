@@ -53,24 +53,27 @@
             ${drawer}/bin/keymap parse -c 10 -q reiryoku.json  > reiryoku.yaml
             sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
             ${drawer}/bin/keymap draw reiryoku.yaml > reiryoku.svg
-            mkdir $out
+            mkdir -p $out/share
           '';
 
           installPhase = ''
-            # mv bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2 $out
-            mv reiryoku.svg $out
-            mv reiryoku.yaml $out
+            # mv bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2 $out/
+            mv reiryoku.svg $out/share
+            mv reiryoku.yaml $out/share
           '';
         };
-
-      in rec {
-        packages.firmware = firmware;
-        packages.drawer = drawer;
-        packages.flash = pkgs.writeScript "reiryoku-flash" ''
+        flash = pkgs.writeScript "reiryoku-flash" ''
           cd ${qmk_firmware}
           ${pkgs.qmk}/bin/qmk flash ${packages.firmware}/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
         '';
 
+      in rec {
+        packages.firmware = pkgs.symlinkJoin {
+          name = "reiryoku-firmware";
+          path = [ firmwarek flash ];
+        };
+        packages.drawer = drawer;
+        packages.flash = flash;
         apps.flash = {
           type = "app";
           program = "${packages.flash}";
