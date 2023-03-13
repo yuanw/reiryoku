@@ -66,7 +66,7 @@
       in rec {
         packages.firmware = firmware;
         packages.drawer = drawer;
-        packages.flash = pkgs.writeScript "qmk-flash" ''
+        packages.flash = pkgs.writeScript "reiryoku-flash" ''
           cd ${qmk_firmware}
           ${pkgs.qmk}/bin/qmk flash ${packages.firmware}/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
         '';
