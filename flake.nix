@@ -57,7 +57,7 @@
           '';
 
           installPhase = ''
-            # mv bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2 $out/
+            mv bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2 $out/share
             mv reiryoku.svg $out/share
             mv reiryoku.yaml $out/share
           '';

@@ -1,0 +1,25 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i python3 -p python3Packages.pyyaml
+
+from yaml import load, dump
+try:
+    from yaml import CLoader as Loader, CDumper as Dumper
+except ImportError:
+    from yaml import Loader, Dumper
+
+with open('reiryoku.yaml',  encoding="utf8") as reader:
+
+    data = load(reader, Loader=Loader)
+    print(data)
+
+    print(data.keys())
+    # dict_keys(['layout', 'layers'])
+
+    print(data.get('layers').keys())
+    print(type(data.get('layers').get('L0'))) #list
+    l0 = data.get('layers').get('L0')
+    for row in l0:
+        print(type(row)) #list
+        for k in row:
+            print(type(k))
+            print(k)

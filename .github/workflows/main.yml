@@ -22,6 +22,8 @@ jobs:
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
-          name: dist
-          path: dist
-
+          name: firmware
+          path: |
+            dist/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
+            dist/share/reiryoku.svg
+            dist/share/reiryoku.yaml
