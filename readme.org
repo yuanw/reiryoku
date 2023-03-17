@@ -1,5 +1,5 @@
 * my keymap and qmk code
-a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[https://github.com/Apsu/Adept][adept ]]running on a [[ https://bastardkb.com/charybdis-nano/][charybdis-nano]]
+a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[https://github.com/Apsu/Adept][adept ]]running on a [[https://bastardkb.com/charybdis-nano/][charybdis-nano]]
 
 [[./kb.jpg]]
 [[./reiryoku.svg]]
