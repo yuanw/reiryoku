@@ -24,6 +24,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
+        my-python-packages = p: with p; [ pyyaml ];
 
         inherit (poetry2nix.legacyPackages.${system}) mkPoetryApplication;
 
@@ -39,12 +40,18 @@
           #   fetchSubmodules = true;
           # };
           src = qmk_firmware;
-          buildInputs = with pkgs; [ qmk ];
+          buildInputs = with pkgs; [
+            qmk
+
+            python3.withPackages
+            my-python-packages
+          ];
 
           postUnpack = ''
             ln -s ${
               ./qmk/yuanw/.
             } $sourceRoot/keyboards/bastardkb/charybdis/3x5/keymaps/yuanw
+            ln -s ${./process.py} $sourceRoot
           '';
 
           buildPhase = ''
@@ -52,7 +59,8 @@
             ${pkgs.qmk}/bin/qmk  -v c2json -kb bastardkb/charybdis/3x5/v2/splinky_3 -km yuanw ./keyboards/bastardkb/charybdis/3x5/keymaps/yuanw/keymap.c > reiryoku.json
             ${drawer}/bin/keymap parse -c 10 -q reiryoku.json  > reiryoku.yaml
             sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
-            ${drawer}/bin/keymap draw reiryoku.yaml > reiryoku.svg
+            python ./process.py
+            ${drawer}/bin/keymap draw output.yaml > reiryoku.svg
             mkdir $out
             mkdir -p $out/share
           '';
