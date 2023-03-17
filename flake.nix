@@ -39,29 +39,37 @@
           #   fetchSubmodules = true;
           # };
           src = qmk_firmware;
-          buildInputs = with pkgs; [ qmk ];
+          buildInputs = with pkgs; [
+            qmk
+            (python3.withPackages (ps: [ ps.pyyaml ]))
+          ];
 
           postUnpack = ''
             ln -s ${
               ./qmk/yuanw/.
             } $sourceRoot/keyboards/bastardkb/charybdis/3x5/keymaps/yuanw
+            ln -s ${./process.py} $sourceRoot/process.py
           '';
 
           buildPhase = ''
-            # make bastardkb/charybdis/3x5/v2/splinky_3:yuanw SKIP_GIT=1
+            make bastardkb/charybdis/3x5/v2/splinky_3:yuanw SKIP_GIT=1
             ${pkgs.qmk}/bin/qmk  -v c2json -kb bastardkb/charybdis/3x5/v2/splinky_3 -km yuanw ./keyboards/bastardkb/charybdis/3x5/keymaps/yuanw/keymap.c > reiryoku.json
             ${drawer}/bin/keymap parse -c 10 -q reiryoku.json  > reiryoku.yaml
             sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
-            ${drawer}/bin/keymap draw reiryoku.yaml > reiryoku.svg
+            ls
+            python ./process.py
+            ${drawer}/bin/keymap draw output.yaml > reiryoku.svg
+            mkdir $out
             mkdir -p $out/share
           '';
 
           installPhase = ''
-            # mv bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2 $out/
+            mv bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2 $out/share
             mv reiryoku.svg $out/share
-            mv reiryoku.yaml $out/share
+            mv output.yaml $out/share
           '';
         };
+
         flash = pkgs.writeScriptBin "reiryoku-flash" ''
           cd ${qmk_firmware}
           ${pkgs.qmk}/bin/qmk flash ${firmware}/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
@@ -78,7 +86,12 @@
           type = "app";
           program = "${packages.flash}";
         };
-
+        devShells.default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            nixpkgs-fmt
+            (python3.withPackages (ps: [ ps.pyyaml ]))
+          ];
+        };
         # Defaults =======================
 
         packages.default = packages.firmware;
