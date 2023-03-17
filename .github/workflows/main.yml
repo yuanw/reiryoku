@@ -13,6 +13,8 @@ jobs:
       with:
         extra_nix_config: |
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+          trusted-public-keys = yuanwang-wf.cachix.org-1:P/RZ5Iuuuv2MYCNCnAsLfPGmgKMKeTwPaJclkrcwx80= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+          substituters = https://cachix.org/api/v1/cache/yuanwang-wf https://cache.nixos.org/
     - name: Nix build
       run: nix build .#firmware
     # NOTE Workaround for artifacts and deploy not liking symlinks to
@@ -23,7 +25,9 @@ jobs:
       uses: actions/upload-artifact@master
       with:
           name: firmware
-          path: |
-            dist/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
-            dist/share/reiryoku.svg
-            dist/share/reiryoku.yaml
+          path: dist/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
+    - name: Archive Production Artifact
+      uses: actions/upload-artifact@master
+      with:
+          name: keymap
+          path: dist/share/reiryoku.svg

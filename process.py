@@ -35,12 +35,24 @@ key_dict = {
 
 new_data = {}
 with open('reiryoku.yaml',  encoding="utf8") as reader:
-
     data = load(reader, Loader=Loader)
-    # print(data)
-    # print(data.keys())
     new_data['layout'] ={"qmk_keyboard": "bastardkb/charybdis/3x5/v2/splinky_3", "qmk_layout": "LAYOUT"}
+    new_data['combos'] = [
+        {'p': [2, 3],
+         'k':'Q',
+         'l':['Base']},
+          {'p': [6, 7],
+         'k':'Z',
+           'l':['Base']},
+         {'p': [22, 23],
+         'k':'B',
+         'l':['Base']},
+   {'p': [26, 27],
+         'k':'J',
+         'l':['Base']},
 
+
+    ]
     new_data['layers'] = {}
     # dict_keys(['layout', 'layers'])
     # print(data.get('layers').keys())
@@ -48,7 +60,7 @@ with open('reiryoku.yaml',  encoding="utf8") as reader:
         new_data['layers'][layer_dict[l]] = []
         for row in data.get('layers')[l]:
             new_row = []
-            print(row)
+            # print(row)
             for k in row:
                 if isinstance(k, str):
                     new_row.append(key_dict.get(k, k))
