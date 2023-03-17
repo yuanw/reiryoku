@@ -24,10 +24,10 @@ jobs:
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
-          name: firmware
+          name: firmware.uf2
           path: dist/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
-          name: keymap
+          name: keymap.svg
           path: dist/share/reiryoku.svg
