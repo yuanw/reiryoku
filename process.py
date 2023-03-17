@@ -13,26 +13,39 @@ layer_dict = {
     "L5": "Pointer",
     "L6": "Sym"}
 
-key_dict = {
+layer_key_dict = {
     "LLAYER_POINTER": "Pointer",
-    "LLAYER_MEDIA": "Me",
+    "LLAYER_MEDIA": "Med",
     "LLAYER_NAVIGATION": "Nav",
     "LLAYER_FUNCTION": "Fun",
     "LLAYER_NUMERAL": "Num",
     "LLAYER_SYMBOLS": "Sym",
-    "ENT": "⏎",
-    "LGUI": "◆",
-    "RGUI": "◆",
-    "LALT": "⎇",
-# KC_RALT = AltGr
-    "LSFT": "⇧",
-     "RSFT": "⇧",
-    "LCTL" : "⎈",
-     "RCTL": "⎈",
-    "LAG(1)":"⎇+◆+1",
-    "LAG(2)":"⎇+◆+2",
 }
 
+key_dict = {
+    "LLAYER_POINTER": "Pointer",
+    "LLAYER_MEDIA": "Med",
+    "LLAYER_NAVIGATION": "Nav",
+    "LLAYER_FUNCTION": "Fun",
+    "LLAYER_NUMERAL": "Num",
+    "LLAYER_SYMBOLS": "Sym",
+    "ESC": "\u241B",
+    "ENT": "⏎",
+    "LGUI": "⌘",
+    "RGUI": "⌘",
+    "LALT": "⌥",
+    "LSFT": "⇧",
+     "RSFT": "⇧",
+    "LCTL" : "⌃",
+     "RCTL": "⌃",
+    "CAPS": "⇪",
+    "LAG(1)":"⌥◆1",
+    "LAG(2)":"⌥◆2",
+    "LAG(3)":"⌥◆3",
+    "LAG(4)":"⌥◆4",
+}
+
+layer_hold_dict = {}
 new_data = {}
 with open('reiryoku.yaml',  encoding="utf8") as reader:
     data = load(reader, Loader=Loader)
@@ -47,21 +60,18 @@ with open('reiryoku.yaml',  encoding="utf8") as reader:
          {'p': [22, 23],
          'k':'B',
          'l':['Base']},
-   {'p': [26, 27],
+        {'p': [26, 27],
          'k':'J',
          'l':['Base']},
-
-
     ]
     new_data['layers'] = {}
     # dict_keys(['layout', 'layers'])
     # print(data.get('layers').keys())
     for l in data.get('layers').keys():
         new_data['layers'][layer_dict[l]] = []
-        for row in data.get('layers')[l]:
+        for row_counter, row in enumerate(data.get('layers')[l]):
             new_row = []
-            # print(row)
-            for k in row:
+            for key_counter, k in enumerate(row):
                 if isinstance(k, str):
                     new_row.append(key_dict.get(k, k))
                 elif isinstance(k, dict):
@@ -70,7 +80,6 @@ with open('reiryoku.yaml',  encoding="utf8") as reader:
                     if 't' in k:
                         old_v = k.get('t','')
                         k['t'] = key_dict.get(old_v, old_v)
-
                     new_row.append(k)
                 else:
                     new_row.append(k)
