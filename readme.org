@@ -1,10 +1,10 @@
 * my keymap and qmk code
-a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[https://github.com/Apsu/Adept][adept]]
+a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[https://github.com/Apsu/Adept][adept ]]running on a [[ https://bastardkb.com/charybdis-nano/][charybdis-nano]]
 
+[[./kb.jpg]]
 [[./reiryoku.svg]]
 
 *** Base
-
 [[./data/layers/base.png]]
 
 *** Media
@@ -15,6 +15,17 @@ a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[h
 [[./data/layers/sym.png]]
 *** Num
 [[./data/layers/num.png]]
+
+* inspirations
+
+** [[https://github.com/ralismark/qmk-keymap][railsmark/qmk-keymap]]
+where the build firmware using nix code stealed from
+
+** [[https://github.com/caksoylar/keymap-drawer][caksoylar/keymap-drawer]]
+the app to generate keymap svg based on qmk c2json result
+
+** [[https://github.com/manna-harbour/miryoku][miryoku]]
+** [[https://github.com/Apsu/Adept][adept]]
 
 
 * Reference
