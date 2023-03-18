@@ -42,6 +42,7 @@ key_dict = {
     "LEFT": "\u25C1",
     "RGHT": "\u25B7",
     "DOWN": "\u25BD",
+    "REPEAT": "\u21BB",
     "UP": "\u25B3",
     "ENT": "⏎",
     "LGUI": "⌘",
