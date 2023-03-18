@@ -300,6 +300,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case REPEAT:
           update_repeat_key(record);
+          return false;
         case CPY:
             if (record->event.pressed) {
                 switch (detected_host_os()) {
