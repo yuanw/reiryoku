@@ -16,7 +16,7 @@ void register_key_to_repeat(uint16_t keycode) {
 
     // Merge current mod state with keycode, for easy comparison when
     // we want to do special key reverse repeats.
-    uint8_t mods = get_mods() | get_oneshot_mods();
+    uint8_t mods = get_mods();
     if (mods & MOD_MASK_CTRL) keycode |= QK_LCTL;
     if (mods & MOD_MASK_SHIFT) keycode |= QK_LSFT;
     if (mods & MOD_MASK_GUI) keycode |= QK_LGUI;
