@@ -110,7 +110,7 @@ enum my_keycodes { RDO = SAFE_RANGE, PST, CPY, CUT, UND };
  * symmetrical to accomodate the left- and right-hand trackball.
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_V, KC_LBRC, KC_RBRC, KC_BSLS, \
+    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_V, KC_LBRC, KC_RBRC, KC_SLSH, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, XXXXXXX, KC_H, KC_J, KC_K, KC_L, \
     XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT, KC_G, XXXXXXX, XXXXXXX, XXXXXXX, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
@@ -276,17 +276,19 @@ void shutdown_user(void) {
 }
 
 // Thumb Combos
-#define COMBO_COUNT 5
-#define EXTRA_SHORT_COMBOS
-uint16_t COMBO_LEN = 5;
+/* #define EXTRA_SHORT_COMBOS */
 
 enum combos {
     FD_B,
     LU_J,
     MP_Q,
     KCOMM_Z,
-    LEFT_TAB,
+    LEFT_QUESTION,
+    COMBO_LENGTH
 };
+
+uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
+
 const uint16_t PROGMEM b_combo[]    = {KC_F, KC_D, COMBO_END};
 const uint16_t PROGMEM j_combo[]    = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM q_combo[]    = {KC_M, KC_P, COMBO_END};
@@ -294,7 +296,7 @@ const uint16_t PROGMEM z_combo[]    = {KC_K, KC_COMM, COMBO_END};
 const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J), [MP_Q] = COMBO(q_combo, KC_Q), [KCOMM_Z] = COMBO(z_combo, KC_Z), [LEFT_TAB] = COMBO(left_combo, KC_TAB),
+    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J), [MP_Q] = COMBO(q_combo, KC_Q), [KCOMM_Z] = COMBO(z_combo, KC_Z), [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
 };
 /*   #define U_RDO KC_AGIN */
 /*   #define U_PST KC_PSTE */
