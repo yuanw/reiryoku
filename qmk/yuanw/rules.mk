@@ -1,3 +1,4 @@
 VIA_ENABLE = yes
 COMBO_ENABLE = yes
 OS_DETECTION_ENABLE = yes
+SRC += repeat.c
