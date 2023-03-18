@@ -54,7 +54,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 // clang-format off
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
-       KC_SLSH, KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
+       REPEAT, KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
        KC_R,    KC_S,    KC_N,    KC_T,    KC_G,    KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
        KC_X,    KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,     KC_QUOT, \
                          ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, BSP_NUM
@@ -294,7 +294,12 @@ combo_t key_combos[] = {
 /*   #define U_CUT LCMD(KC_X) */
 /*   #define U_UND LCMD(KC_Z) */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if ( keycode != REPEAT) {
+        register_key_to_repeat(keycode);
+    }
     switch (keycode) {
+        case REPEAT:
+          update_repeat_key(record);
         case CPY:
             if (record->event.pressed) {
                 switch (detected_host_os()) {

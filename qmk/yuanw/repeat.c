@@ -35,17 +35,5 @@ void update_key(uint16_t keycode, keyrecord_t *record) {
 }
 
 void update_repeat_key(keyrecord_t *record) {
-    switch (last_keycode) {
-        case GRV:
-            tap_undead_key(record->event.pressed, SE_GRV);
-            break;
-        case TILD:
-            tap_undead_key(record->event.pressed, SE_TILD);
-            break;
-        case CIRC:
-            tap_undead_key(record->event.pressed, SE_CIRC);
-            break;
-        default:
-            update_key(last_keycode, record);
-    }
+  update_key(last_keycode, record);
 }
