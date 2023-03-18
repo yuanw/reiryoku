@@ -42,6 +42,7 @@ key_dict = {
     "LEFT": "\u25C1",
     "RGHT": "\u25B7",
     "DOWN": "\u25BD",
+    "REPEAT": "\u21BB",
     "UP": "\u25B3",
     "ENT": "⏎",
     "LGUI": "⌘",
@@ -69,6 +70,9 @@ with open('reiryoku.yaml',  encoding="utf8") as reader:
     new_data['layout'] ={"qmk_keyboard": "bastardkb/charybdis/3x5/v2/splinky_3", "qmk_layout": "LAYOUT"}
     # hardcoded combos list
     new_data['combos'] = [
+        {'p': [1, 2],
+         'k':'?',
+         'l':['Base']},
         {'p': [2, 3],
          'k':'Q',
          'l':['Base']},

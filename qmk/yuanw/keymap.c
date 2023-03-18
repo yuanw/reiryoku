@@ -15,22 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
+#include "keycodes.h"
 #ifdef OS_DETECTION_ENABLE
 #include "os_detection.h"
 #endif
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #    include "timer.h"
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-
-enum charybdis_keymap_layers {
-    LAYER_BASE = 0,
-    LAYER_FUNCTION,
-    LAYER_NAVIGATION,
-    LAYER_MEDIA,
-    LAYER_POINTER,
-    LAYER_NUMERAL,
-    LAYER_SYMBOLS,
-};
+#include "repeat.h"
 
 // Automatically enable sniping-mode on the pointer layer.
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
@@ -47,13 +39,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
-#define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
-#define TAB_FUN LT(LAYER_FUNCTION, KC_BSPC)
-#define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
-#define BSP_NUM LT(LAYER_NUMERAL, KC_E)
-#define _L_PTR(KC) LT(LAYER_POINTER, KC)
-
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
 #    define DPI_MOD KC_NO
@@ -61,7 +46,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
        //
-enum my_keycodes { RDO = SAFE_RANGE, PST, CPY, CUT, UND };
 #define U_RDO SCMD(KC_Z)
 #define U_PST LCMD(KC_V)
 #define U_CPY LCMD(KC_C)
@@ -70,7 +54,7 @@ enum my_keycodes { RDO = SAFE_RANGE, PST, CPY, CUT, UND };
 // clang-format off
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
-       KC_SLSH, KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
+       REPEAT,  KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
        KC_R,    KC_S,    KC_N,    KC_T,    KC_G,    KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
        KC_X,    KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,     KC_QUOT, \
                          ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, BSP_NUM
@@ -110,7 +94,7 @@ enum my_keycodes { RDO = SAFE_RANGE, PST, CPY, CUT, UND };
  * symmetrical to accomodate the left- and right-hand trackball.
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_V, KC_LBRC, KC_RBRC, KC_BSLS, \
+    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_V, KC_LBRC, KC_RBRC, KC_SLSH, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, XXXXXXX, KC_H, KC_J, KC_K, KC_L, \
     XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT, KC_G, XXXXXXX, XXXXXXX, XXXXXXX, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
@@ -276,25 +260,27 @@ void shutdown_user(void) {
 }
 
 // Thumb Combos
-#define COMBO_COUNT 5
-#define EXTRA_SHORT_COMBOS
-uint16_t COMBO_LEN = 5;
+/* #define EXTRA_SHORT_COMBOS */
 
 enum combos {
     FD_B,
     LU_J,
     MP_Q,
     KCOMM_Z,
-    LEFT_TAB,
+    LEFT_QUESTION,
+    COMBO_LENGTH
 };
+
+uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
+
 const uint16_t PROGMEM b_combo[]    = {KC_F, KC_D, COMBO_END};
 const uint16_t PROGMEM j_combo[]    = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM q_combo[]    = {KC_M, KC_P, COMBO_END};
 const uint16_t PROGMEM z_combo[]    = {KC_K, KC_COMM, COMBO_END};
 const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
 
-combo_t key_combos[COMBO_COUNT] = {
-    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J), [MP_Q] = COMBO(q_combo, KC_Q), [KCOMM_Z] = COMBO(z_combo, KC_Z), [LEFT_TAB] = COMBO(left_combo, KC_TAB),
+combo_t key_combos[] = {
+    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J), [MP_Q] = COMBO(q_combo, KC_Q), [KCOMM_Z] = COMBO(z_combo, KC_Z), [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
 };
 /*   #define U_RDO KC_AGIN */
 /*   #define U_PST KC_PSTE */
@@ -308,7 +294,13 @@ combo_t key_combos[COMBO_COUNT] = {
 /*   #define U_CUT LCMD(KC_X) */
 /*   #define U_UND LCMD(KC_Z) */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if ( keycode != REPEAT) {
+        register_key_to_repeat(keycode);
+    }
     switch (keycode) {
+        case REPEAT:
+          update_repeat_key(record);
+          return false;
         case CPY:
             if (record->event.pressed) {
                 switch (detected_host_os()) {

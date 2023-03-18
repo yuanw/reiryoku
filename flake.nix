@@ -72,8 +72,12 @@
 
         flash = pkgs.writeScriptBin "reiryoku-flash" ''
           cd ${qmk_firmware}
-          ${pkgs.qmk}/bin/qmk flash ${firmware}/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
+          ${pkgs.qmk}/bin/qmk flash ${firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
         '';
+        flash-script = (pkgs.writeScript "qmk-flash" ''
+          cd ${qmk_firmware}
+          ${pkgs.qmk}/bin/qmk flash ${firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
+        '');
 
       in rec {
         packages.firmware = pkgs.symlinkJoin {
@@ -81,10 +85,10 @@
           paths = [ firmware flash ];
         };
         packages.drawer = drawer;
-        packages.flash = flash;
+        packages.flash-script = flash-script;
         apps.flash = {
           type = "app";
-          program = "${packages.flash}";
+          program = "${packages.flash-script}";
         };
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
