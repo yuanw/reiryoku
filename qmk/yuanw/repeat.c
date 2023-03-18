@@ -6,6 +6,8 @@ uint16_t last_keycode = KC_NO;
 bool tap_undead_key(bool key_down, uint16_t code);
 
 void register_key_to_repeat(uint16_t keycode) {
+
+    // fix me
     // Get the base keycode of a mod or layer tap key
     switch (keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
