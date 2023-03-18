@@ -69,6 +69,9 @@ with open('reiryoku.yaml',  encoding="utf8") as reader:
     new_data['layout'] ={"qmk_keyboard": "bastardkb/charybdis/3x5/v2/splinky_3", "qmk_layout": "LAYOUT"}
     # hardcoded combos list
     new_data['combos'] = [
+        {'p': [1, 2],
+         'k':'?',
+         'l':['Base']},
         {'p': [2, 3],
          'k':'Q',
          'l':['Base']},
