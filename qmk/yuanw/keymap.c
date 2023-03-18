@@ -295,7 +295,7 @@ const uint16_t PROGMEM q_combo[]    = {KC_M, KC_P, COMBO_END};
 const uint16_t PROGMEM z_combo[]    = {KC_K, KC_COMM, COMBO_END};
 const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
 
-combo_t key_combos[COMBO_LEN] = {
+combo_t key_combos[] = {
     [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J), [MP_Q] = COMBO(q_combo, KC_Q), [KCOMM_Z] = COMBO(z_combo, KC_Z), [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
 };
 /*   #define U_RDO KC_AGIN */
