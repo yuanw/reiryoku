@@ -56,7 +56,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_LAYER_BASE                                                                     \
        REPEAT,  KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
        KC_R,    KC_S,    KC_N,    KC_T,    KC_G,    KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
-       KC_X,    KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,     KC_QUOT, \
+       REV_REP, KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,     KC_QUOT, \
                          ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, BSP_NUM
 
 /** Convenience row shorthands. */
@@ -201,8 +201,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
   [LAYER_MEDIA] = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
   [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
-  [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
+  [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
 };
 // clang-format on
 
@@ -268,6 +268,7 @@ enum combos {
     MP_Q,
     KCOMM_Z,
     LEFT_QUESTION,
+    CF_X,
     COMBO_LENGTH
 };
 
@@ -278,9 +279,12 @@ const uint16_t PROGMEM j_combo[]    = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM q_combo[]    = {KC_M, KC_P, COMBO_END};
 const uint16_t PROGMEM z_combo[]    = {KC_K, KC_COMM, COMBO_END};
 const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
+const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
 
 combo_t key_combos[] = {
-    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J), [MP_Q] = COMBO(q_combo, KC_Q), [KCOMM_Z] = COMBO(z_combo, KC_Z), [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
+    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J), [MP_Q] = COMBO(q_combo, KC_Q), [KCOMM_Z] = COMBO(z_combo, KC_Z),
+    [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
+    [CF_X] = COMBO(x_combo, KC_X),
 };
 /*   #define U_RDO KC_AGIN */
 /*   #define U_PST KC_PSTE */
@@ -294,12 +298,17 @@ combo_t key_combos[] = {
 /*   #define U_CUT LCMD(KC_X) */
 /*   #define U_UND LCMD(KC_Z) */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if ( keycode != REPEAT) {
+    if ( keycode != REPEAT && keycode != REV_REP)  {
+       if ( record->event.pressed  ) {
         register_key_to_repeat(keycode);
+       }
     }
     switch (keycode) {
         case REPEAT:
           update_repeat_key(record);
+          return false;
+        case REV_REP:
+          update_reverse_repeat_key(record);
           return false;
         case CPY:
             if (record->event.pressed) {

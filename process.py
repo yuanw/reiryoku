@@ -13,11 +13,11 @@ layer_dict = {
     "L2": "Nav",
     "L3": "Med",
     "L4": "Num",
-    "L5": "Pointer",
+    "L5": "X",
     "L6": "Sym"}
 
 layer_key_dict = {
-    "LLAYER_POINTER": "Pointer",
+    "LLAYER_POINTER": "X",
     "LLAYER_MEDIA": "Med",
     "LLAYER_NAVIGATION": "Nav",
     "LLAYER_FUNCTION": "Fun",
@@ -26,13 +26,16 @@ layer_key_dict = {
 }
 
 key_dict = {
-    "LLAYER_POINTER": "Pointer",
+    "LLAYER_POINTER": "X",
     "LLAYER_MEDIA": "Med",
     "LLAYER_NAVIGATION": "Nav",
     "LLAYER_FUNCTION": "Fun",
     "LLAYER_NUMERAL": "Num",
     "LLAYER_SYMBOLS": "Sym",
-    "ESC": "\u241B",
+    ",":  {"t": ",","s": "<"},
+    ".": {"t":".", "s": ">"},
+    ";": {"t":";", "s": ":"},
+    # "ESC": "\u241B",
     "BSPC": "\u232B",
     "VOLD": "🔉",
     "VOLU": "🔊",
@@ -82,6 +85,10 @@ with open('reiryoku.yaml',  encoding="utf8") as reader:
          {'p': [22, 23],
          'k':'B',
          'l':['Base']},
+         {'p': [21, 22],
+         'k':'X',
+         'l':['Base']},
+
         {'p': [26, 27],
          'k':'J',
          'l':['Base']},
