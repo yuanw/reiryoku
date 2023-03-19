@@ -26,7 +26,7 @@ layer_key_dict = {
 }
 
 key_dict = {
-    "LLAYER_POINTER": "Pointer",
+    "LLAYER_POINTER": "X",
     "LLAYER_MEDIA": "Med",
     "LLAYER_NAVIGATION": "Nav",
     "LLAYER_FUNCTION": "Fun",
