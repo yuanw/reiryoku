@@ -295,7 +295,7 @@ combo_t key_combos[] = {
 /*   #define U_UND LCMD(KC_Z) */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if ( keycode != REPEAT)  {
-         if ( record->event.pressed ) ) {
+         if ( record->event.pressed  ) {
 
         register_key_to_repeat(keycode);
     }
