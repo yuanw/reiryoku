@@ -9,12 +9,12 @@ void register_key_to_repeat(uint16_t keycode) {
 
     // fix me
     // Get the base keycode of a mod or layer tap key
-    switch (keycode) {
-        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-            keycode = keycode & 0xFF;
-            break;
-    }
+    /* switch (keycode) { */
+    /*     case QK_MOD_TAP ... QK_MOD_TAP_MAX: */
+    /*     case QK_LAYER_TAP ... QK_LAYER_TAP_MAX: */
+    /*         keycode = keycode & 0xFF; */
+    /*         break; */
+    /* } */
 
     // Merge current mod state with keycode, for easy comparison when
     // we want to do special key reverse repeats.
