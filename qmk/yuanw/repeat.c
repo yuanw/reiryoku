@@ -7,7 +7,7 @@ bool tap_undead_key(bool key_down, uint16_t code);
 
 void register_key_to_repeat(uint16_t keycode) {
 
-    // fix me
+    // fix me does not work with home-row mod
     // Get the base keycode of a mod or layer tap key
     /* switch (keycode) { */
     /*     case QK_MOD_TAP ... QK_MOD_TAP_MAX: */
