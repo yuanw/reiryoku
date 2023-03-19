@@ -1,20 +1,8 @@
 * my keymap and qmk code
 a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[https://github.com/Apsu/Adept][adept ]]running on a [[https://bastardkb.com/charybdis-nano/][charybdis-nano]]
 
-[[./kb.jpg]]
+[[./keeb.jpg]]
 [[./reiryoku.svg]]
-
-*** Base
-[[./data/layers/base.png]]
-
-*** Media
-[[./data/layers/media.png]]
-*** Navigation
-[[./data/layers/nav.png]]
-*** Sym
-[[./data/layers/sym.png]]
-*** Num
-[[./data/layers/num.png]]
 
 * inspirations
 
