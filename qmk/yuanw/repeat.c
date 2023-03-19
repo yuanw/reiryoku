@@ -39,3 +39,29 @@ void update_key(uint16_t keycode, keyrecord_t *record) {
 void update_repeat_key(keyrecord_t *record) {
   update_key(last_keycode, record);
 }
+
+void update_reverse_key_pairs(uint16_t a, uint16_t b, keyrecord_t *record) {
+    if (last_keycode == a) {
+        update_key(b, record);
+    } else if (last_keycode == b) {
+        update_key(a, record);
+    }
+}
+
+void update_reverse_repeat_key(keyrecord_t *record) {
+    // Do the "reverse" of the last pressed key, that we use to repeat
+    /* update_reverse_key_pairs(C(KC_TAB), C(S(KC_TAB)), record); */
+    /* update_reverse_key_pairs(C(KC_N), C(KC_P), record); */
+    /* update_reverse_key_pairs(C(KC_F), C(KC_B), record); */
+    /* update_reverse_key_pairs(C(KC_U), C(KC_D), record); */
+    /* update_reverse_key_pairs(S(KC_W), S(KC_B), record); */
+    /* update_reverse_key_pairs(C(SE_G), C(S(SE_G)), record); */
+    update_reverse_key_pairs(KC_PGUP, KC_PGDN, record);
+    update_reverse_key_pairs(KC_LBRC, KC_RBRC, record);
+    update_reverse_key_pairs(KC_LCBR, KC_RCBR, record);
+    /* update_reverse_key_pairs(SE_ASTR, SE_HASH, record); */
+    /* update_reverse_key_pairs(SE_U, C(SE_R), record); */
+    /* update_reverse_key_pairs(SE_LCBR, SE_RCBR, record); */
+    /* update_reverse_key_pairs(G(SE_K), G(SE_J), record); */
+    /* update_reverse_key_pairs(C(SE_O), C(SE_I), record); */
+}
