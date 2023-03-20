@@ -13,8 +13,8 @@ layer_dict = {
     "L2": "Nav",
     "L3": "Med",
     "L4": "Num",
-    "L5": "Pointer",
-    "L6": "Sym"}
+    "L5": "Sym",
+    "L6": "Pointer"}
 
 layer_key_dict = {
     "LLAYER_POINTER": "Pointer",
@@ -56,7 +56,7 @@ key_dict = {
     "LCTL" : "⌃",
      "RCTL": "⌃",
     "CAPS": "⇪",
-    "QK_CAPS_WORD_TOGGLE": "Caps Word",
+    "QK CAPS WORD TOGGLE": "Caps Word",
     "LAG(1)":"⌘⌥1",
     "LAG(2)":"⌘⌥2",
     "LAG(3)":"⌘⌥3",
