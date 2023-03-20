@@ -8,13 +8,13 @@ except ImportError:
 Point = namedtuple('Point', ['layer', 'row', 'key'])
 # hardcode layer list
 layer_dict = {
-    "L0": "0:Base",
-    "L1": "1:Fun",
-    "L2": "2:Nav",
-    "L3": "3:Med",
-    "L4": "4:Num",
-    "L5": "6:Pointer",
-    "L6": "5:Sym"}
+    "L0": "Base",
+    "L1": "Fun",
+    "L2": "Nav",
+    "L3": "Med",
+    "L4": "Num",
+    "L5": "Pointer",
+    "L6": "Sym"}
 
 layer_key_dict = {
     "LLAYER_POINTER": "Pointer",
