@@ -56,7 +56,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_LAYER_BASE                                                                     \
        REPEAT,  KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
        KC_R,    KC_S,    KC_N,    KC_T,    KC_G,    KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
-       REV_REP, KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,     KC_QUOT, \
+       KC_X,    KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,     KC_QUOT, \
                          ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, BSP_NUM
 
 /** Convenience row shorthands. */
@@ -95,8 +95,8 @@ static uint16_t auto_pointer_layer_timer = 0;
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
     XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_V, KC_LBRC, KC_RBRC, KC_SLSH, \
-    KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, XXXXXXX, KC_H, KC_J, KC_K, KC_L, \
-    XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT, KC_G, XXXXXXX, XXXXXXX, XXXXXXX, \
+    KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_H, KC_J, KC_K, KC_L, \
+    XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
 
 /** \brief Mouse emulation and pointer functions. */
