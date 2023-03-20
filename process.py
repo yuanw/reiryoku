@@ -14,10 +14,10 @@ layer_dict = {
     "L3": "Med",
     "L4": "Num",
     "L5": "Sym",
-    "L6": "Pointer"}
+    "L6": "Cursor"}
 
 layer_key_dict = {
-    "LLAYER_POINTER": "Pointer",
+    "LLAYER_POINTER": "Cursor",
     "LLAYER_MEDIA": "Med",
     "LLAYER_NAVIGATION": "Nav",
     "LLAYER_FUNCTION": "Fun",
@@ -26,7 +26,7 @@ layer_key_dict = {
 }
 
 key_dict = {
-    "LLAYER_POINTER": "Pointer",
+    "LLAYER_POINTER": "Cursor",
     "LLAYER_MEDIA": "Med",
     "LLAYER_NAVIGATION": "Nav",
     "LLAYER_FUNCTION": "Fun",
