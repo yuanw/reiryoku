@@ -76,22 +76,22 @@ with open('reiryoku.yaml',  encoding="utf8") as reader:
     new_data['combos'] = [
         {'p': [1, 2],
          'k':'?',
-         'l':['0:Base']},
+         'l':['Base']},
         {'p': [2, 3],
          'k':'Q',
          'l':['Base']},
           {'p': [6, 7],
          'k':'Z',
-           'l':['0:Base']},
+           'l':['Base']},
          {'p': [22, 23],
          'k':'B',
-         'l':['0:Base']},
+         'l':['Base']},
          {'p': [21, 22],
          'k':'X',
-         'l':['0:Base']},
+         'l':['Base']},
         {'p': [26, 27],
          'k':'J',
-         'l':['0:Base']},
+         'l':['Base']},
     ]
     new_data['layers'] = {}
     for l in data.get('layers').keys():
