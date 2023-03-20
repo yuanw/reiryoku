@@ -8,16 +8,16 @@ except ImportError:
 Point = namedtuple('Point', ['layer', 'row', 'key'])
 # hardcode layer list
 layer_dict = {
-    "L0": "Base",
-    "L1": "Fun",
-    "L2": "Nav",
-    "L3": "Med",
-    "L4": "Num",
-    "L5": "X",
-    "L6": "Sym"}
+    "L0": "0:Base",
+    "L1": "1:Fun",
+    "L2": "2:Nav",
+    "L3": "3:Med",
+    "L4": "4:Num",
+    "L5": "6:Pointer",
+    "L6": "5:Sym"}
 
 layer_key_dict = {
-    "LLAYER_POINTER": "X",
+    "LLAYER_POINTER": "Pointer",
     "LLAYER_MEDIA": "Med",
     "LLAYER_NAVIGATION": "Nav",
     "LLAYER_FUNCTION": "Fun",
@@ -26,7 +26,7 @@ layer_key_dict = {
 }
 
 key_dict = {
-    "LLAYER_POINTER": "X",
+    "LLAYER_POINTER": "Pointer",
     "LLAYER_MEDIA": "Med",
     "LLAYER_NAVIGATION": "Nav",
     "LLAYER_FUNCTION": "Fun",
@@ -56,6 +56,7 @@ key_dict = {
     "LCTL" : "⌃",
      "RCTL": "⌃",
     "CAPS": "⇪",
+    "QK_CAPS_WORD_TOGGLE": "Caps Word",
     "LAG(1)":"⌘⌥1",
     "LAG(2)":"⌘⌥2",
     "LAG(3)":"⌘⌥3",
@@ -75,23 +76,22 @@ with open('reiryoku.yaml',  encoding="utf8") as reader:
     new_data['combos'] = [
         {'p': [1, 2],
          'k':'?',
-         'l':['Base']},
+         'l':['0:Base']},
         {'p': [2, 3],
          'k':'Q',
          'l':['Base']},
           {'p': [6, 7],
          'k':'Z',
-           'l':['Base']},
+           'l':['0:Base']},
          {'p': [22, 23],
          'k':'B',
-         'l':['Base']},
+         'l':['0:Base']},
          {'p': [21, 22],
          'k':'X',
-         'l':['Base']},
-
+         'l':['0:Base']},
         {'p': [26, 27],
          'k':'J',
-         'l':['Base']},
+         'l':['0:Base']},
     ]
     new_data['layers'] = {}
     for l in data.get('layers').keys():
