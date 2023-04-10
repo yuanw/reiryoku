@@ -86,10 +86,10 @@
     "qmk_firmware": {
       "flake": false,
       "locked": {
-        "lastModified": 1679581621,
-        "narHash": "sha256-LTPNY6LX4H6ehf++SIj7VOd05DGhjzmqvTn9+BGsYFo=",
+        "lastModified": 1680833272,
+        "narHash": "sha256-3YU7MnBAFTn1H4t5RUz7o1RlmJ24YOh/JipOIBCUnnM=",
         "ref": "bkb-master",
-        "rev": "dc3e11edcca343fe1a2ba550949bebeea407f8b9",
+        "rev": "951f0e6d4dfe2848425375e05c880560b09d50e2",
         "shallow": true,
         "submodules": true,
         "type": "git",
