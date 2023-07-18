@@ -27,7 +27,17 @@
 
         inherit (poetry2nix.legacyPackages.${system}) mkPoetryApplication;
 
-        drawer = mkPoetryApplication { projectDir = keymap_drawer; };
+        drawer = mkPoetryApplication { projectDir = keymap_drawer;
+overrides = poetry2nix.defaultPoetryOverrides.extend
+    (self: super: {
+      deptry = super.deptry.overridePythonAttrs
+      (
+        old: {
+          buildInputs = (old.buildInputs or [ ]) ++ [ super.poetry ];
+        }
+      );
+    });
+                                     };
         firmware = pkgs.stdenv.mkDerivation rec {
           name = "firmware.uf2";
           # src = pkgs.fetchFromGitHub {
