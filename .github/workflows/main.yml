@@ -16,7 +16,7 @@ jobs:
           trusted-public-keys = yuanwang-wf.cachix.org-1:P/RZ5Iuuuv2MYCNCnAsLfPGmgKMKeTwPaJclkrcwx80= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
           substituters = https://cachix.org/api/v1/cache/yuanwang-wf https://cache.nixos.org/
     - name: Nix build
-      run: nix build .#firmware
+      run: nix build .#firmware --impure
     # NOTE Workaround for artifacts and deploy not liking symlinks to
     # read-only paths.
     - name: "Copy artifacts"
