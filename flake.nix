@@ -72,7 +72,7 @@
 
         # this allows us to not need the .git folder
         SKIP_VERSION = "1";
-
+        SSL_CERT_FILE = "/nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt";
         # outputs = [ "out" "hex" ];
 
         buildPhase = ''
