@@ -25,10 +25,10 @@
       let
         pkgs = import nixpkgs { inherit system; };
 
-        inherit (poetry2nix.legacyPackages.${system}) mkPoetryApplication;
+        inherit (poetry2nix.legacyPackages.${system}) defaultPoetryOverrides mkPoetryApplication;
 
         drawer = mkPoetryApplication { projectDir = keymap_drawer;
-overrides = poetry2nix.defaultPoetryOverrides.extend
+overrides = defaultPoetryOverrides.extend
     (self: super: {
       deptry = super.deptry.overridePythonAttrs
       (
