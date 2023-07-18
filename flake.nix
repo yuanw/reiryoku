@@ -57,10 +57,11 @@
         #   fetchSubmodules = true;
         # };
         src = qmk_firmware;
-        buildInputs = with pkgs; [
-          qmk
-          (python3.withPackages (ps: [ ps.pyyaml ]))
-        ];
+
+        nativeBuildInputs = [ pkgs.qmk ];
+        # buildInputs = with pkgs; [
+        #  (python3.withPackages (ps: [ ps.pyyaml ]))
+        # ];
 
         postUnpack = ''
           ln -s ${
@@ -69,8 +70,13 @@
           ln -s ${./process.py} $sourceRoot/process.py
         '';
 
+        # this allows us to not need the .git folder
+        SKIP_VERSION = "1";
+
+        # outputs = [ "out" "hex" ];
+
         buildPhase = ''
-          make bastardkb/charybdis/3x5/v2/splinky_3:yuanw SKIP_GIT=1
+          make bastardkb/charybdis/3x5/v2/splinky_3:yuanw
           ${pkgs.qmk}/bin/qmk  -v c2json -kb bastardkb/charybdis/3x5/v2/splinky_3 -km yuanw ./keyboards/bastardkb/charybdis/3x5/keymaps/yuanw/keymap.c > reiryoku.json
           ${drawer}/bin/keymap parse -c 10 -q reiryoku.json  > reiryoku.yaml
           sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
