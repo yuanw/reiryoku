@@ -10,14 +10,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: cachix/install-nix-action@v22
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
     - uses: cachix/cachix-action@v12
       with:
         name: yuanwang-wf
         extraPullNames: yuanwang-wf,nix-community
     - name: Nix build
-      run: nix build .#firmware --impure
+      run: nix build .#firmware
     # NOTE Workaround for artifacts and deploy not liking symlinks to
     # read-only paths.
     - name: "Copy artifacts"
