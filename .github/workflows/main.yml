@@ -6,15 +6,15 @@ on: [push, pull_request]
 jobs:
   build:
     name: Build
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: cachix/install-nix-action@v22
       with:
-        extra_nix_config: |
-          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-          trusted-public-keys = yuanwang-wf.cachix.org-1:P/RZ5Iuuuv2MYCNCnAsLfPGmgKMKeTwPaJclkrcwx80= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
-          substituters = https://cachix.org/api/v1/cache/yuanwang-wf https://cache.nixos.org/
+        nix_path: nixpkgs=channel:nixos-unstable
+    - uses: cachix/cachix-action@v12
+      with:
+        extraPullNames: yuanwang-wf,nix-community
     - name: Nix build
       run: nix build .#firmware --impure
     # NOTE Workaround for artifacts and deploy not liking symlinks to
