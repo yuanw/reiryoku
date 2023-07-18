@@ -59,9 +59,9 @@
         src = qmk_firmware;
 
         nativeBuildInputs = [ pkgs.qmk ];
-        # buildInputs = with pkgs; [
-        #  (python3.withPackages (ps: [ ps.pyyaml ]))
-        # ];
+        buildInputs = with pkgs; [
+         (python3.withPackages (ps: [ ps.pyyaml ]))
+        ];
 
         postUnpack = ''
           ln -s ${
