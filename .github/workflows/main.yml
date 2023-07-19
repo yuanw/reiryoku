@@ -33,5 +33,5 @@ jobs:
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
-          name: keymap.svg
-          path: dist/share/reiryoku.svg
+          name: keymap.json
+          path: dist/share/reiryoku.json
