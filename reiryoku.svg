@@ -167,20 +167,15 @@ path.combo {
 <rect rx="6.0" ry="6.0" x="872.0" y="170.0" width="52.0" height="52.0" class="key"/>
 <text x="898.0" y="196.0" class="tap">Cursor</text>
 <rect rx="6.0" ry="6.0" x="256.0" y="226.0" width="52.0" height="52.0" class="key"/>
-<text x="282.0" y="252.0" class="tap" style="font-size: 88%">
-<tspan x="282.0" dy="-1.2em">LT(LAYER</tspan><tspan x="282.0" dy="1.2em">MEDIA,</tspan><tspan x="282.0" dy="1.2em">ESC)</tspan></text>
+<text x="282.0" y="252.0" class="tap">Med</text>
 <rect rx="6.0" ry="6.0" x="312.0" y="226.0" width="52.0" height="52.0" class="key"/>
-<text x="338.0" y="252.0" class="tap" style="font-size: 64%">
-<tspan x="338.0" dy="-1.2em">LT(LAYER</tspan><tspan x="338.0" dy="1.2em">NAVIGATION,</tspan><tspan x="338.0" dy="1.2em">SPC)</tspan></text>
+<text x="338.0" y="252.0" class="tap">Nav</text>
 <rect rx="6.0" ry="6.0" x="368.0" y="226.0" width="52.0" height="52.0" class="key"/>
-<text x="394.0" y="252.0" class="tap" style="font-size: 78%">
-<tspan x="394.0" dy="-1.2em">LT(LAYER</tspan><tspan x="394.0" dy="1.2em">FUNCTION,</tspan><tspan x="394.0" dy="1.2em">BSPC)</tspan></text>
+<text x="394.0" y="252.0" class="tap">Fun</text>
 <rect rx="6.0" ry="6.0" x="536.0" y="226.0" width="52.0" height="52.0" class="key"/>
-<text x="562.0" y="252.0" class="tap" style="font-size: 88%">
-<tspan x="562.0" dy="-1.2em">LT(LAYER</tspan><tspan x="562.0" dy="1.2em">SYMBOLS,</tspan><tspan x="562.0" dy="1.2em">ENT)</tspan></text>
+<text x="562.0" y="252.0" class="tap">Num</text>
 <rect rx="6.0" ry="6.0" x="592.0" y="226.0" width="52.0" height="52.0" class="key"/>
-<text x="618.0" y="252.0" class="tap" style="font-size: 88%">
-<tspan x="618.0" dy="-1.2em">LT(LAYER</tspan><tspan x="618.0" dy="1.2em">NUMERAL,</tspan><tspan x="618.0" dy="1.2em">E)</tspan></text>
+<text x="618.0" y="252.0" class="tap">Sym</text>
 <rect rx="6.0" ry="6.0" x="128.0" y="71.0" width="28.0" height="26.0" class="combo"/>
 <text x="142.0" y="84.0" class="combo tap">?</text>
 <rect rx="6.0" ry="6.0" x="184.0" y="71.0" width="28.0" height="26.0" class="combo"/>

@@ -80,11 +80,11 @@ layers:
     - U
     - Y
     - Cursor
-  - - LT(LAYER MEDIA, ESC)
-    - LT(LAYER NAVIGATION, SPC)
-    - LT(LAYER FUNCTION, BSPC)
-    - LT(LAYER SYMBOLS, ENT)
-    - LT(LAYER NUMERAL, E)
+  - - Med
+    - Nav
+    - Fun
+    - Num
+    - Sym
   Cursor:
   - - ''
     - ''
