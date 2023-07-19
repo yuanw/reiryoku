@@ -1,18 +1,76 @@
-layout: {qmk_keyboard: bastardkb/charybdis/3x5/v2/splinky_3, qmk_layout: LAYOUT}
+combos:
+- k: '?'
+  l:
+  - Base
+  p:
+  - 1
+  - 2
+- k: Q
+  l:
+  - Base
+  p:
+  - 2
+  - 3
+- k: Z
+  l:
+  - Base
+  p:
+  - 6
+  - 7
+- k: B
+  l:
+  - Base
+  p:
+  - 22
+  - 23
+- k: X
+  l:
+  - Base
+  p:
+  - 21
+  - 22
+- k: J
+  l:
+  - Base
+  p:
+  - 26
+  - 27
 layers:
-  L0:
-  - [/, W, M, P, Q, Z, K, ',', ., ;]
-  - - {t: R, h: LGUI}
-    - {t: S, h: LALT}
-    - {t: N, h: LCTL}
-    - {t: T, h: LSFT}
+  Base:
+  - - "\u21BB"
+    - W
+    - M
+    - P
+    - Q
+    - Z
+    - K
+    - s: <
+      t: ','
+    - &id002
+      s: '>'
+      t: .
+    - &id001
+      s: ':'
+      t: ;
+  - - h: "\u2318"
+      t: R
+    - h: "\u2325"
+      t: S
+    - h: "\u2303"
+      t: N
+    - h: "\u21E7"
+      t: T
     - G
     - V
-    - {t: H, h: RSFT}
-    - {t: A, h: RCTL}
-    - {t: I, h: LALT}
-    - {t: O, h: RGUI}
-  - - {t: X, h: LLAYER_POINTER}
+    - h: "\u21E7"
+      t: H
+    - h: "\u2303"
+      t: A
+    - h: "\u2325"
+      t: I
+    - h: "\u2318"
+      t: O
+  - - LT(LAYER POINTER, X)
     - C
     - F
     - D
@@ -21,39 +79,242 @@ layers:
     - L
     - U
     - Y
-    - {t: '''', h: LLAYER_POINTER}
-  - - {t: ESC, h: LLAYER_MEDIA}
-    - {t: SPC, h: LLAYER_NAVIGATION}
-    - {t: BSPC, h: LLAYER_FUNCTION}
-    - {t: ENT, h: LLAYER_SYMBOLS}
-    - {t: E, h: LLAYER_NUMERAL}
-  L1:
-  - ['', '', '', '', '', '', '', '{', '}', \]
-  - [LGUI, LALT, LCTL, LSFT, '', SCRL, LAG(1), LAG(2), LAG(3), LAG(4)]
-  - ['', '', '', '', '', PAUS, LSG(1), LSG(2), LSG(3), LSG(4)]
-  - ['', '', '', '', TAB]
-  L2:
-  - ['', '', '', '', '', '', '', (, ), '|']
-  - [LGUI, LALT, LCTL, LSFT, '', CAPS, LEFT, DOWN, UP, RGHT]
-  - ['', '', '', '', '', RDO, PST, CPY, CUT, UND]
-  - ['', '', '', '', TAB]
-  L3:
-  - ['', RGB RMOD, RGB TOG, RGB MOD, '', '', V, '[', ']', \]
-  - [MPRV, VOLD, MUTE, VOLU, MNXT, '', H, J, K, L]
-  - ['', '', '', EE CLR, QK BOOT, QK BOOT, G, '', '', '']
-  - ['', '', '', '', TAB]
-  L4:
-  - ['[', '7', '8', '9', ']', '', '', '', '', '']
-  - [;, '4', '5', '6', '=', '', LSFT, LCTL, LALT, LGUI]
-  - ['`', '1', '2', '3', \, '', '', '', '', '']
-  - [., '0', '-', '', '']
-  L5:
-  - ['', '', '', '', '', '', '', '', '', '']
-  - [LGUI, LALT, LCTL, LSFT, '', '', LSFT, LCTL, LALT, LGUI]
-  - ['', '', '', EE CLR, QK BOOT, QK BOOT, EE CLR, '', '', '']
-  - [BTN2, BTN1, BTN3, BTN3, BTN1]
-  L6:
-  - ['{', '&', '*', (, '}', '', '', '', '', '']
-  - [':', $, '%', ^, +, '', LSFT, LCTL, LALT, LGUI]
-  - ['~', '!', '@', '#', '|', '', '', '', '', '']
-  - [(, ), _, '', '']
+    - LT(LAYER POINTER, QUOT)
+  - - LT(LAYER MEDIA, ESC)
+    - LT(LAYER NAVIGATION, SPC)
+    - LT(LAYER FUNCTION, BSPC)
+    - LT(LAYER SYMBOLS, ENT)
+    - LT(LAYER NUMERAL, E)
+  Cursor:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - "\u2318"
+    - "\u2325"
+    - "\u2303"
+    - "\u21E7"
+    - ''
+    - ''
+    - "\u21E7"
+    - "\u2303"
+    - "\u2325"
+    - "\u2318"
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - ''
+    - ''
+    - EE CLR
+    - QK BOOT
+    - QK BOOT
+    - EE CLR
+    - ''
+    - ''
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - BTN2
+    - BTN1
+    - BTN3
+    - BTN3
+    - BTN1
+  Fun:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - '{'
+    - '}'
+    - \
+  - - "\u2318"
+    - "\u2325"
+    - "\u2303"
+    - "\u21E7"
+    - ''
+    - SCRL
+    - "\u2318\u23251"
+    - "\u2318\u23252"
+    - "\u2318\u23253"
+    - "\u2318\u23254"
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - PAUS
+    - "\u2318\u21E71"
+    - "\u2318\u21E72"
+    - "\u2318\u21E73"
+    - "\u2318\u21E74"
+  - - ''
+    - ''
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - ''
+    - TAB
+  Med:
+  - - ''
+    - RGB RMOD
+    - RGB TOG
+    - RGB MOD
+    - ''
+    - ''
+    - V
+    - '['
+    - ']'
+    - /
+  - - "\u21E4"
+    - "\U0001F509"
+    - "\U0001F507"
+    - "\U0001F50A"
+    - "\u21E5"
+    - Caps Word
+    - H
+    - J
+    - K
+    - L
+  - - ''
+    - ''
+    - ''
+    - EE CLR
+    - QK BOOT
+    - QK BOOT
+    - HOME
+    - PGDN
+    - PGUP
+    - END
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - ''
+    - ''
+    - ''
+    - TAB
+  Nav:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - (
+    - )
+    - '|'
+  - - "\u2318"
+    - "\u2325"
+    - "\u2303"
+    - "\u21E7"
+    - ''
+    - "\u21EA"
+    - "\u25C1"
+    - "\u25BD"
+    - "\u25B3"
+    - "\u25B7"
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - RDO
+    - PST
+    - CPY
+    - CUT
+    - UND
+  - - ''
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - ''
+    - ''
+    - TAB
+  Num:
+  - - '['
+    - '7'
+    - '8'
+    - '9'
+    - ']'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - *id001
+    - '4'
+    - '5'
+    - '6'
+    - '='
+    - ''
+    - "\u21E7"
+    - "\u2303"
+    - "\u2325"
+    - "\u2318"
+  - - '`'
+    - '1'
+    - '2'
+    - '3'
+    - \
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - *id002
+    - '0'
+    - '-'
+    - ''
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  Sym:
+  - - '{'
+    - '&'
+    - '*'
+    - (
+    - '}'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ':'
+    - $
+    - '%'
+    - ^
+    - +
+    - ''
+    - "\u21E7"
+    - "\u2303"
+    - "\u2325"
+    - "\u2318"
+  - - '~'
+    - '!'
+    - '@'
+    - '#'
+    - '|'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - (
+    - )
+    - _
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - ''
+layout:
+  qmk_keyboard: bastardkb/charybdis/3x5/v2/splinky_3
+  qmk_layout: LAYOUT

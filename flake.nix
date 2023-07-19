@@ -109,8 +109,10 @@
           };
           # Default shell.
           devShells.default = pkgs.mkShell {
-            NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1;
-            name = "haskell-template";
+             buildInputs = with pkgs; [
+                 (python3.withPackages (ps: [ ps.pyyaml ]))
+               ];
+
             # See https://haskell.flake.page/devshell#composing-devshells
             inputsFrom = [
               config.flake-root.devShell
