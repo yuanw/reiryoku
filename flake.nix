@@ -43,23 +43,25 @@
         , config
         , system
         , ...
-        }: {
+        }:
+        let
+          inherit (inputs.poetry2nix.legacyPackages.${system}) defaultPoetryOverrides mkPoetryApplication;
+        in {
           legacyPackages = pkgs;
 
-          # inherit (inputs.poetry2nix.legacyPackages.${system}) defaultPoetryOverrides mkPoetryApplication;
 
-          # drawer = mkPoetryApplication {
-          #   projectDir = keymap_drawer;
-          #   overrides = defaultPoetryOverrides.extend
-          #     (self: super: {
-          #       deptry = super.deptry.overridePythonAttrs
-          #         (
-          #           old: {
-          #             buildInputs = (old.buildInputs or [ ]) ++ [ super.poetry ];
-          #           }
-          #         );
-          #     });
-          # };
+          packages.drawer = mkPoetryApplication {
+            projectDir = inputs.keymap_drawer;
+            overrides = defaultPoetryOverrides.extend
+              (self: super: {
+                deptry = super.deptry.overridePythonAttrs
+                  (
+                    old: {
+                      buildInputs = (old.buildInputs or [ ]) ++ [ super.poetry ];
+                    }
+                  );
+              });
+          };
           treefmt.config = {
             inherit (config.flake-root) projectRootFile;
             package = pkgs.treefmt;
