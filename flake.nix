@@ -3,6 +3,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+     flake-parts.url = "github:hercules-ci/flake-parts";
+    mission-control.url = "github:Platonic-Systems/mission-control";
+    flake-root.url = "github:srid/flake-root";
+      treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     keymap_drawer = {
       url = "github:caksoylar/keymap-drawer";
       flake = false;
@@ -19,20 +24,29 @@
     };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , flake-utils
-    , qmk_firmware
-    , poetry2nix
-    , keymap_drawer
-    , ...
-    }:
-    flake-utils.lib.eachDefaultSystem (system:
-    let
-      pkgs = import nixpkgs { inherit system; };
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+  "aarch64-darwin"
+  "aarch64-linux"
+  "x86_64-darwin"
+  "x86_64-linux"
+];
+      imports = [
+        # inputs.haskell-flake.flakeModule
+        inputs.treefmt-nix.flakeModule
+        inputs.flake-root.flakeModule
+        inputs.mission-control.flakeModule
+      ];
+       perSystem = {
+        pkgs,
+        lib,
+        config,
+        ...
+      }: {
+          legacyPackages = pkgs;
 
-      inherit (poetry2nix.legacyPackages.${system}) defaultPoetryOverrides mkPoetryApplication;
+      inherit (inputs.poetry2nix.legacyPackages.${system}) defaultPoetryOverrides mkPoetryApplication;
 
       drawer = mkPoetryApplication {
         projectDir = keymap_drawer;
@@ -46,7 +60,14 @@
               );
           });
       };
-      firmware = pkgs.stdenv.mkDerivation rec {
+       treefmt.config = {
+          inherit (config.flake-root) projectRootFile;
+          package = pkgs.treefmt;
+
+          programs.nixpkgs-fmt.enable = true;
+
+                 };
+      packages.firmware = pkgs.stdenv.mkDerivation rec {
         name = "firmware.uf2";
         # src = pkgs.fetchFromGitHub {
         #   owner = "Bastardkb";
@@ -88,37 +109,47 @@
           mv reiryoku.json $out/share
         '';
       };
+ # Default shell.
+        devShells.default = pkgs.mkShell {
+          name = "haskell-template";
+          # See https://haskell.flake.page/devshell#composing-devshells
+          inputsFrom = [
+            config.flake-root.devShell
+            config.mission-control.devShell
+            config.treefmt.build.devShell
+          ];
+        };
+    #   flash = pkgs.writeScriptBin "reiryoku-flash" ''
+    #     cd ${qmk_firmware}
+    #     ${pkgs.qmk}/bin/qmk flash ${firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
+    #   '';
+    #   flash-script = (pkgs.writeScript "qmk-flash" ''
+    #     cd ${qmk_firmware}
+    #     ${pkgs.qmk}/bin/qmk flash ${firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
+    #   '');
 
-      flash = pkgs.writeScriptBin "reiryoku-flash" ''
-        cd ${qmk_firmware}
-        ${pkgs.qmk}/bin/qmk flash ${firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
-      '';
-      flash-script = (pkgs.writeScript "qmk-flash" ''
-        cd ${qmk_firmware}
-        ${pkgs.qmk}/bin/qmk flash ${firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
-      '');
+    # in
+    # rec {
+    #   packages.firmware = pkgs.symlinkJoin {
+    #     name = "reiryoku-firmware";
+    #     paths = [ firmware flash ];
+    #   };
+    #   packages.drawer = drawer;
+    #   packages.flash-script = flash-script;
+    #   apps.flash = {
+    #     type = "app";
+    #     program = "${packages.flash-script}";
+    #   };
+    #   devShells.default = pkgs.mkShell {
+    #     buildInputs = with pkgs; [
+    #       nixpkgs-fmt
+    #       (python3.withPackages (ps: [ ps.pyyaml ]))
+    #     ];
+    #   };
+    #   # Defaults =======================
 
-    in
-    rec {
-      packages.firmware = pkgs.symlinkJoin {
-        name = "reiryoku-firmware";
-        paths = [ firmware flash ];
-      };
-      packages.drawer = drawer;
-      packages.flash-script = flash-script;
-      apps.flash = {
-        type = "app";
-        program = "${packages.flash-script}";
-      };
-      devShells.default = pkgs.mkShell {
-        buildInputs = with pkgs; [
-          nixpkgs-fmt
-          (python3.withPackages (ps: [ ps.pyyaml ]))
-        ];
-      };
-      # Defaults =======================
-
-      packages.default = packages.firmware;
-      apps.default = apps.flash;
-    });
+    #   packages.default = packages.firmware;
+    #   apps.default = apps.flash;
+    };
+    };
 }
