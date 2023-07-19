@@ -42,24 +42,25 @@
         pkgs,
         lib,
         config,
+           system,
         ...
       }: {
           legacyPackages = pkgs;
 
-      inherit (inputs.poetry2nix.legacyPackages.${system}) defaultPoetryOverrides mkPoetryApplication;
+      # inherit (inputs.poetry2nix.legacyPackages.${system}) defaultPoetryOverrides mkPoetryApplication;
 
-      drawer = mkPoetryApplication {
-        projectDir = keymap_drawer;
-        overrides = defaultPoetryOverrides.extend
-          (self: super: {
-            deptry = super.deptry.overridePythonAttrs
-              (
-                old: {
-                  buildInputs = (old.buildInputs or [ ]) ++ [ super.poetry ];
-                }
-              );
-          });
-      };
+      # drawer = mkPoetryApplication {
+      #   projectDir = keymap_drawer;
+      #   overrides = defaultPoetryOverrides.extend
+      #     (self: super: {
+      #       deptry = super.deptry.overridePythonAttrs
+      #         (
+      #           old: {
+      #             buildInputs = (old.buildInputs or [ ]) ++ [ super.poetry ];
+      #           }
+      #         );
+      #     });
+      # };
        treefmt.config = {
           inherit (config.flake-root) projectRootFile;
           package = pkgs.treefmt;
@@ -77,7 +78,7 @@
         #   sha256 = "AMKeHg5PaxMkzEDFFFck0w8lvqFMRdDGrgXDy4B6NDk=";
         #   fetchSubmodules = true;
         # };
-        src = qmk_firmware;
+        src = inputs.qmk_firmware;
 
         nativeBuildInputs = [ pkgs.qmk ];
         buildInputs = with pkgs; [
