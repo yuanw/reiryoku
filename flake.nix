@@ -119,7 +119,7 @@
               config.treefmt.build.devShell
             ];
           };
-          packages.default = config.packages.default;
+          packages.default = config.packages.firmware;
           #   flash = pkgs.writeScriptBin "reiryoku-flash" ''
           #     cd ${qmk_firmware}
           #     ${pkgs.qmk}/bin/qmk flash ${firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
