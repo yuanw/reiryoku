@@ -79,20 +79,13 @@
         buildPhase = ''
           make bastardkb/charybdis/3x5/v2/splinky_3:yuanw
           ${pkgs.qmk}/bin/qmk  -v c2json -kb bastardkb/charybdis/3x5/v2/splinky_3 -km yuanw ./keyboards/bastardkb/charybdis/3x5/keymaps/yuanw/keymap.c > reiryoku.json
-          ${drawer}/bin/keymap parse -c 10 -q reiryoku.json  > reiryoku.yaml
-          sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
-          ls
-          python ./process.py
-          ${drawer}/bin/keymap draw output.yaml > reiryoku.svg
           mkdir $out
           mkdir -p $out/share
         '';
 
         installPhase = ''
           mv bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2 $out/share
-          mv reiryoku.svg $out/share
           mv reiryoku.json $out/share
-          mv output.yaml $out/share
         '';
       };
 
