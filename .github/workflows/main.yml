@@ -1,20 +1,24 @@
 name: CI
 
-on: [push, pull_request]
+on: [push]
 
 
 jobs:
   build:
     name: Build
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+        matrix:
+          # os: [ubuntu-latest, macos-latest]
+          os: [macos-latest]
     steps:
     - uses: actions/checkout@v3
-    - uses: cachix/install-nix-action@v20
+    - uses: cachix/install-nix-action@v22
+    - uses: cachix/cachix-action@v12
       with:
-        extra_nix_config: |
-          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-          trusted-public-keys = yuanwang-wf.cachix.org-1:P/RZ5Iuuuv2MYCNCnAsLfPGmgKMKeTwPaJclkrcwx80= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
-          substituters = https://cachix.org/api/v1/cache/yuanwang-wf https://cache.nixos.org/
+        name: yuanwang-wf
+        extraPullNames: yuanwang-wf,nix-community
     - name: Nix build
       run: nix build .#firmware
     # NOTE Workaround for artifacts and deploy not liking symlinks to
@@ -29,5 +33,5 @@ jobs:
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
-          name: keymap.svg
-          path: dist/share/reiryoku.svg
+          name: keymap.json
+          path: dist/share/reiryoku.json
