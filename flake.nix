@@ -47,9 +47,6 @@
         let
           inherit (inputs.poetry2nix.legacyPackages.${system}) defaultPoetryOverrides mkPoetryApplication;
         in {
-          legacyPackages = pkgs;
-
-
           packages.drawer = mkPoetryApplication {
             projectDir = inputs.keymap_drawer;
             overrides = defaultPoetryOverrides.extend
@@ -97,7 +94,6 @@
             # this allows us to not need the .git folder
             SKIP_VERSION = "1";
             SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
-            # outputs = [ "out" "hex" ];
 
             buildPhase = ''
               make bastardkb/charybdis/3x5/v2/splinky_3:yuanw
@@ -113,6 +109,7 @@
           };
           # Default shell.
           devShells.default = pkgs.mkShell {
+            NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1;
             name = "haskell-template";
             # See https://haskell.flake.page/devshell#composing-devshells
             inputsFrom = [
