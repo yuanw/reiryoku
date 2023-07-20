@@ -70,7 +70,8 @@ layers:
       t: I
     - h: "\u2318"
       t: O
-  - - Cursor
+  - - h: Cursor
+      t: x
     - C
     - F
     - D
@@ -79,12 +80,18 @@ layers:
     - L
     - U
     - Y
-    - Cursor
-  - - Med
-    - Nav
-    - Fun
-    - Num
-    - Sym
+    - h: Cursor
+      t: ''''
+  - - h: Media
+      t: Esc
+    - h: Nav
+      t: SPC
+    - h: Fun
+      t: BSPC
+    - h: Sym
+      t: ENT
+    - h: Num
+      t: e
   Cursor:
   - - ''
     - ''

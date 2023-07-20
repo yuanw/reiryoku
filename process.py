@@ -26,13 +26,13 @@ layer_key_dict = {
 }
 
 key_dict = {
-    "LT(LAYER POINTER, X)": "Cursor",
-    "LT(LAYER POINTER, QUOT)": "Cursor",
-    "LT(LAYER MEDIA, ESC)": "Med",
-    "LT(LAYER NAVIGATION, SPC)": "Nav",
-    "LT(LAYER FUNCTION, BSPC)": "Fun",
-    "LT(LAYER SYMBOLS, ENT)": "Num",
-    "LT(LAYER NUMERAL, E)": "Sym",
+    "LT(LAYER POINTER, X)": {"t": "x", "h": "Cursor" },
+    "LT(LAYER POINTER, QUOT)":  {"t": "'", "h": "Cursor" },
+    "LT(LAYER MEDIA, ESC)":  {"t": "Esc", "h": "Media" },
+    "LT(LAYER NAVIGATION, SPC)":  {"t": "SPC", "h": "Nav" },
+    "LT(LAYER FUNCTION, BSPC)":  {"t": "BSPC", "h": "Fun" },
+    "LT(LAYER SYMBOLS, ENT)":  {"t": "ENT", "h": "Sym" },
+    "LT(LAYER NUMERAL, E)":  {"t": "e", "h": "Num" },
     ",":  {"t": ",","s": "<"},
     ".": {"t":".", "s": ">"},
     ";": {"t":";", "s": ":"},
