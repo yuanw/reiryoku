@@ -87,9 +87,9 @@ layers:
     - h: Nav
       t: SPC
     - h: Fun
-      t: BSPC
+      t: "\u232B"
     - h: Sym
-      t: ENT
+      t: "\u23CE"
     - h: Num
       t: e
   Cursor:
