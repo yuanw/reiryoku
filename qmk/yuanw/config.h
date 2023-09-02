@@ -21,20 +21,12 @@
 #    define DYNAMIC_KEYMAP_LAYER_COUNT 7
 #endif // VIA_ENABLE
 
+#ifndef __arm__
 /* Disable unused features. */
-#define NO_ACTION_ONESHOT
+#    define NO_ACTION_ONESHOT
+#endif // __arm__
 
-/**
- * \brief Prevent normal rollover on alphas from accidentally triggering mods.
- *
- * Ignores key presses that interrupt a mod-tap.  Must-have for Home Row mod.
- *
- * Without `IGNORE_MOD_TAP_INTERRUPT`, within `TAPPING_TERM`:
- *   Mod(a)🠗 e🠗 Mod(a)🠕 e🠕 ➞ Mod+e
- * With `IGNORE_MOD_TAP_INTERRUPT`, within `TAPPING_TERM`:
- *   Mod(a)🠗 e🠗 Mod(a)🠕 e🠕 ➞ ae
- */
-#define IGNORE_MOD_TAP_INTERRUPT
+
 
 /* Charybdis-specific features. */
 
