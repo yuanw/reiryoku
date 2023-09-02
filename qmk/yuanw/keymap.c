@@ -45,7 +45,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define S_D_MOD KC_NO
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
-       //
+enum my_keycodes {RDO = SAFE_RANGE, PST, CPY, CUT, UND, REPEAT, REV_REP,};
 #define U_RDO SCMD(KC_Z)
 #define U_PST LCMD(KC_V)
 #define U_CPY LCMD(KC_C)
