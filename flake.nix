@@ -107,6 +107,10 @@
               mv reiryoku.json $out/share
             '';
           };
+packages.flash = pkgs.writeScriptBin "reiryoku-flash" ''
+            cd ${qmk_firmware}
+             ${pkgs.qmk}/bin/qmk flash ${packages.firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
+            '';
           # Default shell.
           devShells.default = pkgs.mkShell {
              buildInputs = with pkgs; [
@@ -121,10 +125,11 @@
             ];
           };
           packages.default = config.packages.firmware;
-          #   flash = pkgs.writeScriptBin "reiryoku-flash" ''
-          #     cd ${qmk_firmware}
-          #     ${pkgs.qmk}/bin/qmk flash ${firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
-          #   '';
+apps.flash = {
+type = "app";
+program = config.packages.flash;
+};
+        
           #   flash-script = (pkgs.writeScript "qmk-flash" ''
           #     cd ${qmk_firmware}
           #     ${pkgs.qmk}/bin/qmk flash ${firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
