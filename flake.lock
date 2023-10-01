@@ -67,21 +67,6 @@
         "type": "github"
       }
     },
-    "mission-control": {
-      "locked": {
-        "lastModified": 1690573269,
-        "narHash": "sha256-9NSmHRQvzBzfuKD3zHE2fM5xPa+hHSy7xcWQqZaCjFw=",
-        "owner": "Platonic-Systems",
-        "repo": "mission-control",
-        "rev": "9d25d9f8d610916fc144f6afc1f064392fbeec1c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Platonic-Systems",
-        "repo": "mission-control",
-        "type": "github"
-      }
-    },
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
@@ -184,7 +169,6 @@
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
         "keymap_drawer": "keymap_drawer",
-        "mission-control": "mission-control",
         "nixpkgs": "nixpkgs",
         "poetry2nix": "poetry2nix",
         "qmk_firmware": "qmk_firmware",

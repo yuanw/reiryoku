@@ -3,7 +3,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    mission-control.url = "github:Platonic-Systems/mission-control";
     flake-root.url = "github:srid/flake-root";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +34,6 @@
         # inputs.haskell-flake.flakeModule
         inputs.treefmt-nix.flakeModule
         inputs.flake-root.flakeModule
-        inputs.mission-control.flakeModule
       ];
       perSystem =
         { pkgs
@@ -46,7 +44,8 @@
         }:
         let
           inherit (inputs.poetry2nix.legacyPackages.${system}) defaultPoetryOverrides mkPoetryApplication;
-        in {
+        in
+        {
           packages.drawer = mkPoetryApplication {
             projectDir = inputs.keymap_drawer;
             overrides = defaultPoetryOverrides.extend
@@ -107,29 +106,28 @@
               mv reiryoku.json $out/share
             '';
           };
-packages.flash = pkgs.writeScriptBin "reiryoku-flash" ''
+          packages.flash = pkgs.writeScriptBin "reiryoku-flash" ''
             cd ${inputs.qmk_firmware}
              ${pkgs.qmk}/bin/qmk flash ${config.packages.firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
-            '';
+          '';
           # Default shell.
           devShells.default = pkgs.mkShell {
-             buildInputs = with pkgs; [
-                 (python3.withPackages (ps: [ ps.pyyaml ]))
-               ];
+            buildInputs = with pkgs; [
+              (python3.withPackages (ps: [ ps.pyyaml ]))
+            ];
 
             # See https://haskell.flake.page/devshell#composing-devshells
             inputsFrom = [
               config.flake-root.devShell
-              config.mission-control.devShell
               config.treefmt.build.devShell
             ];
           };
           packages.default = config.packages.firmware;
-apps.flash = {
-type = "app";
-program = config.packages.flash;
-};
-        
+          apps.flash = {
+            type = "app";
+            program = config.packages.flash;
+          };
+
           #   flash-script = (pkgs.writeScript "qmk-flash" ''
           #     cd ${qmk_firmware}
           #     ${pkgs.qmk}/bin/qmk flash ${firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
