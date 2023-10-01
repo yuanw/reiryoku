@@ -1,38 +1,15 @@
 {
   "nodes": {
-<<<<<<< HEAD
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
       },
-||||||| parent of 7914d3c (update inputs)
-    "flake-utils": {
-=======
-    "flake-utils": {
-      "inputs": {
-        "systems": "systems"
-      },
->>>>>>> 7914d3c (update inputs)
       "locked": {
-<<<<<<< HEAD
         "lastModified": 1693611461,
         "narHash": "sha256-aPODl8vAgGQ0ZYFIRisxYG5MOGSkIczvu2Cd8Gb9+1Y=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
         "rev": "7f53fdb7bdc5bb237da7fefef12d099e4fd611ca",
-||||||| parent of 7914d3c (update inputs)
-        "lastModified": 1676283394,
-        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
-=======
-        "lastModified": 1694529238,
-        "narHash": "sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt+xmY=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "ff7b65b44d01cf9ba6a71320833626af21126384",
->>>>>>> 7914d3c (update inputs)
         "type": "github"
       },
       "original": {
@@ -41,18 +18,8 @@
         "type": "github"
       }
     },
-<<<<<<< HEAD
     "flake-root": {
-||||||| parent of 7914d3c (update inputs)
-    "flake-utils_2": {
-=======
-    "flake-utils_2": {
-      "inputs": {
-        "systems": "systems_2"
-      },
->>>>>>> 7914d3c (update inputs)
       "locked": {
-<<<<<<< HEAD
         "lastModified": 1692742795,
         "narHash": "sha256-f+Y0YhVCIJ06LemO+3Xx00lIcqQxSKJHXT/yk1RTKxw=",
         "owner": "srid",
@@ -73,13 +40,6 @@
       "locked": {
         "lastModified": 1689068808,
         "narHash": "sha256-6ixXo3wt24N/melDWjq70UuHQLxGV8jZvooRanIHXw0=",
-||||||| parent of 7914d3c (update inputs)
-        "lastModified": 1676283394,
-        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
-=======
-        "lastModified": 1689068808,
-        "narHash": "sha256-6ixXo3wt24N/melDWjq70UuHQLxGV8jZvooRanIHXw0=",
->>>>>>> 7914d3c (update inputs)
         "owner": "numtide",
         "repo": "flake-utils",
         "rev": "919d646de7be200f3bf08cb76ae1f09402b6f9b4",
@@ -94,25 +54,11 @@
     "keymap_drawer": {
       "flake": false,
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1693637861,
-        "narHash": "sha256-6N9+6wOreKnVG5UKYO6vWeA0QrvXXWs3Agqng70Dma8=",
-||||||| parent of 7914d3c (update inputs)
-        "lastModified": 1678175580,
-        "narHash": "sha256-G9ippnxaKNSFk76vvP36h3pb6xZ+KRoc0JWrPW8b73w=",
-=======
         "lastModified": 1695143346,
         "narHash": "sha256-iGfoG8PYkElARY51XXVQR53dwWIHhGuzld3lXsZu/Es=",
->>>>>>> 7914d3c (update inputs)
         "owner": "caksoylar",
         "repo": "keymap-drawer",
-<<<<<<< HEAD
-        "rev": "31c90f138bd15f582f7be5cbdece42f8686bc537",
-||||||| parent of 7914d3c (update inputs)
-        "rev": "681a80cb9e3ec38b19e9e3cedb791e75d35c5fb4",
-=======
         "rev": "e5eaa5ab81db342b4ef93410e8fdf83e3a3a2ea7",
->>>>>>> 7914d3c (update inputs)
         "type": "github"
       },
       "original": {
@@ -121,7 +67,6 @@
         "type": "github"
       }
     },
-<<<<<<< HEAD
     "mission-control": {
       "locked": {
         "lastModified": 1690573269,
@@ -158,51 +103,13 @@
         "type": "github"
       }
     },
-||||||| parent of 7914d3c (update inputs)
-=======
-    "nix-github-actions": {
-      "inputs": {
-        "nixpkgs": [
-          "poetry2nix",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1688870561,
-        "narHash": "sha256-4UYkifnPEw1nAzqqPOTL2MvWtm3sNGw1UTYTalkTcGY=",
-        "owner": "nix-community",
-        "repo": "nix-github-actions",
-        "rev": "165b1650b753316aa7f1787f3005a8d2da0f5301",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix-github-actions",
-        "type": "github"
-      }
-    },
->>>>>>> 7914d3c (update inputs)
     "nixpkgs": {
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1693626178,
-        "narHash": "sha256-Rpiy6lIOu4zny8tfGuIeN1ji9eSz9nPmm9yBhh/4IOM=",
-||||||| parent of 7914d3c (update inputs)
-        "lastModified": 1678418513,
-        "narHash": "sha256-HLLR2Fmkn3TgD0F+u5gMcTKx5YzAU1rbS4cLfm6ugiU=",
-=======
         "lastModified": 1696009558,
         "narHash": "sha256-/1nNL8lCF0gn38XaFyu2ufpWcBFwCDZyYUxdZkM6GxU=",
->>>>>>> 7914d3c (update inputs)
         "owner": "nixos",
         "repo": "nixpkgs",
-<<<<<<< HEAD
-        "rev": "bfb7dfec93f3b5d7274db109f2990bc889861caf",
-||||||| parent of 7914d3c (update inputs)
-        "rev": "5496585eb876f2ce97654bc8f96838c6f8642563",
-=======
         "rev": "c182df2e68bd97deb32c7e4765adfbbbcaf75b60",
->>>>>>> 7914d3c (update inputs)
         "type": "github"
       },
       "original": {
@@ -232,39 +139,18 @@
     },
     "poetry2nix": {
       "inputs": {
-<<<<<<< HEAD
         "flake-utils": "flake-utils",
         "nix-github-actions": "nix-github-actions",
-||||||| parent of 7914d3c (update inputs)
-        "flake-utils": "flake-utils_2",
-=======
-        "flake-utils": "flake-utils_2",
-        "nix-github-actions": "nix-github-actions",
->>>>>>> 7914d3c (update inputs)
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1693659252,
-        "narHash": "sha256-cYRZY14/EFQyRQ2O+gb9Pjrox/34J1kft2fLr9JHW1Y=",
-||||||| parent of 7914d3c (update inputs)
-        "lastModified": 1678135815,
-        "narHash": "sha256-U9rGLDafi7CcrNuYD1LkM3LSN2rZ5zgF0GeInrAihAE=",
-=======
         "lastModified": 1695386222,
         "narHash": "sha256-5lgnhCCGW0NH5+m5iTED8u6NSSM/dbH9LBPvX0x0XXg=",
->>>>>>> 7914d3c (update inputs)
         "owner": "nix-community",
         "repo": "poetry2nix",
-<<<<<<< HEAD
-        "rev": "f6b24e8a116c50e5c6fecc83a244772cd5c86361",
-||||||| parent of 7914d3c (update inputs)
-        "rev": "4c424edc8a546952e640f2a3017354b05bf15f0b",
-=======
         "rev": "093383b3d7fdd36846a7d84e128ca11865800538",
->>>>>>> 7914d3c (update inputs)
         "type": "github"
       },
       "original": {
@@ -327,46 +213,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1693468138,
-        "narHash": "sha256-DddblCahuTW8K0ncPOheTlG3igE8b15LJjafF1PWhOo=",
+        "lastModified": 1695822946,
+        "narHash": "sha256-IQU3fYo0H+oGlqX5YrgZU3VRhbt2Oqe6KmslQKUO4II=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "6930a5ba0a722385baf273885a03f561dcb1af67",
+        "rev": "720bd006d855b08e60664e4683ccddb7a9ff614a",
         "type": "github"
       },
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "systems": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_2": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
         "type": "github"
       }
     }
