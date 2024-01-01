@@ -85,7 +85,7 @@
 
             postUnpack = ''
               ln -s ${
-                ./qmk/yuanw/
+                ./qmk/yuanw/.
               } $sourceRoot/keyboards/bastardkb/charybdis/3x5/keymaps/yuanw
               ln -s ${./process.py} $sourceRoot/process.py
             '';
