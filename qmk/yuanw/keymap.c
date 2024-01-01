@@ -24,6 +24,14 @@
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #include "repeat.h"
 
+enum my_keycodes { RDO = SAFE_RANGE,
+                   PST,
+                   CPY,
+                   CUT,
+                   UND,
+                   REPEAT,
+                   REV_REP };
+
 // Automatically enable sniping-mode on the pointer layer.
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
 
@@ -96,7 +104,7 @@ enum my_keycodes {RDO = SAFE_RANGE, PST, CPY, CUT, UND, REPEAT, REV_REP,};
 #define LAYOUT_LAYER_MEDIA                                                                    \
     XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_V, KC_LBRC, KC_RBRC, KC_SLSH, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_H, KC_J, KC_K, KC_L, \
-    XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
+    XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
 
 /** \brief Mouse emulation and pointer functions. */
@@ -247,17 +255,17 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 void rgb_matrix_update_pwm_buffers(void);
 #endif
 
-void shutdown_user(void) {
-#ifdef RGBLIGHT_ENABLE
-    rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
-    rgblight_setrgb(RGB_RED);
-#endif // RGBLIGHT_ENABLE
-#ifdef RGB_MATRIX_ENABLE
-    rgb_matrix_set_color_all(RGB_RED);
-    rgb_matrix_update_pwm_buffers();
-#endif // RGB_MATRIX_ENABLE
-}
+/* void shutdown_user(void) { */
+/* #ifdef RGBLIGHT_ENABLE */
+/*     rgblight_enable_noeeprom(); */
+/*     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT); */
+/*     rgblight_setrgb(RGB_RED); */
+/* #endif // RGBLIGHT_ENABLE */
+/* #ifdef RGB_MATRIX_ENABLE */
+/*     rgb_matrix_set_color_all(RGB_RED); */
+/*     rgb_matrix_update_pwm_buffers(); */
+/* #endif // RGB_MATRIX_ENABLE */
+/* } */
 
 // Thumb Combos
 /* #define EXTRA_SHORT_COMBOS */

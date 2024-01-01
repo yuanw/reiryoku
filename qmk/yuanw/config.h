@@ -27,7 +27,6 @@
 #endif // __arm__
 
 
-
 /* Charybdis-specific features. */
 
 #ifdef POINTING_DEVICE_ENABLE
