@@ -104,7 +104,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_LAYER_MEDIA                                                                    \
     XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_V, KC_LBRC, KC_RBRC, KC_SLSH, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_H, KC_J, KC_K, KC_L, \
-    XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
+    XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
 
 /** \brief Mouse emulation and pointer functions. */
