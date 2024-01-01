@@ -24,6 +24,14 @@
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #include "repeat.h"
 
+enum my_keycodes { RDO = SAFE_RANGE,
+                   PST,
+                   CPY,
+                   CUT,
+                   UND,
+                   REPEAT,
+                   REV_REP };
+
 // Automatically enable sniping-mode on the pointer layer.
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
 

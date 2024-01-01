@@ -20,10 +20,3 @@ enum charybdis_keymap_layers {
 #define _L_PTR(KC) LT(LAYER_POINTER, KC)
 
 
-enum my_keycodes { RDO = SAFE_RANGE,
-                   PST,
-                   CPY,
-                   CUT,
-                   UND,
-                   REPEAT,
-                   REV_REP };
