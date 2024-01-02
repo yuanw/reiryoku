@@ -314,21 +314,21 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
 
 static void process_altrep2(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
-        case KC_A: SEND_STRING(/*a*/"tion"); break;
-        case KC_I: SEND_STRING(/*i*/"tion"); break;
-        case KC_S: SEND_STRING(/*s*/"sion"); break;
-        case KC_T: SEND_STRING(/*t*/"heir"); break;
-        case KC_W: SEND_STRING(/*w*/"hich"); break;
+        case KC_A: SEND_STRING("tion"); break;
+        case KC_I: SEND_STRING("tion"); break;
+        case KC_S: SEND_STRING("sion"); break;
+        case KC_T: SEND_STRING("heir"); break;
+        case KC_W: SEND_STRING("hich"); break;
     }
 }
 
 static void process_altrep3(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
-        case KC_A: SEND_STRING(/*a*/"bout"); break;
-        case KC_I: SEND_STRING(/*i*/"nter"); break;
-        case KC_S: SEND_STRING(/*s*/"tate"); break;
-        case KC_T: SEND_STRING(/*t*/"here"); break;
-        case KC_W: SEND_STRING(/*w*/"ould"); break;
+        case KC_A: SEND_STRING("bout"); break;
+        case KC_I: SEND_STRING("nter"); break;
+        case KC_S: SEND_STRING("tate"); break;
+        case KC_T: SEND_STRING("here"); break;
+        case KC_W: SEND_STRING("ould"); break;
     }
 }
 
@@ -337,14 +337,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
-            return false;
             }
-
+            return false;
         case ALTREP3:
             if (record->event.pressed) {
                 process_altrep3(get_last_keycode(), get_last_mods());
-            return false;
             }
+            return false;
 
         case CPY:
             if (record->event.pressed) {
