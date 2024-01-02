@@ -316,6 +316,7 @@ static void process_altrep2(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
         case KC_A:
         case LSFT_T(KC_A):
+        case RSFT_T(KC_A):
           SEND_STRING("tion");
           break;
         case KC_I: SEND_STRING("tion"); break;
