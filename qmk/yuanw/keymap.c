@@ -337,14 +337,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
-            }
             return false;
+            }
 
         case ALTREP3:
             if (record->event.pressed) {
                 process_altrep3(get_last_keycode(), get_last_mods());
-            }
             return false;
+            }
 
         case CPY:
             if (record->event.pressed) {
