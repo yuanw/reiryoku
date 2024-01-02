@@ -344,68 +344,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 process_altrep3(get_last_keycode(), get_last_mods());
             }
             return false;
-
-        case CPY:
-            if (record->event.pressed) {
-                switch (detected_host_os()) {
-                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
-                    case OS_IOS:
-                        tap_code16(LCMD(KC_C));
-                        return false;
-                    default:
-                        tap_code16(KC_COPY);
-                        return false;
-                }
-            }
-        case PST:
-            if (record->event.pressed) {
-                switch (detected_host_os()) {
-                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
-                    case OS_IOS:
-                        tap_code16(LCMD(KC_V));
-                        return false;
-                    default:
-                        tap_code16(KC_PSTE);
-                        return false;
-                }
-            }
-        case CUT:
-            if (record->event.pressed) {
-                switch (detected_host_os()) {
-                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
-                    case OS_IOS:
-                        tap_code16(LCMD(KC_X));
-                        return false;
-                    default:
-                        tap_code16(KC_CUT);
-                        return false;
-                }
-            }
-        case UND:
-            if (record->event.pressed) {
-                switch (detected_host_os()) {
-                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
-                    case OS_IOS:
-                        tap_code16(LCMD(KC_Z));
-                        return false;
-                    default:
-                        tap_code16(KC_UNDO);
-                        return false;
-                }
-            }
-        case RDO:
-            if (record->event.pressed) {
-                switch (detected_host_os()) {
-                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
-                    case OS_IOS:
-                        tap_code16(LCMD(KC_Z));
-                        return false;
-                    default:
-                        tap_code16(KC_AGIN);
-                        return false;
-                }
-            }
-        default:
-            return true; // Process all other keycodes normally
+         }
+        return true; // Process all other keycodes normally
     }
 }
