@@ -1,11 +1,9 @@
-#include "keycodes.h"
 #ifdef OS_DETECTION_ENABLE
 #    include "os_detection.h"
 #endif
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #    include "timer.h"
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-#include "repeat.h"
 
 
 // Automatically enable sniping-mode on the pointer layer.
@@ -41,6 +39,25 @@ enum my_keycodes { RDO = SAFE_RANGE,
                    CUT,
                    UND,
                     };
+
+enum charybdis_keymap_layers {
+    LAYER_BASE = 0,
+    LAYER_FUNCTION,
+    LAYER_NAVIGATION,
+    LAYER_MEDIA,
+    LAYER_POINTER,
+    LAYER_NUMERAL,
+    LAYER_SYMBOLS,
+};
+
+#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
+#define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
+#define TAB_FUN LT(LAYER_FUNCTION, KC_BSPC)
+#define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
+#define BSP_NUM LT(LAYER_NUMERAL, KC_E)
+#define _L_PTR(KC) LT(LAYER_POINTER, KC)
+
+
 
 // clang-format off
 /** \brief QWERTY layout (3 rows, 10 columns). */
@@ -133,9 +150,9 @@ enum my_keycodes { RDO = SAFE_RANGE,
  */
 #define LAYOUT_LAYER_SYMBOLS                                                                  \
     KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, _______________DEAD_HALF_ROW_______________, \
-    KC_COLN,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS, ______________HOME_ROW_GACS_R______________, \
-    KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
-                      KC_LPRN, KC_RPRN, KC_UNDS, _______, XXXXXXX
+    KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS, ______________HOME_ROW_GACS_R______________, \
+    KC_TILD, KC_EXLM, KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
+                      QK_REP, QK_AREP, KC_UNDS, _______, XXXXXXX
 
 /**
  * \brief Add Home Row mod to a layout.
