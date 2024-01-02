@@ -5,7 +5,6 @@
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #    include "timer.h"
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-#include "repeat.h"
 
 
 // Automatically enable sniping-mode on the pointer layer.
