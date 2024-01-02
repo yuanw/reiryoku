@@ -60,14 +60,16 @@ enum my_keycodes { RDO = SAFE_RANGE,
                    CPY,
                    CUT,
                    UND,
+                   ALTREP2,
+                   ALTREP3,
                     };
 
 // clang-format off
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
-       QK_REP,  KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
+       ALTREP2,  KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
        KC_R,    KC_S,    KC_N,    KC_T,    KC_G,    KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
-       KC_X,    KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,     KC_QUOT, \
+       ALTREP3,    KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,     KC_QUOT, \
                          ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, BSP_NUM
 
 /** Convenience row shorthands. */
@@ -296,8 +298,54 @@ combo_t key_combos[] = {
 /*   #define U_CPY LCMD(KC_C) */
 /*   #define U_CUT LCMD(KC_X) */
 /*   #define U_UND LCMD(KC_Z) */
+
+// Use ALTREP2 and ALTREP3 in your layout...
+
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
+                            uint8_t* remembered_mods) {
+    switch (keycode) {
+        case ALTREP2:
+        case ALTREP3:
+            return false;  // Ignore ALTREP keys.
+    }
+
+    return true;  // Other keys can be repeated.
+}
+
+static void process_altrep2(uint16_t keycode, uint8_t mods) {
+    switch (keycode) {
+        case KC_A: SEND_STRING(/*a*/"tion"); break;
+        case KC_I: SEND_STRING(/*i*/"tion"); break;
+        case KC_S: SEND_STRING(/*s*/"sion"); break;
+        case KC_T: SEND_STRING(/*t*/"heir"); break;
+        case KC_W: SEND_STRING(/*w*/"hich"); break;
+    }
+}
+
+static void process_altrep3(uint16_t keycode, uint8_t mods) {
+    switch (keycode) {
+        case KC_A: SEND_STRING(/*a*/"bout"); break;
+        case KC_I: SEND_STRING(/*i*/"nter"); break;
+        case KC_S: SEND_STRING(/*s*/"tate"); break;
+        case KC_T: SEND_STRING(/*t*/"here"); break;
+        case KC_W: SEND_STRING(/*w*/"ould"); break;
+    }
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
        switch (keycode) {
+        case ALTREP2:
+            if (record->event.pressed) {
+                process_altrep2(get_last_keycode(), get_last_mods());
+            }
+            return false;
+
+        case ALTREP3:
+            if (record->event.pressed) {
+                process_altrep3(get_last_keycode(), get_last_mods());
+            }
+            return false;
+
         case CPY:
             if (record->event.pressed) {
                 switch (detected_host_os()) {
