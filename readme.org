@@ -17,6 +17,9 @@ the app to generate keymap svg based on qmk c2json result
 
 * how to build
 ~❯ nix build --option system x86_64-darwin~
+* how to draw
+~nix build .#drawer .#firmware~
+
 * Reference
 - https://github.com/manna-harbour/miryoku/blob/master/docs/reference/readme.org
 - https://github.com/Bastardkb/bastardkb-qmk/tree/d77f807d78bf19b6fd834b049103e127b5c760a9/keyboards/bastardkb/charybdis/3x5/keymaps/via
