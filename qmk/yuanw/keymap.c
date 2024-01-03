@@ -67,9 +67,9 @@ enum my_keycodes { RDO = SAFE_RANGE,
 // clang-format off
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
-       ALTREP2,  KC_W,    KC_M,    KC_P,    KC_Q,   ALTREP3,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
-       KC_R,    KC_S,    KC_N,    KC_T,    KC_G,    KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
-       KC_X,    KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,     KC_QUOT, \
+       KC_QUESTION,  KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
+       KC_R,         KC_S,    KC_N,    KC_T,    KC_G,    KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
+       KC_X,         KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT, \
                          ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, E_NUM
 
 /** Convenience row shorthands. */
@@ -282,7 +282,10 @@ const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
 const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
 
 combo_t key_combos[] = {
-    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J), [MP_Q] = COMBO(q_combo, KC_Q), [KCOMM_Z] = COMBO(z_combo, KC_Z),
+    [FD_B] = COMBO(b_combo, KC_B),
+    [LU_J] = COMBO(j_combo, KC_J),
+    [MP_Q] = COMBO(q_combo, KC_Q),
+    [KCOMM_Z] = COMBO(z_combo, KC_Z),
     [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
     [CF_X] = COMBO(x_combo, KC_X),
 };
