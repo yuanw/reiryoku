@@ -272,7 +272,6 @@ enum combos {
     CF_X,
     COMBO_LENGTH
 };
-
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 const uint16_t PROGMEM b_combo[]    = {KC_F, KC_D, COMBO_END};
@@ -325,6 +324,7 @@ static void process_altrep2(uint16_t keycode, uint8_t mods) {
         case LALT_T(KC_I): SEND_STRING("tion"); break;
         case LALT_T(KC_S): SEND_STRING("sion"); break;
         case LSFT_T(KC_T): SEND_STRING("heir"); break;
+        case KC_Y: SEND_STRING("ou"); break;
         case KC_W: SEND_STRING("hich"); break;
         case KC_C: SEND_STRING("ontent management"); break;
     }
