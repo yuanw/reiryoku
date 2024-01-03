@@ -22,7 +22,7 @@ enum charybdis_keymap_layers {
 #define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
 #define TAB_FUN LT(LAYER_FUNCTION, KC_BSPC)
 #define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
-#define BSP_NUM LT(LAYER_NUMERAL, KC_E)
+#define E_NUM LT(LAYER_NUMERAL, KC_E)
 #define _L_PTR(KC) LT(LAYER_POINTER, KC)
 
 
@@ -70,7 +70,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
        ALTREP2,  KC_W,    KC_M,    KC_P,    KC_Q,   ALTREP3,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
        KC_R,    KC_S,    KC_N,    KC_T,    KC_G,    KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
        KC_X,    KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,     KC_QUOT, \
-                         ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, BSP_NUM
+                         ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, E_NUM
 
 /** Convenience row shorthands. */
 #define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -131,7 +131,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
     _______________DEAD_HALF_ROW_______________, XXXXXXX, XXXXXXX, KC_LPRN,  KC_RPRN,  KC_PIPE,\
     ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, \
     _______________DEAD_HALF_ROW_______________, RDO,   PST,   CPY,   CUT,  UND, \
-                      XXXXXXX, _______, XXXXXXX,  XXXXXXX, KC_TAB
+                      XXXXXXX, _______, XXXXXXX, ALTREP2 , ALTREP3
 
 /**
  * \brief Numeral layout.
@@ -316,23 +316,26 @@ static void process_altrep2(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
         case KC_A:
         case RCTL_T(KC_A):
-        case RSFT_T(KC_A):
           SEND_STRING("tion");
           break;
         case KC_I: SEND_STRING("tion"); break;
         case KC_S: SEND_STRING("sion"); break;
         case KC_T: SEND_STRING("heir"); break;
         case KC_W: SEND_STRING("hich"); break;
+        case KC_C: SEND_STRING("ontent management"); break;
     }
 }
 
 static void process_altrep3(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
         case KC_A: SEND_STRING("bout"); break;
-        case KC_I: SEND_STRING("nter"); break;
+        case KC_I: SEND_STRING("ng"); break;
         case KC_S: SEND_STRING("tate"); break;
         case KC_T: SEND_STRING("here"); break;
         case KC_W: SEND_STRING("ould"); break;
+        case KC_AT: SEND_STRING("rmconsole-wf"); break;
+        case E_NUM: SEND_STRING("specially");break;
+        case KC_C: SEND_STRING("ontent-management-service"); break;
     }
 }
 
