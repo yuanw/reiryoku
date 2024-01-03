@@ -287,17 +287,6 @@ combo_t key_combos[] = {
     [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
     [CF_X] = COMBO(x_combo, KC_X),
 };
-/*   #define U_RDO KC_AGIN */
-/*   #define U_PST KC_PSTE */
-/*   #define U_CPY KC_COPY */
-/*   #define U_CUT KC_CUT */
-/*   #define U_UND KC_UNDO */
-/* #elif defined (MIRYOKU_CLIPBOARD_MAC) */
-/*   #define U_RDO SCMD(KC_Z) */
-/*   #define U_PST LCMD(KC_V) */
-/*   #define U_CPY LCMD(KC_C) */
-/*   #define U_CUT LCMD(KC_X) */
-/*   #define U_UND LCMD(KC_Z) */
 
 // Use ALTREP2 and ALTREP3 in your layout...
 
@@ -312,15 +301,30 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
     return true;  // Other keys can be repeated.
 }
 
+uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
+    /* if ((mods & MOD_MASK_CTRL)) {  // Was Ctrl held? */
+    /*     switch (keycode) { */
+    /*         case KC_Y: return C(KC_Z);  // Ctrl + Y reverses to Ctrl + Z. */
+    /*         case KC_Z: return C(KC_Y);  // Ctrl + Z reverses to Ctrl + Y. */
+    /*     } */
+    /* } */
+    switch (keycode) {
+      case KC_LPRN: return KC_RPRN;
+      case KC_RPRN: return KC_LPRN;
+    }
+
+    return KC_TRNS;  // Defer to default definitions.
+}
+
 static void process_altrep2(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
         case KC_A:
         case RCTL_T(KC_A):
           SEND_STRING("tion");
           break;
-        case KC_I: SEND_STRING("tion"); break;
-        case KC_S: SEND_STRING("sion"); break;
-        case KC_T: SEND_STRING("heir"); break;
+        case LALT_T(KC_I): SEND_STRING("tion"); break;
+        case LALT_T(KC_S): SEND_STRING("sion"); break;
+        case LSFT_T(KC_T): SEND_STRING("heir"); break;
         case KC_W: SEND_STRING("hich"); break;
         case KC_C: SEND_STRING("ontent management"); break;
     }
@@ -328,10 +332,10 @@ static void process_altrep2(uint16_t keycode, uint8_t mods) {
 
 static void process_altrep3(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
-        case KC_A: SEND_STRING("bout"); break;
-        case KC_I: SEND_STRING("ng"); break;
-        case KC_S: SEND_STRING("tate"); break;
-        case KC_T: SEND_STRING("here"); break;
+        case RCTL_T(KC_A): SEND_STRING("bout"); break;
+        case LALT_T(KC_I): SEND_STRING("ng"); break;
+        case LALT_T(KC_S): SEND_STRING("tate"); break;
+        case LSFT_T(KC_T): SEND_STRING("here"); break;
         case KC_W: SEND_STRING("ould"); break;
         case KC_AT: SEND_STRING("rmconsole-wf"); break;
         case E_NUM: SEND_STRING("specially");break;
