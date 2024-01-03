@@ -45,7 +45,6 @@
         let
 
         inherit (inputs.poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) defaultPoetryOverrides  mkPoetryApplication;
-          # inherit (inputs.poetry2nix.legacyPackages.${system}) defaultPoetryOverrides mkPoetryApplication;
         in
         {
           packages.drawer = mkPoetryApplication {
@@ -69,14 +68,6 @@
           };
           packages.firmware = pkgs.stdenv.mkDerivation rec {
             name = "firmware.uf2";
-            # src = pkgs.fetchFromGitHub {
-            #   owner = "Bastardkb";
-            #   repo = "bastardkb-qmk";
-            #   rev = "d77f807d78bf19b6fd834b049103e127b5c760a9";
-            #   # sha256 = "0000000000000000000000000000000000000000000000000000";
-            #   sha256 = "AMKeHg5PaxMkzEDFFFck0w8lvqFMRdDGrgXDy4B6NDk=";
-            #   fetchSubmodules = true;
-            # };
             src = inputs.qmk_firmware;
 
             nativeBuildInputs = [ pkgs.qmk ];
@@ -129,34 +120,7 @@
             type = "app";
             program = config.packages.flash;
           };
-
-          #   flash-script = (pkgs.writeScript "qmk-flash" ''
-          #     cd ${qmk_firmware}
-          #     ${pkgs.qmk}/bin/qmk flash ${firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
-          #   '');
-
-          # in
-          # rec {
-          #   packages.firmware = pkgs.symlinkJoin {
-          #     name = "reiryoku-firmware";
-          #     paths = [ firmware flash ];
-          #   };
-          #   packages.drawer = drawer;
-          #   packages.flash-script = flash-script;
-          #   apps.flash = {
-          #     type = "app";
-          #     program = "${packages.flash-script}";
-          #   };
-          #   devShells.default = pkgs.mkShell {
-          #     buildInputs = with pkgs; [
-          #       nixpkgs-fmt
-          #       (python3.withPackages (ps: [ ps.pyyaml ]))
-          #     ];
-          #   };
-          #   # Defaults =======================
-
-          #   packages.default = packages.firmware;
-          #   apps.default = apps.flash;
-        };
+          apps.default = config.apps.flash;
+      };
     };
 }
