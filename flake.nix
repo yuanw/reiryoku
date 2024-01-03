@@ -104,7 +104,7 @@
              ${pkgs.qmk}/bin/qmk flash ${config.packages.firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
           '';
           packages.draw = pkgs.writeScriptBin "reiryoku-draw" ''
-            ${config.packages.drawer}/bin/keymap parse -c 10 -q reiryoku.json  > reiryoku.yaml
+            ${config.packages.drawer}/bin/keymap parse -c 10 -q ${config.packages.firmware}/share/reiryoku.json  > reiryoku.yaml
             sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
             ${config.packages.drawer}/bin/keymap draw reiryoku.yaml > reiryoku.svg
           '';
