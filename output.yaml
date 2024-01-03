@@ -315,8 +315,8 @@ layers:
     - ''
     - ''
     - ''
-  - - QK REP
-    - QK AREP
+  - - "\u21BB"
+    - "\u21BA"
     - _
     - h: ''
       t: "\u25BD"
