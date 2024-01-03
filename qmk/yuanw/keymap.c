@@ -96,9 +96,9 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * from the base layer to enable auto-repeat.
  */
 #define LAYOUT_LAYER_FUNCTION                                                                 \
-    _______________DEAD_HALF_ROW_______________, XXXXXXX,   XXXXXXX,  KC_LCBR,   KC_RCBR,  KC_BSLS, \
-    ______________HOME_ROW_GACS_L______________, KC_SCRL,   LAG(KC_1),       LAG(KC_2),       LAG(KC_3),       LAG(KC_4), \
-    _______________DEAD_HALF_ROW_______________, KC_PAUS,   LSG(KC_1),       LSG(KC_2),       LSG(KC_3),       LSG(KC_4), \
+    _______________DEAD_HALF_ROW_______________, XXXXXXX,   XXXXXXX,     KC_LCBR,   KC_BSLS,    KC_RCBR, \
+    ______________HOME_ROW_GACS_L______________, KC_SCRL,   LAG(KC_1),   LAG(KC_2), LAG(KC_3),  LAG(KC_4), \
+    _______________DEAD_HALF_ROW_______________, KC_PAUS,   LSG(KC_1),   LSG(KC_2), LSG(KC_3),  LSG(KC_4), \
                       XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_TAB
 /**
  * \brief Media layer.
@@ -107,7 +107,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * symmetrical to accomodate the left- and right-hand trackball.
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_V, KC_LBRC, KC_RBRC, KC_SLSH, \
+    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_V, KC_LBRC, KC_SLSH, KC_RBRC, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_H, KC_J, KC_K, KC_L, \
     XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
@@ -128,9 +128,9 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * base layer to avoid having to layer change mid edit and to enable auto-repeat.
  */
 #define LAYOUT_LAYER_NAVIGATION                                                               \
-    _______________DEAD_HALF_ROW_______________, XXXXXXX, XXXXXXX, KC_LPRN,  KC_RPRN,  KC_PIPE,\
-    ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, \
-    _______________DEAD_HALF_ROW_______________, RDO,   PST,   CPY,   CUT,  UND, \
+    _______________DEAD_HALF_ROW_______________, XXXXXXX, XXXXXXX, KC_LPRN,  KC_PIPE,  KC_RPRN, \
+    ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,  KC_UP,    KC_RGHT, \
+    _______________DEAD_HALF_ROW_______________, RDO,     PST,     CPY,      CUT,      UND, \
                       XXXXXXX, _______, XXXXXXX, ALTREP2 , ALTREP3
 
 /**
