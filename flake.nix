@@ -126,6 +126,10 @@
             type = "app";
             program = config.packages.flash;
           };
+          apps.draw = {
+            type = "app";
+            program = config.packages.draw;
+          };
           apps.default = config.apps.flash;
       };
     };
