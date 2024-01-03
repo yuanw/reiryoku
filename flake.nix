@@ -43,7 +43,9 @@
         , ...
         }:
         let
-          inherit (inputs.poetry2nix.${system}) defaultPoetryOverrides mkPoetryApplication;
+
+        inherit (inputs.poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) defaultPoetryOverrides  mkPoetryApplication;
+          # inherit (inputs.poetry2nix.legacyPackages.${system}) defaultPoetryOverrides mkPoetryApplication;
         in
         {
           packages.drawer = mkPoetryApplication {
