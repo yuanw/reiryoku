@@ -1,7 +1,7 @@
 layout: {qmk_keyboard: bastardkb/charybdis/3x5/v2/splinky_3, qmk_layout: LAYOUT}
 layers:
   L0:
-  - [REPEAT, W, M, P, Q, Z, K, ',', ., ;]
+  - ['?', W, M, P, Q, Z, K, ',', ., ;]
   - - {t: R, h: LGUI}
     - {t: S, h: LALT}
     - {t: N, h: LCTL}
@@ -30,8 +30,8 @@ layers:
   - - ''
     - {t: ▽, type: trans}
     - ''
-    - ''
-    - TAB
+    - ALTREP2
+    - ALTREP3
   L3:
   - ['', RGB RMOD, RGB TOG, RGB MOD, '', '', V, '[', ']', /]
   - [MPRV, VOLD, MUTE, VOLU, MNXT, QK CAPS WORD TOGGLE, H, J, K, L]
@@ -54,8 +54,8 @@ layers:
   - ['{', '&', '*', (, '}', '', '', '', '', '']
   - [':', $, '%', ^, +, '', LSFT, LCTL, LALT, LGUI]
   - ['~', '!', '@', '#', '|', '', '', '', '', '']
-  - - (
-    - )
+  - - QK REP
+    - QK AREP
     - _
     - {t: ▽, type: trans}
     - ''
