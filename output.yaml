@@ -244,8 +244,8 @@ layers:
       t: "\u25BD"
       type: trans
     - ''
-    - ALTREP2
-    - ALTREP3
+    - "\u21BA 2"
+    - "\u21BA 3"
   Num:
   - - '['
     - '7'

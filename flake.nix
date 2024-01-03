@@ -90,7 +90,6 @@
             buildPhase = ''
               make bastardkb/charybdis/3x5/v2/splinky_3:yuanw
               ${pkgs.qmk}/bin/qmk  -v c2json -kb bastardkb/charybdis/3x5/v2/splinky_3 -km yuanw ./keyboards/bastardkb/charybdis/3x5/keymaps/yuanw/keymap.c > reiryoku.json
-              ${config.packages.drawer}/bin/keymap parse -c 10 -q ${config.packages.firmware}/share/reiryoku.json  > reiryoku.yaml
               mkdir $out
               mkdir -p $out/share
             '';
