@@ -329,6 +329,7 @@ static void process_altrep2(uint16_t keycode, uint8_t mods) {
         case LSFT_T(KC_T): SEND_STRING("heir"); break;
         case KC_Y: SEND_STRING("ou"); break;
         case KC_W: SEND_STRING("hich"); break;
+        case KC_AT: SEND_STRING("Workiva/release-management-p"); break;
         case KC_C: SEND_STRING("ontent management"); break;
     }
 }
