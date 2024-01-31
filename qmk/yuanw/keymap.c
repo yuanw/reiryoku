@@ -293,7 +293,7 @@ combo_t key_combos[] = {
     [SCLNDOT_Z] = COMBO(z_combo, KC_Z),
     [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
     [CF_X] = COMBO(x_combo, KC_X),
-    [UY_L] = COMBO(l_combo, KC_l),
+    [UY_L] = COMBO(l_combo, KC_L),
 };
 
 // Use ALTREP2 and ALTREP3 in your layout...
