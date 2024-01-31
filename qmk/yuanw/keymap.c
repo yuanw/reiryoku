@@ -67,9 +67,9 @@ enum my_keycodes { RDO = SAFE_RANGE,
 // clang-format off
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
-       KC_QUESTION,  KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_K,    KC_COMM, KC_DOT,  KC_SCLN, \
+       KC_QUESTION,  KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_COMM, KC_SCLN, KC_DOT, KC_Z, \
        KC_R,         KC_S,    KC_N,    KC_T,    KC_G,    KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
-       KC_X,         KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT, \
+       KC_X,         KC_C,    KC_F,    KC_D,    KC_B,    KC_J,    KC_G,    KC_U,    KC_Y,    KC_QUOT, \
                          ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, E_NUM
 
 /** Convenience row shorthands. */
@@ -96,7 +96,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * from the base layer to enable auto-repeat.
  */
 #define LAYOUT_LAYER_FUNCTION                                                                 \
-    _______________DEAD_HALF_ROW_______________, XXXXXXX,   XXXXXXX,     KC_LCBR,   KC_BSLS,    KC_RCBR, \
+    _______________DEAD_HALF_ROW_______________, XXXXXXX,   KC_LCBR,   KC_BSLS,    KC_RCBR,  XXXXXXX,  \
     ______________HOME_ROW_GACS_L______________, KC_SCRL,   LAG(KC_1),   LAG(KC_2), LAG(KC_3),  LAG(KC_4), \
     _______________DEAD_HALF_ROW_______________, KC_PAUS,   LSG(KC_1),   LSG(KC_2), LSG(KC_3),  LSG(KC_4), \
                       XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_TAB
@@ -107,8 +107,8 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * symmetrical to accomodate the left- and right-hand trackball.
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_V, KC_LBRC, KC_SLSH, KC_RBRC, \
-    KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_H, KC_J, KC_K, KC_L, \
+    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_LBRC, KC_SLSH, KC_RBRC, XXXXXXX, \
+    KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
     XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
 
@@ -128,7 +128,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * base layer to avoid having to layer change mid edit and to enable auto-repeat.
  */
 #define LAYOUT_LAYER_NAVIGATION                                                               \
-    _______________DEAD_HALF_ROW_______________, XXXXXXX, XXXXXXX, KC_LPRN,  KC_PIPE,  KC_RPRN, \
+    _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_PIPE, KC_RPRN, XXXXXXX, \
     ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,  KC_UP,    KC_RGHT, \
     _______________DEAD_HALF_ROW_______________, RDO,     PST,     CPY,      CUT,      UND, \
                       XXXXXXX, _______, XXXXXXX, ALTREP2 , ALTREP3
@@ -265,11 +265,13 @@ void rgb_matrix_update_pwm_buffers(void);
 
 enum combos {
     FD_B,
-    LU_J,
+    GU_J,
     MP_Q,
-    KCOMM_Z,
+    COMMSCLN_K,
+    SCLNDOT_Z,
     LEFT_QUESTION,
     CF_X,
+    UY_L,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
@@ -277,17 +279,21 @@ uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this
 const uint16_t PROGMEM b_combo[]    = {KC_F, KC_D, COMBO_END};
 const uint16_t PROGMEM j_combo[]    = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM q_combo[]    = {KC_M, KC_P, COMBO_END};
-const uint16_t PROGMEM z_combo[]    = {KC_K, KC_COMM, COMBO_END};
+const uint16_t PROGMEM k_combo[]    = {KC_COMM, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM z_combo[]    = {KC_SCLN, KC_DOT, COMBO_END};
 const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
 const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
+const uint16_t PROGMEM l_combo[]    = {KC_U, KC_Y, COMBO_END};
 
 combo_t key_combos[] = {
     [FD_B] = COMBO(b_combo, KC_B),
-    [LU_J] = COMBO(j_combo, KC_J),
+    [GU_J] = COMBO(j_combo, KC_J),
     [MP_Q] = COMBO(q_combo, KC_Q),
-    [KCOMM_Z] = COMBO(z_combo, KC_Z),
+    [COMMSCLN_K] = COMBO(k_combo, KC_K),
+    [SCLNDOT_Z] = COMBO(z_combo, KC_Z),
     [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
     [CF_X] = COMBO(x_combo, KC_X),
+    [UY_L] = COMBO(l_combo, KC_l),
 };
 
 // Use ALTREP2 and ALTREP3 in your layout...
