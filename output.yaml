@@ -11,18 +11,12 @@ combos:
   p:
   - 2
   - 3
-- k: K
+- k: Z
   l:
   - Base
   p:
   - 6
   - 7
-- k: Z
-  l:
-  - Base
-  p:
-  - 7
-  - 8
 - k: B
   l:
   - Base
@@ -41,15 +35,9 @@ combos:
   p:
   - 26
   - 27
-- k: L
-  l:
-  - Base
-  p:
-  - 27
-  - 28
 layers:
   Base:
-  - - ''
+  - - "\u21BA 2"
     - W
     - M
     - P
@@ -63,7 +51,7 @@ layers:
     - &id002
       s: '>'
       t: .
-    - ''
+    - "\u21BA 3"
   - - h: "\u2318"
       t: R
     - h: "\u2325"
@@ -82,13 +70,12 @@ layers:
       t: I
     - h: "\u2318"
       t: O
-  - - h: Cursor
-      t: x
+  - - LT(LAYER POINTER, QK AREP)
     - C
     - F
     - D
-    - B
-    - J
+    - "\u21BB"
+    - "\u21BB"
     - L
     - U
     - Y
