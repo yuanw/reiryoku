@@ -1,7 +1,7 @@
 layout: {qmk_keyboard: bastardkb/charybdis/3x5/v2/splinky_3, qmk_layout: LAYOUT}
 layers:
   L0:
-  - ['?', W, M, P, Q, Z, K, ',', ., ;]
+  - ['', W, M, P, Q, Z, ',', ;, ., '']
   - - {t: R, h: LGUI}
     - {t: S, h: LALT}
     - {t: N, h: LCTL}
@@ -15,7 +15,7 @@ layers:
   - ['LT(LAYER POINTER, X)', C, F, D, B, J, L, U, Y, 'LT(LAYER POINTER, QUOT)']
   - ['LT(LAYER MEDIA, ESC)', 'LT(LAYER NAVIGATION, SPC)', 'LT(LAYER FUNCTION, BSPC)', 'LT(LAYER SYMBOLS, ENT)', 'LT(LAYER NUMERAL, E)']
   L1:
-  - ['', '', '', '', '', '', '', '{', \, '}']
+  - ['', '', '', '', '', '', '{', \, '}', '']
   - [LGUI, LALT, LCTL, LSFT, '', SCRL, LAG(1), LAG(2), LAG(3), LAG(4)]
   - ['', '', '', '', '', PAUS, LSG(1), LSG(2), LSG(3), LSG(4)]
   - - ''
@@ -24,7 +24,7 @@ layers:
     - ''
     - TAB
   L2:
-  - ['', '', '', '', '', '', '', (, '|', )]
+  - ['', '', '', '', '', '', (, '|', ), '']
   - [LGUI, LALT, LCTL, LSFT, '', CAPS, LEFT, DOWN, UP, RGHT]
   - ['', '', '', '', '', RDO, PST, CPY, CUT, UND]
   - - ''
@@ -33,8 +33,8 @@ layers:
     - ALTREP2
     - ALTREP3
   L3:
-  - ['', RGB RMOD, RGB TOG, RGB MOD, '', '', V, '[', /, ']']
-  - [MPRV, VOLD, MUTE, VOLU, MNXT, QK CAPS WORD TOGGLE, H, J, K, L]
+  - ['', RGB RMOD, RGB TOG, RGB MOD, '', '', '[', /, ']', '']
+  - [MPRV, VOLD, MUTE, VOLU, MNXT, QK CAPS WORD TOGGLE, HOME, PGDN, PGUP, END]
   - ['', '', '', EE CLR, QK BOOT, QK BOOT, HOME, PGDN, PGUP, END]
   - - {t: ▽, type: trans}
     - ''
