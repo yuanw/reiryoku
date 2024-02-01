@@ -11,12 +11,18 @@ combos:
   p:
   - 2
   - 3
-- k: Z
+- k: K
   l:
   - Base
   p:
   - 6
   - 7
+- k: Z
+  l:
+  - Base
+  p:
+  - 7
+  - 8
 - k: B
   l:
   - Base
@@ -35,21 +41,15 @@ combos:
   p:
   - 26
   - 27
-- k: ition
+- k: L
   l:
-  - Nav
+  - Base
   p:
-  - 18
-  - 33
-- k: ssion
-  l:
-  - Nav
-  p:
-  - 11
-  - 33 
+  - 27
+  - 28
 layers:
   Base:
-  - - '?'
+  - - ''
     - W
     - M
     - P
@@ -63,7 +63,7 @@ layers:
     - &id002
       s: '>'
       t: .
-    - Z
+    - ''
   - - h: "\u2318"
       t: R
     - h: "\u2325"
@@ -89,7 +89,7 @@ layers:
     - D
     - B
     - J
-    - G
+    - L
     - U
     - Y
     - h: Cursor

@@ -1,7 +1,7 @@
 layout: {qmk_keyboard: bastardkb/charybdis/3x5/v2/splinky_3, qmk_layout: LAYOUT}
 layers:
   L0:
-  - ['?', W, M, P, Q, Z, ',', ;, ., Z]
+  - ['', W, M, P, Q, Z, ',', ;, ., '']
   - - {t: R, h: LGUI}
     - {t: S, h: LALT}
     - {t: N, h: LCTL}
@@ -12,7 +12,7 @@ layers:
     - {t: A, h: RCTL}
     - {t: I, h: LALT}
     - {t: O, h: RGUI}
-  - ['LT(LAYER POINTER, X)', C, F, D, B, J, G, U, Y, 'LT(LAYER POINTER, QUOT)']
+  - ['LT(LAYER POINTER, X)', C, F, D, B, J, L, U, Y, 'LT(LAYER POINTER, QUOT)']
   - ['LT(LAYER MEDIA, ESC)', 'LT(LAYER NAVIGATION, SPC)', 'LT(LAYER FUNCTION, BSPC)', 'LT(LAYER SYMBOLS, ENT)', 'LT(LAYER NUMERAL, E)']
   L1:
   - ['', '', '', '', '', '', '{', \, '}', '']
