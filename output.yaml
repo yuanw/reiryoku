@@ -35,6 +35,18 @@ combos:
   p:
   - 26
   - 27
+- k: ition
+  l:
+  - Nav
+  p:
+  - 18
+  - 33
+- k: ssion
+  l:
+  - Nav
+  p:
+  - 11
+  - 33 
 layers:
   Base:
   - - '?'
