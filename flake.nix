@@ -20,6 +20,11 @@
         "git+https://github.com/Bastardkb/bastardkb-qmk?ref=bkb-master&submodules=1&shallow=1";
       flake = false;
     };
+
+    svalboard_firmware = {
+       url = "github:svalboard/vial-qmk";
+       flake = false;
+    };
   };
 
   outputs = inputs:
@@ -65,6 +70,26 @@
 
             programs.nixpkgs-fmt.enable = true;
 
+          };
+          packages.svalboard_firmware = pkgs.stdenv.mkDerivation rec {
+            name = "svalboard.uf2";
+             src = inputs.svalboard_firmware;
+
+            nativeBuildInputs = [ pkgs.qmk ];
+            buildInputs = with pkgs; [
+              cacert
+            ];
+            # this allows us to not need the .git folder
+            SKIP_VERSION = "1";
+            SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+            buildPhase = ''
+              make svalboard/trackball/right:vial
+            '';
+
+            installPhase = ''
+              ls
+              mv **.uf2 $out/share
+            '';
           };
           packages.firmware = pkgs.stdenv.mkDerivation rec {
             name = "firmware.uf2";
