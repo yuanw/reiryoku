@@ -22,7 +22,7 @@
     };
 
     svalboard_firmware = {
-       url = "github:svalboard/vial-qmk";
+       url = "github:svalboard/vial-qmk?ref=vial&submodules=1&shallow=1";
        flake = false;
     };
   };
@@ -73,7 +73,7 @@
           };
           packages.svalboard_firmware = pkgs.stdenv.mkDerivation rec {
             name = "svalboard.uf2";
-             src = inputs.svalboard_firmware;
+            src = inputs.svalboard_firmware;
 
             nativeBuildInputs = [ pkgs.qmk ];
             buildInputs = with pkgs; [
