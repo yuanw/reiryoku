@@ -22,7 +22,7 @@
     };
 
     svalboard_firmware = {
-       url = "github:svalboard/vial-qmk?ref=vial&submodules=1&shallow=1";
+       url = "git+https://github.com/svalboard/vial-qmk?ref=vial&submodules=1&shallow=1";
        flake = false;
     };
   };

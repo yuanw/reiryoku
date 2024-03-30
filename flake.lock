@@ -190,6 +190,7 @@
       },
       "original": {
         "owner": "svalboard",
+        "ref": "vial",
         "repo": "vial-qmk",
         "type": "github"
       }
