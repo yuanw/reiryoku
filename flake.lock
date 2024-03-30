@@ -182,17 +182,20 @@
       "flake": false,
       "locked": {
         "lastModified": 1711643464,
-        "narHash": "sha256-7bChPR+iMvgEn3duFFrRIaYZQZAIaheBk57aNZdimPU=",
-        "owner": "svalboard",
-        "repo": "vial-qmk",
+        "narHash": "sha256-3wzP0/MFXaSOgjXcVIteAxQgaDdrQXCsJp4Sv6YoxO4=",
+        "ref": "vial",
         "rev": "e022c84833c95b8b8daa3a8805f9383562c8cfe5",
-        "type": "github"
+        "shallow": true,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/svalboard/vial-qmk"
       },
       "original": {
-        "owner": "svalboard",
         "ref": "vial",
-        "repo": "vial-qmk",
-        "type": "github"
+        "shallow": true,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/svalboard/vial-qmk"
       }
     },
     "systems": {
