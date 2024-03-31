@@ -90,8 +90,8 @@
             '';
 
             buildPhase = ''
-              make svalboard/trackball:yuanw
-
+              make svalboard/trackball/right:yuanw
+              make svalboard/trackball/left:yuanw
             '';
 
             installPhase = ''
