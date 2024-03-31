@@ -133,12 +133,13 @@
           packages.draw = pkgs.writeShellApplication {
             name ="reiryoku-draw";
             runtimeInputs = with pkgs;
-            [               (python3.withPackages (ps: [ ps.pyyaml ]))
+            [
+              config.packages.drawer
+              (python3.withPackages (ps: [ ps.pyyaml ]))
  ];
             text = ''
               python process.py
-             ${config.packages.drawer}/bin/keymap draw output.yaml > reiryoku.svg
-
+              draw output.yaml > reiryoku.svg
           '';
           };
 
