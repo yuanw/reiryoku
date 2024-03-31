@@ -83,8 +83,11 @@
             SKIP_VERSION = "1";
             SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
             buildPhase = ''
-              make svalboard/trackball/right:vial
-              make svalboard/trackball/left:vial
+                ln -s ${
+                ./svalboard/yuanw/.
+                } $sourceRoot/keyboards/svalboard/yuanw
+              make svalboard/trackball/right:yuanw
+              make svalboard/trackball/left:yuanw
 
             '';
 
