@@ -69,10 +69,10 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
         /*R3*/ KC_L,            KC_O,           KC_LGUI,        KC_DOT,         KC_N,
         /*R4*/ KC_SEMICOLON,    KC_P,           KC_BSLS,        KC_SLASH,       KC_RBRC,
 
-        /*L1*/ KC_F,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
-        /*L2*/ KC_D,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
+        /*L1*/ KC_T,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
+        /*L2*/ KC_N,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
         /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
-        /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
+        /*L4*/ KC_R,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
         /*Down                  Inner (pad)     Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/  
         /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPC,        KC_LALT,     TG(NAS),
