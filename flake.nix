@@ -92,7 +92,7 @@
               ls
               mkdir $out
               mkdir -p $out/share
-              mv svalboard_trackball_right_vial.uf2 $out/share
+              mv *.uf2 $out/share
             '';
           };
           packages.firmware = pkgs.stdenv.mkDerivation rec {
