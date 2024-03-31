@@ -37,7 +37,7 @@ void pointing_device_init_user(void) {
 
 enum my_keycodes {
   KC_NORMAL_HOLD = SAFE_RANGE,
-  KC_FUNC_HOLD
+  KC_FUNC_HOLD,
   KC_DRAGSCROLL //not used... yet
 };
 
