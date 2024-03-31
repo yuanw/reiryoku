@@ -84,6 +84,8 @@
             SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
             buildPhase = ''
               make svalboard/trackball/right:vial
+              make svalboard/trackball/left:vial
+
             '';
 
             installPhase = ''
