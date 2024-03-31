@@ -7,7 +7,7 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     keymap_drawer = {
-      url = "github:caksoylar/keymap-drawer?ref=main&rev=6defcaf80edd0bc916e747ac6041bd232b738c5f";
+      url = "github:caksoylar/keymap-drawer?rev=6defcaf80edd0bc916e747ac6041bd232b738c5f";
       flake = false;
     };
     poetry2nix = {
