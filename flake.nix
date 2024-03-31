@@ -11,7 +11,7 @@
       flake = false;
     };
     poetry2nix = {
-      url = "github:nix-community/poetry2nix";
+      url = "github:nix-community/poetry2nix?rev=528d500ea826383cc126a9be1e633fc92b19ce5d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # must be git not github for submodules
