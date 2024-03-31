@@ -136,7 +136,9 @@
             [               (python3.withPackages (ps: [ ps.pyyaml ]))
  ];
             text = ''
-            python process.py
+              python process.py
+             ${config.packages.drawer}/bin/keymap draw output.yaml > reiryoku.svg
+
           '';
           };
 

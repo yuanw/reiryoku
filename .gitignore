@@ -3,6 +3,6 @@
 *.log
 tmp/
 
-
+*.uf2
 result
 result-*
