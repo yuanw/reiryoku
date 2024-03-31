@@ -46,6 +46,16 @@ enum layer {
     NAS,
     FUNC,
     FUNC_HOLD,
+    L5,
+    L6,
+    L7,
+    L8,
+    L9,
+    L10,
+    L11,
+    L12,
+    L13,
+    L14,
     MBO,
     NUM_LAYERS
 };
@@ -54,19 +64,19 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
  [NORMAL] = LAYOUT(
              /*Center           North           East            South           West*/
         
-        /*R1*/ KC_J,            KC_U,           KC_QUOTE,       KC_M,           KC_H,
+        /*R1*/ KC_H,            KC_J,           KC_QUOTE,       KC_M,           KC_H,
         /*R2*/ KC_K,            KC_I,           KC_COLON,       KC_COMMA,       KC_Y,
         /*R3*/ KC_L,            KC_O,           KC_LGUI,        KC_DOT,         KC_N,
         /*R4*/ KC_SEMICOLON,    KC_P,           KC_BSLS,        KC_SLASH,       KC_RBRC,
 
-        /*L1*/ KC_S,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
-        /*L2*/ KC_T,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
+        /*L1*/ KC_F,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
+        /*L2*/ KC_D,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
         /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
         /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
         /*Down                  Inner (pad)     Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/  
         /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPC,        KC_LALT,     TG(NAS),
-        /*LT*/ KC_LSFT,         KC_ENTER,       TO(NORMAL),     KC_TAB,         KC_LCTL,     KC_CAPS
+        /*LT*/ KC_LSFT,         KC_ENTER,       TO(NORMAL),          KC_TAB,         KC_LCTL,     KC_CAPS
     ),
 
     [NORMAL_HOLD] = LAYOUT(
