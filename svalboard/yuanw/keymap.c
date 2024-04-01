@@ -64,16 +64,15 @@ enum layer {
 const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
  [NORMAL] = LAYOUT(
              /*Center           North           East            South           West*/
-        
-        /*R1*/ KC_H,            KC_J,           KC_QUOTE,       KC_M,           KC_H,
-        /*R2*/ KC_K,            KC_I,           KC_COLON,       KC_COMMA,       KC_Y,
-        /*R3*/ KC_L,            KC_O,           KC_LGUI,        KC_DOT,         KC_N,
-        /*R4*/ KC_SEMICOLON,    KC_P,           KC_BSLS,        KC_SLASH,       KC_RBRC,
+        /*R1*/ RSFT_T(KC_H),    KC_J,           KC_QUOTE,       KC_M,           KC_H,
+        /*R2*/ RCTL_T(KC_A),    KC_I,           KC_COLON,       KC_COMMA,       KC_Y,
+        /*R3*/ LALT_T(KC_I),    KC_O,           KC_LGUI,        KC_DOT,         KC_N,
+        /*R4*/ RGUI_T(KC_O),    KC_P,           KC_BSLS,        KC_SLASH,       KC_RBRC,
 
-        /*L1*/ KC_T,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
-        /*L2*/ KC_N,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
-        /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
-        /*L4*/ KC_R,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
+        /*L1*/ LSFT_T(KC_T),    KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
+        /*L2*/ LCTL_T(KC_N),    KC_E,           KC_T,           KC_C,           KC_GRAVE,
+        /*L3*/ LALT_T(KC_S),    KC_W,           KC_B,           KC_X,           KC_ESC,
+        /*L4*/ LGUI_T(KC_R),    KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
         /*Down                  Inner (pad)     Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/  
         /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPC,        KC_LALT,     TG(NAS),
