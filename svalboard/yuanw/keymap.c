@@ -36,9 +36,22 @@ void pointing_device_init_user(void) {
 }
 #endif
 
+#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
+#define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
+#define TAB_FUN LT(LAYER_FUNCTION, KC_BSPC)
+#define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
+#define E_NUM LT(LAYER_NUMERAL, KC_E)
+
 enum my_keycodes {
-  KC_NORMAL_HOLD = SAFE_RANGE,
-  KC_FUNC_HOLD
+   RDO = SAFE_RANGE,
+                   PST,
+                   CPY,
+                   CUT,
+                   UND,
+                   ALTREP2,
+                   ALTREP3,
+  KC_NORMAL_HOLD,
+  KC_FUNC_HOLD,
 };
 
 enum layer {
@@ -47,16 +60,6 @@ enum layer {
     NAS,
     FUNC,
     FUNC_HOLD,
-    L5,
-    L6,
-    L7,
-    L8,
-    L9,
-    L10,
-    L11,
-    L12,
-    L13,
-    L14,
     MBO,
     NUM_LAYERS
 };
@@ -64,15 +67,15 @@ enum layer {
 const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
  [NORMAL] = LAYOUT(
              /*Center           North           East            South           West*/
-        /*R1*/ RSFT_T(KC_H),    KC_J,           KC_QUOTE,       KC_M,           KC_H,
-        /*R2*/ RCTL_T(KC_A),    KC_I,           KC_COLON,       KC_COMMA,       KC_Y,
-        /*R3*/ LALT_T(KC_I),    KC_O,           KC_LGUI,        KC_DOT,         KC_N,
-        /*R4*/ RGUI_T(KC_O),    KC_P,           KC_BSLS,        KC_SLASH,       KC_RBRC,
+        /*R1*/ RSFT_T(KC_V),    KC_J,           KC_L,           KC_K,           KC_H,
+        /*R2*/ RCTL_T(KC_A),    KC_COMM,        XXXXXXX,        KC_U,           XXXXXXX,
+        /*R3*/ LALT_T(KC_I),    KC_SCLN,        XXXXXXX,        KC_Y,           XXXXXXX,
+        /*R4*/ RGUI_T(KC_O),    KC_DOT,         XXXXXXX,        KC_QUOT,        XXXXXXX,
 
-        /*L1*/ LSFT_T(KC_T),    KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
-        /*L2*/ LCTL_T(KC_N),    KC_E,           KC_T,           KC_C,           KC_GRAVE,
-        /*L3*/ LALT_T(KC_S),    KC_W,           KC_B,           KC_X,           KC_ESC,
-        /*L4*/ LGUI_T(KC_R),    KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
+        /*L1*/ LSFT_T(KC_T),    KC_P,           KC_G,           KC_D,           XXXXXXX,
+        /*L2*/ LCTL_T(KC_N),    KC_M,           KC_B,           KC_F,           XXXXXXX,
+        /*L3*/ LALT_T(KC_S),    KC_W,           XXXXXXX,        XXXXXXX,        KC_C,
+        /*L4*/ LGUI_T(KC_R),    KC_Q,           KC_LBRC,        KC_QUESTION,    KC_DEL,
 
         /*Down                  Inner (pad)     Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/  
         /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPC,        KC_LALT,     TG(NAS),
