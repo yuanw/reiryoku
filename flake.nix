@@ -71,7 +71,7 @@
             programs.nixpkgs-fmt.enable = true;
 
           };
-          packages.svalboard_firmware = pkgs.stdenv.mkDerivation rec {
+          packages.shijushichishi = pkgs.stdenv.mkDerivation rec {
             name = "svalboard.uf2";
             src = inputs.svalboard_firmware;
 
