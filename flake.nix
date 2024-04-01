@@ -7,11 +7,11 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     keymap_drawer = {
-      url = "github:caksoylar/keymap-drawer";
+      url = "github:caksoylar/keymap-drawer?rev=6defcaf80edd0bc916e747ac6041bd232b738c5f";
       flake = false;
     };
     poetry2nix = {
-      url = "github:nix-community/poetry2nix";
+      url = "github:nix-community/poetry2nix?rev=528d500ea826383cc126a9be1e633fc92b19ce5d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # must be git not github for submodules
@@ -19,6 +19,11 @@
       url =
         "git+https://github.com/Bastardkb/bastardkb-qmk?ref=bkb-master&submodules=1&shallow=1";
       flake = false;
+    };
+
+    svalboard_firmware = {
+       url = "git+https://github.com/svalboard/vial-qmk?ref=vial&submodules=1&shallow=1";
+       flake = false;
     };
   };
 
@@ -66,6 +71,36 @@
             programs.nixpkgs-fmt.enable = true;
 
           };
+          packages.shijushichishi = pkgs.stdenv.mkDerivation rec {
+            name = "svalboard.uf2";
+            src = inputs.svalboard_firmware;
+
+            nativeBuildInputs = [ pkgs.qmk ];
+            buildInputs = with pkgs; [
+              cacert
+            ];
+            # this allows us to not need the .git folder
+            SKIP_VERSION = "1";
+            SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+
+            postUnpack = ''
+              ln -s ${
+                ./svalboard/yuanw/.
+              } $sourceRoot/keyboards/svalboard/keymaps/yuanw
+            '';
+
+            buildPhase = ''
+              make svalboard/trackball/right:yuanw
+              make svalboard/trackball/left:yuanw
+            '';
+
+            installPhase = ''
+              ls
+              mkdir $out
+              mkdir -p $out/share
+              mv *.uf2 $out/share
+            '';
+          };
           packages.firmware = pkgs.stdenv.mkDerivation rec {
             name = "firmware.uf2";
             src = inputs.qmk_firmware;
@@ -103,11 +138,18 @@
             cd ${inputs.qmk_firmware}
              ${pkgs.qmk}/bin/qmk flash ${config.packages.firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
           '';
-          packages.draw = pkgs.writeScriptBin "reiryoku-draw" ''
-            ${config.packages.drawer}/bin/keymap parse -c 10 -q ${config.packages.firmware}/share/reiryoku.json  > reiryoku.yaml
-            sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
-            ${config.packages.drawer}/bin/keymap draw reiryoku.yaml > reiryoku.svg
+          packages.draw = pkgs.writeShellApplication {
+            name ="reiryoku-draw";
+            runtimeInputs = with pkgs;
+            [
+              config.packages.drawer
+              (python3.withPackages (ps: [ ps.pyyaml ]))
+ ];
+            text = ''
+              python process.py
+              draw output.yaml > reiryoku.svg
           '';
+          };
 
           # Default shell.
           devShells.default = pkgs.mkShell {
