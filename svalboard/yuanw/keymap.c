@@ -284,7 +284,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
 
   switch (keycode) {
-              case ALTREP2:
+        case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
             }
@@ -358,10 +358,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return false;
+        default:
+            return true;
         }
-
-    default:
-      return true;
   }
 };
 
