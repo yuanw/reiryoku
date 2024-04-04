@@ -145,9 +145,12 @@
               config.packages.drawer
               (python3.withPackages (ps: [ ps.pyyaml ]))
  ];
-            text = ''
+ text = ''
+           keymap parse -c 10 -q reiryoku.json  > reiryoku.yaml
+            sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
+            keymap draw reiryoku.yaml > reiryoku.svg
               python process.py
-              draw output.yaml > reiryoku.svg
+             keymap  draw output.yaml > reiryoku.svg
           '';
           };
 
