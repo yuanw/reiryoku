@@ -194,6 +194,63 @@ report_mouse_t pointing_device_task_user(report_mouse_t reportMouse) {
 }
 #endif
 
+// Use ALTREP2 and ALTREP3 in your layout...
+
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
+                            uint8_t* remembered_mods) {
+    switch (keycode) {
+        case ALTREP2:
+        case ALTREP3:
+            return false;  // Ignore ALTREP keys.
+    }
+
+    return true;  // Other keys can be repeated.
+}
+
+//TODO do we still need this
+uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
+    /* if ((mods & MOD_MASK_CTRL)) {  // Was Ctrl held? */
+    /*     switch (keycode) { */
+    /*         case KC_Y: return C(KC_Z);  // Ctrl + Y reverses to Ctrl + Z. */
+    /*         case KC_Z: return C(KC_Y);  // Ctrl + Z reverses to Ctrl + Y. */
+    /*     } */
+    /* } */
+    switch (keycode) {
+      case KC_LPRN: return KC_RPRN;
+      case KC_RPRN: return KC_LPRN;
+    }
+
+    return KC_TRNS;  // Defer to default definitions.
+}
+
+static void process_altrep2(uint16_t keycode, uint8_t mods) {
+    switch (keycode) {
+        case KC_A:
+        case RCTL_T(KC_A):
+          SEND_STRING("tion");
+          break;
+        case LALT_T(KC_I): SEND_STRING("tion"); break;
+        case LALT_T(KC_S): SEND_STRING("sion"); break;
+        case LSFT_T(KC_T): SEND_STRING("heir"); break;
+        case KC_Y: SEND_STRING("ou"); break;
+        case KC_W: SEND_STRING("hich"); break;
+        case KC_AT: SEND_STRING("Workiva/release-management-p"); break;
+        case KC_C: SEND_STRING("ontent management"); break;
+    }
+}
+
+static void process_altrep3(uint16_t keycode, uint8_t mods) {
+    switch (keycode) {
+        case RCTL_T(KC_A): SEND_STRING("bout"); break;
+        case LALT_T(KC_I): SEND_STRING("ng"); break;
+        case LALT_T(KC_S): SEND_STRING("tate"); break;
+        case LSFT_T(KC_T): SEND_STRING("here"); break;
+        case KC_W: SEND_STRING("ould"); break;
+        case KC_AT: SEND_STRING("rmconsole-wf"); break;
+        case E_NUM: SEND_STRING("specially");break;
+        case KC_C: SEND_STRING("ontent-management-service"); break;
+    }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -223,25 +280,82 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
 
   switch (keycode) {
+              case ALTREP2:
+            if (record->event.pressed) {
+                process_altrep2(get_last_keycode(), get_last_mods());
+            }
+            return false;
+        case ALTREP3:
+            if (record->event.pressed) {
+                process_altrep3(get_last_keycode(), get_last_mods());
+            }
+            return false;
+        case CPY:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_C));
+                        return false;
+                    default:
+                        tap_code16(KC_COPY);
+                        return false;
+                }
+            }
+        case PST:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_V));
+                        break;
+                    default:
+                        tap_code16(KC_PSTE);
+                        break;
+                }
+            }
+            return false;
+        case CUT:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_X));
+                        break;
+                    default:
+                        tap_code16(KC_CUT);
+                        break;
+                }
+            }
+            return false;
+        case UND:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_Z));
+                        break;
+                    default:
+                        tap_code16(KC_UNDO);
+                        break;
+                }
+            }
+            return false;
+        case RDO:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_Z));
+                        break;
+                    default:
+                        tap_code16(KC_AGIN);
+                        break;
+                }
+            }
+            return false;
+        }
 
-/*      if (record->event.pressed) {
-          layer_clear();
-          layer_on(NORMAL_HOLD);
-          SEND_STRING(SS_LCTL(SS_TAP(X_F19)));
-      } else {
-          layer_off(NORMAL_HOLD);
-      }
-      return false;
-      */
-      
-/*     case KC_FUNC_HOLD:
-      if (record->event.pressed) {
-          layer_clear();
-          layer_on(FUNC_HOLD);
-      } else {
-          layer_off(FUNC_HOLD);
-      }
-      return false;*/
     default:
       return true;
   }
