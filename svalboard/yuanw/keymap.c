@@ -19,7 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdbool.h>
 #include <stdint.h>
 #include "features/achordion.h"
-
+#ifdef OS_DETECTION_ENABLE
+#    include "os_detection.h"
+#endif
 void keyboard_post_init_user(void) {
   // Customise these values if you need to debug the matrix
   //debug_enable=true;
@@ -50,13 +52,11 @@ enum my_keycodes {
                    UND,
                    ALTREP2,
                    ALTREP3,
-  KC_NORMAL_HOLD,
-  KC_FUNC_HOLD,
 };
 
 enum layer {
     NORMAL,
-    NORMAL_HOLD,
+    LAYER_NAVIGATION,
     NAS,
     FUNC,
     FUNC_HOLD,
@@ -78,16 +78,16 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
         /*L4*/ LGUI_T(KC_R),    KC_Q,           KC_LBRC,        KC_QUESTION,    KC_DEL,
 
         /*Down                  Inner (pad)     Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/  
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPC,        KC_LALT,     TG(NAS),
-        /*LT*/ KC_LSFT,         KC_ENTER,       TO(NORMAL),          KC_TAB,         KC_LCTL,     KC_CAPS
+        /*RT*/ SPC_NAV,         KC_SPACE,       TO(FUNC),       KC_BSPC,        KC_LALT,     KC_R,
+        /*LT*/ E_NUM,           KC_ENTER,       TO(NORMAL),     KC_TAB,         KC_LCTL,     KC_L
     ),
 
-    [NORMAL_HOLD] = LAYOUT(
+    [LAYER_NAVIGATION] = LAYOUT(
              /*Center           North           East            South           West*/
-        /*R1*/ KC_LEFT,         KC_WH_L,        XXXXXXX,        KC_MS_L,        LCTL(KC_LEFT),
-        /*R2*/ KC_DOWN,         KC_WH_D,        XXXXXXX,        KC_MS_D,        LCTL(KC_DOWN),
-        /*R3*/ KC_UP,           KC_WH_U,        XXXXXXX,        KC_MS_U,        LCTL(KC_UP),
-        /*R4*/ KC_RIGHT,        KC_WH_R,        XXXXXXX,        KC_MS_R,        LCTL(KC_RIGHT),
+        /*R1*/ KC_LEFT,         XXXXXXX,        XXXXXXX,        PST,        KC_CAPS,
+        /*R2*/ KC_DOWN,         KC_LPRN,        XXXXXXX,        CPY,        LCTL(KC_DOWN),
+        /*R3*/ KC_UP,           KC_PIPE,        XXXXXXX,        CUT,        LCTL(KC_UP),
+        /*R4*/ KC_RIGHT,        KC_RPRN,        XXXXXXX,        UND,        LCTL(KC_RIGHT),
 
         /*L1*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        KC_BTN1,        XXXXXXX,
         /*L2*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        KC_BTN3,        XXXXXXX,
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
 
         /*Down                  Inner           Upper           Outer Upper     Outer Lower  Pushthrough*/
         /*RT*/ _______,         _______,        _______,        _______,        _______, _______,
-        /*LT*/ _______,         _______,        _______,        _______,        _______, _______
+        /*LT*/ XXXXXXX,         _______,        _______,        _______,        _______, _______
     ),
 
     [NAS] = LAYOUT(
@@ -224,7 +224,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
 
-     case KC_NORMAL_HOLD:
 /*      if (record->event.pressed) {
           layer_clear();
           layer_on(NORMAL_HOLD);
@@ -243,7 +242,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           layer_off(FUNC_HOLD);
       }
       return false;*/
-      return false;
     default:
       return true;
   }
