@@ -57,6 +57,10 @@ enum my_keycodes {
 enum layer {
     NORMAL,
     LAYER_NAVIGATION,
+    LAYER_NUMERAL,
+    LAYER_SYMBOL,
+    LAYER_MEDIA,
+    LAYER_FUNCTION,
     NAS,
     FUNC,
     FUNC_HOLD,
