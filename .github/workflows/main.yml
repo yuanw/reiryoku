@@ -30,7 +30,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
           name: firmware.uf2
-          path: dist/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
+          path: dist/share/*.uf2
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
