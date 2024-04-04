@@ -184,7 +184,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1712204858,
-        "narHash": "sha256-sL0lKVGrFc/4cjU6EySy0UYhdPJIFc39yMUl6O9vQJE=",
+        "narHash": "sha256-7aO2nv7PzrhG7KwbNTbF9GCpIDVQY8qO9Povwaf7V1k=",
         "ref": "vial",
         "rev": "eb3ef1c4ecb70dbb3f802d29f59b605dfcc8b713",
         "shallow": true,
