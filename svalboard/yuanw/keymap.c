@@ -82,8 +82,8 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
         /*L4*/ LGUI_T(KC_R),    KC_Q,           KC_LBRC,        KC_QUESTION,    KC_DEL,
 
         /*Down                  Inner (pad)     Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/  
-        /*RT*/ SPC_NAV,         KC_SPACE,       TO(FUNC),       KC_BSPC,        KC_LALT,     KC_R,
-        /*LT*/ E_NUM,           KC_ENTER,       TO(NORMAL),     KC_TAB,         KC_LCTL,     KC_L
+        /*RT*/ E_NUM,           KC_SPACE,       TO(FUNC),       KC_BSPC,        KC_LALT,     KC_R,
+        /*LT*/ SPC_NAV,         KC_ENTER,       TO(NORMAL),     KC_TAB,         KC_LCTL,     KC_L
     ),
 
     [LAYER_NAVIGATION] = LAYOUT(
@@ -361,7 +361,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         default:
             return true;
         }
-
+  
 };
 
 #if defined MH_AUTO_BUTTONS && defined PS2_MOUSE_ENABLE && defined MOUSEKEY_ENABLE
