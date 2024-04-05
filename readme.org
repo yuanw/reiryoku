@@ -6,6 +6,7 @@ a marriage between [[https://github.com/manna-harbour/miryoku][miryoku]] and [[h
 [[./reiryoku.svg]]
 ** shijushichishi
 svalboard with adept and miryoku
+[[./svalbroad.jpeg]]
 
 * Inspirations
 
