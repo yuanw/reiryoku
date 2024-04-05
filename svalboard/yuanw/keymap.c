@@ -71,12 +71,12 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
         /*R1*/ RSFT_T(KC_V),    KC_J,           KC_L,           KC_K,           KC_H,
         /*R2*/ RCTL_T(KC_A),    KC_COMM,        XXXXXXX,        KC_U,           XXXXXXX,
         /*R3*/ LALT_T(KC_I),    KC_SCLN,        XXXXXXX,        KC_Y,           XXXXXXX,
-        /*R4*/ RGUI_T(KC_O),    KC_DOT,         XXXXXXX,        KC_QUOT,        XXXXXXX,
+        /*R4*/ RGUI_T(KC_O),    KC_DOT,         ALTREP3,        KC_QUOT,        XXXXXXX,
 
         /*L1*/ LSFT_T(KC_T),    KC_P,           KC_G,           KC_D,           XXXXXXX,
-        /*L2*/ LCTL_T(KC_N),    KC_M,           KC_B,           KC_F,           XXXXXXX,
-        /*L3*/ LALT_T(KC_S),    KC_W,           XXXXXXX,        KC_B,           KC_C,
-        /*L4*/ LGUI_T(KC_R),    KC_Q,           KC_LBRC,        KC_QUESTION,    KC_DEL,
+        /*L2*/ LCTL_T(KC_N),    KC_M,           XXXXXXX,        KC_F,           XXXXXXX,
+        /*L3*/ LALT_T(KC_S),    KC_W,           XXXXXXX,        KC_C,           XXXXXXX,
+        /*L4*/ LGUI_T(KC_R),    ALTREP2,        KC_LBRC,        QK_AREP,        XXXXXXX,
 
         /*Down                  Inner (pad)     Upper (Mode)    O.Upper (nail)  OL (knuckle) Pushthrough*/  
         /*RT*/ E_NUM,           KC_SPACE,       XXXXXXX,        XXXXXXX,        KC_TAB,    XXXXXXX ,
@@ -119,19 +119,19 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_SYMBOL] = LAYOUT(
              /*Center           North           East            South           West*/
-        /*R1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
-        /*R2*/ XXXXXXX,         KC_LCBR,          XXXXXXX,        KC_F7,          KC_END,
-        /*R3*/ KC_PSCR,         KC_BSLS,         KC_LGUI,        KC_F9,          KC_INS,
-        /*R4*/ KC_PAUSE,        KC_RCBR,        KC_F12,         KC_PGDN,        KC_F11,
+        /*R1*/ KC_HOME,         XXXXXXX,        KC_RIGHT,       KC_DOWN,        KC_LEFT,
+        /*R2*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        KC_F7,          KC_END,
+        /*R3*/ KC_PSCR,         XXXXXXX,        KC_LGUI,        KC_F9,          KC_INS,
+        /*R4*/ KC_PAUSE,        XXXXXXX,        KC_F12,         KC_PGDN,        KC_F11,
 
-        /*L1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
-        /*L2*/ XXXXXXX,         KC_F6,          XXXXXXX,        KC_F5,          XXXXXXX,
-        /*L3*/ XXXXXXX,         KC_F4,          XXXXXXX,        KC_F3,          KC_ESC,
-        /*L4*/ XXXXXXX,         KC_F2,          XXXXXXX,        KC_F1,          KC_DEL,
+        /*L1*/ KC_CIRC,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
+        /*L2*/ KC_PERC,         KC_F6,          XXXXXXX,        KC_F5,          XXXXXXX,
+        /*L3*/ KC_DLR,          KC_F4,          XXXXXXX,        KC_F3,          KC_ESC,
+        /*L4*/ KC_COLN,         KC_LCBR,          XXXXXXX,        KC_TILD,          KC_DEL,
 
              /*Down                  Inner           Upper           Outer Upper     Outer Lower  Pushthrough*/  
-        /*RT*/ XXXXXXX,        KC_SPACE,       _______,       KC_BSPC,      KC_LALT, _______,
-        /*LT*/ KC_LSFT,        KC_ENTER,         _______, KC_TAB,         KC_LCTL,_______
+        /*RT*/ XXXXXXX,        XXXXXXX,       _______,       XXXXXXX,      KC_LALT, _______,
+        /*LT*/ KC_LSFT,        KC_ENTER,         _______, KC_TAB,         KC_UNDS,_______
     ),
     [LAYER_MEDIA] = LAYOUT(
              /*Center           North           East            South           West*/
