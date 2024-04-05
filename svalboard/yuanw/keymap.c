@@ -61,7 +61,6 @@ enum layer {
     LAYER_SYMBOL,
     LAYER_MEDIA,
     LAYER_FUNCTION,
-    NAS,
     MBO,
     NUM_LAYERS
 };
@@ -118,12 +117,12 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
         /*LT*/ KC_LSFT,         KC_ENTER,       _______,        KC_TAB,         KC_LCTL, _______
     ),
 
-    [LAYER_FUNCTION] = LAYOUT(
+    [LAYER_SYMBOL] = LAYOUT(
              /*Center           North           East            South           West*/
         /*R1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
-        /*R2*/ XXXXXXX,         KC_F8,          XXXXXXX,        KC_F7,          KC_END,
-        /*R3*/ KC_PSCR,         KC_F10,         KC_LGUI,        KC_F9,          KC_INS,
-        /*R4*/ KC_PAUSE,        KC_PGUP,        KC_F12,         KC_PGDN,        KC_F11,
+        /*R2*/ XXXXXXX,         KC_LCBR,          XXXXXXX,        KC_F7,          KC_END,
+        /*R3*/ KC_PSCR,         KC_BSLS,         KC_LGUI,        KC_F9,          KC_INS,
+        /*R4*/ KC_PAUSE,        KC_RCBR,        KC_F12,         KC_PGDN,        KC_F11,
 
         /*L1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
         /*L2*/ XXXXXXX,         KC_F6,          XXXXXXX,        KC_F5,          XXXXXXX,
@@ -134,17 +133,49 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
         /*RT*/ MO(NAS),         KC_SPACE,       _______,       KC_BSPC,      KC_LALT, _______,
         /*LT*/ KC_LSFT,       KC_ENTER,         _______, KC_TAB,         KC_LCTL,_______
     ),
+    [LAYER_MEDIA] = LAYOUT(
+             /*Center           North           East            South           West*/
+        /*R1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
+        /*R2*/ XXXXXXX,         KC_LCBR,          XXXXXXX,        KC_F7,          KC_END,
+        /*R3*/ KC_PSCR,         KC_BSLS,         KC_LGUI,        KC_F9,          KC_INS,
+        /*R4*/ KC_PAUSE,        KC_RCBR,        KC_F12,         KC_PGDN,        KC_F11,
+
+        /*L1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
+        /*L2*/ XXXXXXX,         KC_F6,          XXXXXXX,        KC_F5,          XXXXXXX,
+        /*L3*/ XXXXXXX,         KC_F4,          XXXXXXX,        KC_F3,          KC_ESC,
+        /*L4*/ XXXXXXX,         KC_F2,          XXXXXXX,        KC_F1,          KC_DEL,
+
+             /*Down                  Inner           Upper           Outer Upper     Outer Lower  Pushthrough*/
+        /*RT*/ MO(NAS),         KC_SPACE,       _______,       KC_BSPC,      KC_LALT, _______,
+        /*LT*/ KC_LSFT,       KC_ENTER,         _______, KC_TAB,         KC_LCTL,_______
+    ),
+    [LAYER_FUNCTION] = LAYOUT(
+             /*Center           North           East            South           West*/
+        /*R1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
+        /*R2*/ XXXXXXX,         KC_LCBR,          XXXXXXX,        KC_F7,          KC_END,
+        /*R3*/ KC_PSCR,         KC_BSLS,         KC_LGUI,        KC_F9,          KC_INS,
+        /*R4*/ KC_PAUSE,        KC_RCBR,        KC_F12,         KC_PGDN,        KC_F11,
+
+        /*L1*/ KC_HOME,         KC_UP,          KC_RIGHT,       KC_DOWN,        KC_LEFT,
+        /*L2*/ XXXXXXX,         KC_F6,          XXXXXXX,        KC_F5,          XXXXXXX,
+        /*L3*/ XXXXXXX,         KC_F4,          XXXXXXX,        KC_F3,          KC_ESC,
+        /*L4*/ XXXXXXX,         KC_F2,          XXXXXXX,        KC_F1,          KC_DEL,
+
+             /*Down                  Inner           Upper           Outer Upper     Outer Lower  Pushthrough*/
+        /*RT*/ MO(NAS),         KC_SPACE,       _______,       KC_BSPC,      KC_LALT, _______,
+        /*LT*/ KC_LSFT,       KC_ENTER,         _______, KC_TAB,         KC_LCTL,_______
+    ),
     
     [MBO] = LAYOUT(
              /*Center           North           East            South           West*/
-        /*R1*/ KC_BTN1,        KC_TRNS,       KC_TRNS,       KC_BTN1,       KC_TRNS,
-        /*R2*/ KC_BTN2,        KC_TRNS,       KC_TRNS,       KC_BTN3,       KC_TRNS,
-        /*R3*/ KC_BTN3,        KC_TRNS,       KC_TRNS,       KC_BTN2,       KC_TRNS,
-        /*R4*/ KC_TRNS,        KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,
-        /*L1*/ KC_TRNS,        KC_TRNS,       KC_TRNS,       KC_BTN1,        KC_TRNS,
-        /*L2*/ KC_TRNS,        KC_TRNS,       KC_TRNS,       KC_BTN3,        KC_TRNS,
-        /*L3*/ KC_TRNS,        KC_TRNS,       KC_TRNS,       KC_BTN2,        KC_TRNS,
-        /*L4*/ KC_TRNS,        KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,
+        /*R1*/ XXXXXXX,        KC_TRNS,       KC_TRNS,       KC_BTN1,       KC_TRNS,
+        /*R2*/ XXXXXXX,        KC_TRNS,       KC_TRNS,       KC_BTN3,       KC_TRNS,
+        /*R3*/ XXXXXXX,        KC_TRNS,       KC_TRNS,       KC_BTN2,       KC_TRNS,
+        /*R4*/ XXXXXXX,        KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,
+        /*L1*/ KC_BTN1,        KC_TRNS,       KC_TRNS,       KC_BTN1,        KC_TRNS,
+        /*L2*/ KC_BTN2,        KC_TRNS,       KC_TRNS,       KC_BTN3,        KC_TRNS,
+        /*L3*/ KC_BTN3,        KC_TRNS,       KC_TRNS,       KC_BTN2,        KC_TRNS,
+        /*L4*/ XXXXXXX,        KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,
         /*RT*/ KC_TRNS,        KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,   KC_TRNS,
         /*LT*/ KC_TRNS,        KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,   KC_TRNS
         )
@@ -179,6 +210,26 @@ report_mouse_t pointing_device_task_user(report_mouse_t reportMouse) {
 }
 #endif
 
+
+const uint16_t PROGMEM b_combo[]    = {KC_F, KC_D, COMBO_END};
+const uint16_t PROGMEM j_combo[]    = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM q_combo[]    = {KC_M, KC_P, COMBO_END};
+const uint16_t PROGMEM k_combo[]    = {KC_COMM, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM z_combo[]    = {KC_SCLN, KC_DOT, COMBO_END};
+const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
+const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
+const uint16_t PROGMEM l_combo[]    = {KC_U, KC_Y, COMBO_END};
+
+combo_t key_combos[] = {
+    [FD_B] = COMBO(b_combo, KC_B),
+    [LU_J] = COMBO(j_combo, KC_J),
+    [MP_Q] = COMBO(q_combo, KC_Q),
+    [COMMSCLN_K] = COMBO(k_combo, KC_K),
+    [SCLNDOT_Z] = COMBO(z_combo, KC_Z),
+    [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
+    [CF_X] = COMBO(x_combo, KC_X),
+    [UY_L] = COMBO(l_combo, KC_L),
+};
 // Use ALTREP2 and ALTREP3 in your layout...
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
