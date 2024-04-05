@@ -183,10 +183,10 @@
     "svalboard_firmware": {
       "flake": false,
       "locked": {
-        "lastModified": 1712204858,
-        "narHash": "sha256-7aO2nv7PzrhG7KwbNTbF9GCpIDVQY8qO9Povwaf7V1k=",
+        "lastModified": 1712290515,
+        "narHash": "sha256-EaGPkFeVmv2p+8Q9cGwCPYE9shcV800lZULoKJQzHKw=",
         "ref": "vial",
-        "rev": "eb3ef1c4ecb70dbb3f802d29f59b605dfcc8b713",
+        "rev": "5971b9b4a108415d5c4f4574d449921b9aaea315",
         "shallow": true,
         "submodules": true,
         "type": "git",
