@@ -193,8 +193,21 @@ void mouse_mode(bool);
 #endif
 
 #if defined(POINTING_DEVICE_AUTO_MOUSE_MH_ENABLE)
+report_mouse_t pointing_device_task_combined_user(report_mouse_t reportMouse1, report_mouse_t reportMouse2) {
+    if (reportMouse1.x == 0 && reportMouse1.y == 0 && reportMouse2.x == 0 && reportMouse2.y == 0)
+        return pointing_device_combine_reports(reportMouse1, reportMouse2);
+
+    if (mh_auto_buttons_timer) {
+        mh_auto_buttons_timer = timer_read();
+    } else {
+        mouse_mode(true);
+#if defined CONSOLE_ENABLE
+        print("mh_auto_buttons: on\n");
+#endif
+    }
+    return pointing_device_combine_reports(reportMouse1, reportMouse2);
+}
 report_mouse_t pointing_device_task_user(report_mouse_t reportMouse) {
-    print("mh_auto_buttons: called\n");
     if (reportMouse.x == 0 && reportMouse.y == 0)
         return reportMouse;
 
