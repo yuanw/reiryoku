@@ -130,8 +130,8 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
         /*L4*/ XXXXXXX,         KC_F2,          XXXXXXX,        KC_F1,          KC_DEL,
 
              /*Down                  Inner           Upper           Outer Upper     Outer Lower  Pushthrough*/  
-        /*RT*/ MO(NAS),         KC_SPACE,       _______,       KC_BSPC,      KC_LALT, _______,
-        /*LT*/ KC_LSFT,       KC_ENTER,         _______, KC_TAB,         KC_LCTL,_______
+        /*RT*/ XXXXXXX,        KC_SPACE,       _______,       KC_BSPC,      KC_LALT, _______,
+        /*LT*/ KC_LSFT,        KC_ENTER,         _______, KC_TAB,         KC_LCTL,_______
     ),
     [LAYER_MEDIA] = LAYOUT(
              /*Center           North           East            South           West*/
@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
         /*L4*/ XXXXXXX,         KC_F2,          XXXXXXX,        KC_F1,          KC_DEL,
 
              /*Down                  Inner           Upper           Outer Upper     Outer Lower  Pushthrough*/
-        /*RT*/ MO(NAS),         KC_SPACE,       _______,       KC_BSPC,      KC_LALT, _______,
+        /*RT*/ XXXXXXX,         KC_SPACE,       _______,       KC_BSPC,      KC_LALT, _______,
         /*LT*/ KC_LSFT,       KC_ENTER,         _______, KC_TAB,         KC_LCTL,_______
     ),
     [LAYER_FUNCTION] = LAYOUT(
@@ -162,7 +162,7 @@ const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
         /*L4*/ XXXXXXX,         KC_F2,          XXXXXXX,        KC_F1,          KC_DEL,
 
              /*Down                  Inner           Upper           Outer Upper     Outer Lower  Pushthrough*/
-        /*RT*/ MO(NAS),         KC_SPACE,       _______,       KC_BSPC,      KC_LALT, _______,
+        /*RT*/ XXXXXXX,         KC_SPACE,       _______,       KC_BSPC,      KC_LALT, _______,
         /*LT*/ KC_LSFT,       KC_ENTER,         _______, KC_TAB,         KC_LCTL,_______
     ),
     
@@ -209,6 +209,19 @@ report_mouse_t pointing_device_task_user(report_mouse_t reportMouse) {
     return reportMouse;
 }
 #endif
+
+enum combos {
+    FD_B,
+    LU_J,
+    MP_Q,
+    COMMSCLN_K,
+    SCLNDOT_Z,
+    LEFT_QUESTION,
+    CF_X,
+    UY_L,
+    COMBO_LENGTH
+};
+uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 
 const uint16_t PROGMEM b_combo[]    = {KC_F, KC_D, COMBO_END};
