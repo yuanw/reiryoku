@@ -174,6 +174,7 @@
 
             # See https://haskell.flake.page/devshell#composing-devshells
             inputsFrom = [
+              config.haskellProjects.default.outputs.devShell
               config.flake-root.devShell
               config.treefmt.build.devShell
             ];
