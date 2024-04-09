@@ -6,6 +6,7 @@
     flake-root.url = "github:srid/flake-root";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+    haskell-flake.url = "github:srid/haskell-flake";
     keymap_drawer = {
       url = "github:caksoylar/keymap-drawer?rev=6defcaf80edd0bc916e747ac6041bd232b738c5f";
       flake = false;
@@ -36,7 +37,7 @@
         "x86_64-linux"
       ];
       imports = [
-        # inputs.haskell-flake.flakeModule
+        inputs.haskell-flake.flakeModule
         inputs.treefmt-nix.flakeModule
         inputs.flake-root.flakeModule
       ];
@@ -158,6 +159,7 @@
           devShells.default = pkgs.mkShell {
             buildInputs = with pkgs; [
               (python3.withPackages (ps: [ ps.pyyaml ]))
+              pkgs.haskellPackages.cabal
             ];
 
             # See https://haskell.flake.page/devshell#composing-devshells
