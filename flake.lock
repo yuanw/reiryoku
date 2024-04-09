@@ -51,6 +51,21 @@
         "type": "github"
       }
     },
+    "haskell-flake": {
+      "locked": {
+        "lastModified": 1712129417,
+        "narHash": "sha256-9GZwTcmDW3zYOB+s9MpYsCJk1VIAVRwJ8WeMKVMeZ98=",
+        "owner": "srid",
+        "repo": "haskell-flake",
+        "rev": "d9dbdd466afbda9df75b49e50a01f5ade61d42bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "srid",
+        "repo": "haskell-flake",
+        "type": "github"
+      }
+    },
     "keymap_drawer": {
       "flake": false,
       "locked": {
@@ -172,6 +187,7 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
+        "haskell-flake": "haskell-flake",
         "keymap_drawer": "keymap_drawer",
         "nixpkgs": "nixpkgs",
         "poetry2nix": "poetry2nix",

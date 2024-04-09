@@ -159,7 +159,7 @@
           devShells.default = pkgs.mkShell {
             buildInputs = with pkgs; [
               (python3.withPackages (ps: [ ps.pyyaml ]))
-              pkgs.haskellPackages.cabal
+              pkgs.haskellPackages.cabal-install
             ];
 
             # See https://haskell.flake.page/devshell#composing-devshells
