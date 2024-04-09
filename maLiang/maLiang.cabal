@@ -67,7 +67,7 @@ executable maLiang
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.18.2.0
+    build-depends:    base ^>=4.18.2.0, diagrams-lib, diagrams-svg
 
     -- Directories containing source files.
     hs-source-dirs:   app
