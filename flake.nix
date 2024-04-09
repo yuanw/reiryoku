@@ -155,6 +155,16 @@
           '';
           };
 
+          haskellProjects.default = {
+            projectRoot = ./maLiang;
+            settings = { };
+            # overrides = self: super: { };
+            autoWire = [ "packages" "apps" "checks" ]; # Wire all but the devShell
+            devShell = {
+              hlsCheck.enable = false;
+            };
+          };
+
           # Default shell.
           devShells.default = pkgs.mkShell {
             buildInputs = with pkgs; [
