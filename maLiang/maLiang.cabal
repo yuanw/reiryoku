@@ -58,7 +58,7 @@ executable maLiang
     import:           warnings
 
     -- .hs or .lhs file containing the Main module.
-    main-is:          Main.hs
+    main-is:          DiagramsTutorial.lhs
 
     -- Modules included in this executable, other than Main.
     -- other-modules:
