@@ -6,7 +6,7 @@
 > import Diagrams.Backend.SVG.CmdLine
 > minorKey = square 0.2 # scaleY 0.3
 > centerKey :: Diagram B
-> centerKey =    (  beside (r2 (1,-1)) (text "V" # fontSizeL 0.1 <> strutX 0.1) (text "⇧" # fontSizeL 0.03 <> strutX 0.1 )) `atop` square 0.2
+> centerKey =    (  beside (r2 (20,-16)) (text "V" # fontSizeL 0.1 <> strutX 0.1) (text "⇧" # fontSizeL 0.03 <> strutX 0.01 )) `atop` square 0.2
 > west :: Diagram B
 > west =  text "H" # fontSizeL 0.03 <> vMinorKey
 > east :: Diagram B
