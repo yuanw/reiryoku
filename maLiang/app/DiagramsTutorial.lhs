@@ -6,7 +6,7 @@
 > import Diagrams.Backend.SVG.CmdLine
 > minorKey = square 0.2 # scaleY 0.3
 > centerKey :: Diagram B
-> centerKey = square 0.2
+> centerKey = text "R" # fontSizeL 0.2 # fc white <> square 0.2
 > west :: Diagram B
 > west = vMinorKey
 > east :: Diagram B
