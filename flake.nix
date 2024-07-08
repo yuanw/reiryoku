@@ -22,8 +22,8 @@
     };
 
     svalboard_firmware = {
-       url = "git+https://github.com/svalboard/vial-qmk?ref=vial&submodules=1&shallow=1";
-       flake = false;
+      url = "git+https://github.com/svalboard/vial-qmk?ref=vial&submodules=1&shallow=1";
+      flake = false;
     };
   };
 
@@ -49,7 +49,7 @@
         }:
         let
 
-        inherit (inputs.poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) defaultPoetryOverrides  mkPoetryApplication;
+          inherit (inputs.poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) defaultPoetryOverrides mkPoetryApplication;
         in
         {
           packages.drawer = mkPoetryApplication {
@@ -139,19 +139,19 @@
              ${pkgs.qmk}/bin/qmk flash ${config.packages.firmware}/share/bastardkb_charybdis_3x5_yuanw.uf2
           '';
           packages.draw = pkgs.writeShellApplication {
-            name ="reiryoku-draw";
+            name = "reiryoku-draw";
             runtimeInputs = with pkgs;
-            [
-              config.packages.drawer
-              (python3.withPackages (ps: [ ps.pyyaml ]))
- ];
- text = ''
-           keymap parse -c 10 -q ${config.packages.firmware}/share/reiryoku.json  > reiryoku.yaml
-            sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
-           keymap draw reiryoku.yaml > reiryoku.svg
-            python process.py
-            keymap draw output.yaml > reiryoku.svg
-          '';
+              [
+                config.packages.drawer
+                (python3.withPackages (ps: [ ps.pyyaml ]))
+              ];
+            text = ''
+              keymap parse -c 10 -q ${config.packages.firmware}/share/reiryoku.json  > reiryoku.yaml
+               sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
+              keymap draw reiryoku.yaml > reiryoku.svg
+               python process.py
+               keymap draw output.yaml > reiryoku.svg
+            '';
           };
 
           # Default shell.
@@ -176,6 +176,6 @@
             program = config.packages.draw;
           };
           apps.default = config.apps.flash;
-      };
+        };
     };
 }
