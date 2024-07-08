@@ -444,7 +444,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 tap_code16(C(KC_X));
                 return false;
-         }
+            }
+            return true;
        }
         return true; // Process all other keycodes normally
 }
