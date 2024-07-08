@@ -298,7 +298,6 @@ combo_t key_combos[] = {
 
 const custom_shift_key_t custom_shift_keys[] = {
   {QK_REP , QK_AREP}, // Shift repeat is a-rep
-
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS =
     sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
@@ -363,7 +362,11 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_custom_shift_keys(keycode, record)) {
+        return false;
+    }
        switch (keycode) {
+
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
