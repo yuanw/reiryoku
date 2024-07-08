@@ -67,9 +67,9 @@ enum my_keycodes { RDO = SAFE_RANGE,
 // clang-format off
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
-       ALTREP2,  KC_W,    KC_M,    KC_P,    KC_Q,    KC_Z,    KC_COMM, KC_SCLN, KC_DOT,  ALTREP3, \
-       KC_R,     KC_S,    KC_N,    KC_T,    KC_G,    KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
-       QK_AREP,  KC_C,    KC_F,    KC_D,    QK_REP,  QK_REP,    KC_L,    KC_U,    KC_Y,    KC_QUOT, \
+       QK_REP,  KC_W,    KC_M,    KC_P,     XXXXXXX,    XXXXXXX,    KC_COMM, KC_SCLN, KC_DOT,   QK_REP, \
+       KC_R,     KC_S,    KC_N,    KC_T,    KC_G,       KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
+       C(KC_X),  KC_C,    KC_F,    KC_D,    XXXXXXXX,   XXXXXX,  KC_L,    KC_U,    KC_Y,    KC_QUOT, \
                        ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, E_NUM
 
 /** Convenience row shorthands. */
@@ -96,7 +96,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * from the base layer to enable auto-repeat.
  */
 #define LAYOUT_LAYER_FUNCTION                                                                 \
-    _______________DEAD_HALF_ROW_______________, XXXXXXX,   KC_LCBR,   KC_BSLS,    KC_RCBR,  XXXXXXX,  \
+    _______________DEAD_HALF_ROW_______________, XXXXXXX,   KC_LCBR,   KC_BSLS,    KC_RCBR,  ALTREP3,  \
     ______________HOME_ROW_GACS_L______________, KC_SCRL,   LAG(KC_1),   LAG(KC_2), LAG(KC_3),  LAG(KC_4), \
     _______________DEAD_HALF_ROW_______________, KC_PAUS,   LSG(KC_1),   LSG(KC_2), LSG(KC_3),  LSG(KC_4), \
                       XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_TAB
@@ -128,10 +128,10 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * base layer to avoid having to layer change mid edit and to enable auto-repeat.
  */
 #define LAYOUT_LAYER_NAVIGATION                                                               \
-    _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_PIPE, KC_RPRN, XXXXXXX, \
+    _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_PIPE, KC_RPRN, ALTREP2, \
     ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,  KC_UP,    KC_RGHT, \
     _______________DEAD_HALF_ROW_______________, RDO,     PST,     CPY,      CUT,      UND, \
-                      XXXXXXX, _______, XXXXXXX, ALTREP2 , ALTREP3
+                      XXXXXXX, _______, XXXXXXX, XXXXXXX , KC_TAB
 
 /**
  * \brief Numeral layout.
@@ -141,7 +141,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * `KC_DOT` is duplicated from the base layer.
  */
 #define LAYOUT_LAYER_NUMERAL                                                                  \
-    KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC, _______________DEAD_HALF_ROW_______________, \
+    ALTREP2,    KC_7,    KC_8,    KC_9, KC_RBRC, _______________DEAD_HALF_ROW_______________, \
     KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL, ______________HOME_ROW_GACS_R______________, \
      KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS, _______________DEAD_HALF_ROW_______________, \
                        KC_DOT,    KC_0, KC_MINS, XXXXXXX, _______
@@ -154,7 +154,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * `KC_RPRN`.
  */
 #define LAYOUT_LAYER_SYMBOLS                                                                  \
-    KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, _______________DEAD_HALF_ROW_______________, \
+    ALTREP3, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, _______________DEAD_HALF_ROW_______________, \
     KC_COLN,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS, ______________HOME_ROW_GACS_R______________, \
     KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
                       QK_REP, QK_AREP, KC_UNDS, _______, XXXXXXX
