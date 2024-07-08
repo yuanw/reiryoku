@@ -123,20 +123,20 @@
             SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
 
             buildPhase = ''
-              make bastardkb/charybdis/3x5/v2/splinky_3:yuanw
-              ${pkgs.qmk}/bin/qmk  -v c2json -kb bastardkb/charybdis/3x5/v2/splinky_3 -km yuanw ./keyboards/bastardkb/charybdis/3x5/keymaps/yuanw/keymap.c > reiryoku.json
+              make bastardkb/charybdis/3x5:yuanw
+              ${pkgs.qmk}/bin/qmk  -v c2json -kb bastardkb/charybdis/3x5 -km yuanw ./keyboards/bastardkb/charybdis/3x5/keymaps/yuanw/keymap.c > reiryoku.json
               mkdir $out
               mkdir -p $out/share
             '';
 
             installPhase = ''
-              mv bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2 $out/share
+              mv bastardkb_charybdis_3x5_yuanw.uf2 $out/share
               mv reiryoku.json $out/share
             '';
           };
           packages.flash = pkgs.writeScriptBin "reiryoku-flash" ''
             cd ${inputs.qmk_firmware}
-             ${pkgs.qmk}/bin/qmk flash ${config.packages.firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
+             ${pkgs.qmk}/bin/qmk flash ${config.packages.firmware}/share/bastardkb_charybdis_3x5_yuanw.uf2
           '';
           packages.draw = pkgs.writeShellApplication {
             name ="reiryoku-draw";
