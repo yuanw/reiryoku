@@ -1,6 +1,5 @@
-SRC += features/custom_shift_keys.c
 
-# VIA_ENABLE = yes
+VIA_ENABLE = no
 COMBO_ENABLE = yes
 CAPS_WORD_ENABLE = yes
 OS_DETECTION_ENABLE = yes

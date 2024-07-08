@@ -5,7 +5,7 @@
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #    include "timer.h"
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-#include "features/custom_shift_keys.h"
+
 
 
 enum charybdis_keymap_layers {
@@ -296,13 +296,14 @@ combo_t key_combos[] = {
     [UY_L] = COMBO(l_combo, KC_L),
 };
 
-const custom_shift_key_t custom_shift_keys[] = {
-  {QK_REP , QK_AREP}, // Shift repeat is a-rep
+
+const key_override_t repeat_key_override = ko_make_basic(MOD_MASK_SHIFT, QK_REP, QK_AREP);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &repeat_key_override,
+    NULL // Null terminate the array of overrides!
 };
-uint8_t NUM_CUSTOM_SHIFT_KEYS =
-    sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
-
-
 
 // Use ALTREP2 and ALTREP3 in your layout...
 
