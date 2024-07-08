@@ -363,9 +363,6 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_custom_shift_keys(keycode, record)) {
-        return false;
-    }
        switch (keycode) {
 
         case ALTREP2:
