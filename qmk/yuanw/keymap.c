@@ -62,6 +62,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
                    UND,
                    ALTREP2,
                    ALTREP3,
+                   C_X,
                     };
 
 // clang-format off
@@ -69,7 +70,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
 #define LAYOUT_LAYER_BASE                                                                     \
        QK_REP,  KC_W,    KC_M,    KC_P,     XXXXXXX,    XXXXXXX,    KC_COMM, KC_SCLN, KC_DOT,   QK_REP, \
        KC_R,     KC_S,    KC_N,    KC_T,    KC_G,       KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
-       C(KC_X),  KC_C,    KC_F,    KC_D,    XXXXXXX,    XXXXXXX,  KC_L,    KC_U,    KC_Y,    KC_QUOT, \
+       C_X,  KC_C,    KC_F,    KC_D, XXXXXXX,    XXXXXXX,  KC_L,    KC_U,    KC_Y,    KC_QUOT, \
                        ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, E_NUM
 
 /** Convenience row shorthands. */
@@ -364,7 +365,6 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
        switch (keycode) {
-
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
@@ -439,6 +439,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return false;
-        }
+
+        case C_X:
+            if (record->event.pressed) {
+                tap_code16(C(KC_X));
+                return false;
+         }
+       }
         return true; // Process all other keycodes normally
 }
