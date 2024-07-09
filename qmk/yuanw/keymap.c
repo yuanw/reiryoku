@@ -368,7 +368,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case C_X:
             if (record->event.pressed) {
-                tap_code16(LCTL(KC_X));
+                SEND_STRING(SS_LCTL(X_X));
                 return false;
             }
             return false;
