@@ -22,8 +22,8 @@
     };
 
     svalboard_firmware = {
-       url = "git+https://github.com/svalboard/vial-qmk?ref=vial&submodules=1&shallow=1";
-       flake = false;
+      url = "git+https://github.com/svalboard/vial-qmk?ref=vial&submodules=1&shallow=1";
+      flake = false;
     };
   };
 
@@ -49,7 +49,7 @@
         }:
         let
 
-        inherit (inputs.poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) defaultPoetryOverrides  mkPoetryApplication;
+          inherit (inputs.poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) defaultPoetryOverrides mkPoetryApplication;
         in
         {
           packages.drawer = mkPoetryApplication {
@@ -123,35 +123,35 @@
             SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
 
             buildPhase = ''
-              make bastardkb/charybdis/3x5/v2/splinky_3:yuanw
-              ${pkgs.qmk}/bin/qmk  -v c2json -kb bastardkb/charybdis/3x5/v2/splinky_3 -km yuanw ./keyboards/bastardkb/charybdis/3x5/keymaps/yuanw/keymap.c > reiryoku.json
+              make bastardkb/charybdis/3x5:yuanw
+              ${pkgs.qmk}/bin/qmk  -v c2json -kb bastardkb/charybdis/3x5 -km yuanw ./keyboards/bastardkb/charybdis/3x5/keymaps/yuanw/keymap.c > reiryoku.json
               mkdir $out
               mkdir -p $out/share
             '';
 
             installPhase = ''
-              mv bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2 $out/share
+              mv bastardkb_charybdis_3x5_yuanw.uf2 $out/share
               mv reiryoku.json $out/share
             '';
           };
           packages.flash = pkgs.writeScriptBin "reiryoku-flash" ''
             cd ${inputs.qmk_firmware}
-             ${pkgs.qmk}/bin/qmk flash ${config.packages.firmware}/share/bastardkb_charybdis_3x5_v2_splinky_3_yuanw.uf2
+             ${pkgs.qmk}/bin/qmk flash ${config.packages.firmware}/share/bastardkb_charybdis_3x5_yuanw.uf2
           '';
           packages.draw = pkgs.writeShellApplication {
-            name ="reiryoku-draw";
+            name = "reiryoku-draw";
             runtimeInputs = with pkgs;
-            [
-              config.packages.drawer
-              (python3.withPackages (ps: [ ps.pyyaml ]))
- ];
- text = ''
-           keymap parse -c 10 -q ${config.packages.firmware}/share/reiryoku.json  > reiryoku.yaml
-            sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
-           keymap draw reiryoku.yaml > reiryoku.svg
-            python process.py
-            keymap draw output.yaml > reiryoku.svg
-          '';
+              [
+                config.packages.drawer
+                (python3.withPackages (ps: [ ps.pyyaml ]))
+              ];
+            text = ''
+              keymap parse -c 10 -q ${config.packages.firmware}/share/reiryoku.json  > reiryoku.yaml
+               sed -i -E "s/LAYOUT_charybdis_3x5/LAYOUT/g" reiryoku.yaml
+              keymap draw reiryoku.yaml > reiryoku.svg
+               python process.py
+               keymap draw output.yaml > reiryoku.svg
+            '';
           };
 
           # Default shell.
@@ -176,6 +176,6 @@
             program = config.packages.draw;
           };
           apps.default = config.apps.flash;
-      };
+        };
     };
 }
