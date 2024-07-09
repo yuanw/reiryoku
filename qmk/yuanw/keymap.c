@@ -371,7 +371,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code16(LCTL(KC_X));
                 return false;
             }
-            break;
+            return false;
 
         case ALTREP2:
             if (record->event.pressed) {
