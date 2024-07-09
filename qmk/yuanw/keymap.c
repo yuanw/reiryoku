@@ -364,7 +364,15 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-       switch (keycode) {
+
+    switch (keycode) {
+        case C_X:
+            if (record->event.pressed) {
+                tap_code16(LCTL(KC_X));
+                return false;
+            }
+            break;
+
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
@@ -440,12 +448,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
-        case C_X:
-            if (record->event.pressed) {
-                tap_code16(LCTL(KC_X));
-                return false;
-            }
-            return true;
        }
         return true; // Process all other keycodes normally
 }
