@@ -8,7 +8,7 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
    
     # must be git not github for submodules
-    qmk_firmware = {
+    bastardkb_firmware = {
       url =
         "git+https://github.com/Bastardkb/bastardkb-qmk?ref=bkb-master&submodules=1&shallow=1";
       flake = false;
@@ -83,7 +83,7 @@
           };
           packages.firmware = pkgs.stdenv.mkDerivation rec {
             name = "firmware.uf2";
-            src = inputs.qmk_firmware;
+            src = inputs.bastardkb_firmware;
 
             nativeBuildInputs = [ pkgs.qmk ];
             buildInputs = with pkgs; [
@@ -117,7 +117,8 @@
           packages.flash = pkgs.writeScriptBin "reiryoku-flash" ''
             cd ${inputs.qmk_firmware}
              ${pkgs.qmk}/bin/qmk flash ${config.packages.firmware}/share/bastardkb_charybdis_3x5_yuanw.uf2
-          '';
+           '';
+           
           packages.draw = pkgs.writeShellApplication {
             name = "reiryoku-draw";
             runtimeInputs = with pkgs;
