@@ -51,8 +51,7 @@
         let
          python = pkgs.python3;
          project = inputs.pyproject-nix.lib.project.loadPyproject {
-        # Read & unmarshal pyproject.toml relative to this project root.
-        # projectRoot is also used to set `src` for renderers such as buildPythonPackage.
+
         projectRoot = inputs.keymap_drawer;
       };
         in
