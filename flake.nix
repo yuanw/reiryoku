@@ -10,10 +10,11 @@
       url = "github:caksoylar/keymap-drawer";
       flake = false;
     };
-    poetry2nix = {
-      url = "github:nix-community/poetry2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    pyproject-nix = {
+    url = "github:pyproject-nix/pyproject.nix";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+   
     # must be git not github for submodules
     qmk_firmware = {
       url =
@@ -48,22 +49,18 @@
         , ...
         }:
         let
-
-          inherit (inputs.poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) defaultPoetryOverrides mkPoetryApplication;
+         python = pkgs.python3;
+         project = inputs.pyproject-nix.lib.project.loadPyproject {
+        # Read & unmarshal pyproject.toml relative to this project root.
+        # projectRoot is also used to set `src` for renderers such as buildPythonPackage.
+        projectRoot = inputs.keymap_drawer;
+      };
         in
         {
-          packages.drawer = mkPoetryApplication {
-            projectDir = inputs.keymap_drawer;
-            overrides = defaultPoetryOverrides.extend
-              (self: super: {
-                deptry = super.deptry.overridePythonAttrs
-                  (
-                    old: {
-                      buildInputs = (old.buildInputs or [ ]) ++ [ super.poetry ];
-                    }
-                  );
-              });
-          };
+          packages.drawer = let
+               attrs = project.renderers.buildPythonPackage { inherit python; };
+          in
+            python.pkgs.buildPythonPackage (attrs // { env.CUSTOM_ENVVAR = "hello"; });
           treefmt.config = {
             inherit (config.flake-root) projectRootFile;
             package = pkgs.treefmt;
