@@ -298,14 +298,6 @@ combo_t key_combos[] = {
 };
 
 
-const key_override_t repeat_key_override = ko_make_basic(MOD_MASK_SHIFT, QK_REP, QK_AREP);
-
-// This globally defines all key overrides to be used
-const key_override_t **key_overrides = (const key_override_t *[]){
-    &repeat_key_override,
-    NULL // Null terminate the array of overrides!
-};
-
 // Use ALTREP2 and ALTREP3 in your layout...
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
