@@ -48,18 +48,10 @@
         , system
         , ...
         }:
-        let
-         python = pkgs.python3;
-         project = inputs.pyproject-nix.lib.project.loadPyproject {
-
-        projectRoot = inputs.keymap_drawer;
-      };
-        in
+  
         {
-          packages.drawer = let
-               attrs = project.renderers.buildPythonPackage { inherit python; };
-          in
-            python.pkgs.buildPythonPackage (attrs // { env.CUSTOM_ENVVAR = "hello"; });
+          packages.drawer =pkgs.python3Packages.callPackage ./nix/keymap-drawer.nix {};
+           
           treefmt.config = {
             inherit (config.flake-root) projectRootFile;
             package = pkgs.treefmt;
