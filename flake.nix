@@ -7,11 +7,11 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     keymap_drawer = {
-      url = "github:caksoylar/keymap-drawer?rev=6defcaf80edd0bc916e747ac6041bd232b738c5f";
+      url = "github:caksoylar/keymap-drawer";
       flake = false;
     };
     poetry2nix = {
-      url = "github:nix-community/poetry2nix?rev=528d500ea826383cc126a9be1e633fc92b19ce5d";
+      url = "github:nix-community/poetry2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # must be git not github for submodules
