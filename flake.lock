@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "bastardkb_firmware": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1741690204,
+        "narHash": "sha256-cB6M7nMb68FHyjPXhwFPgN86U8R0NBhCp8e6Fz6Qee4=",
+        "ref": "bkb-master",
+        "rev": "7c7e3c344e810b50ceab7fd1a55dd717324c4f09",
+        "shallow": true,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Bastardkb/bastardkb-qmk"
+      },
+      "original": {
+        "ref": "bkb-master",
+        "shallow": true,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Bastardkb/bastardkb-qmk"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -30,22 +50,6 @@
       "original": {
         "owner": "srid",
         "repo": "flake-root",
-        "type": "github"
-      }
-    },
-    "keymap_drawer": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1745018757,
-        "narHash": "sha256-AdnDMz13Da7ukCA0dHEd5/eu7d34KAQaN/9G7x+9KzM=",
-        "owner": "caksoylar",
-        "repo": "keymap-drawer",
-        "rev": "61f5395ef06dce6faf91ea2421298d97f003e093",
-        "type": "github"
-      },
-      "original": {
-        "owner": "caksoylar",
-        "repo": "keymap-drawer",
         "type": "github"
       }
     },
@@ -80,54 +84,12 @@
         "type": "github"
       }
     },
-    "pyproject-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1743438845,
-        "narHash": "sha256-1GSaoubGtvsLRwoYwHjeKYq40tLwvuFFVhGrG8J9Oek=",
-        "owner": "pyproject-nix",
-        "repo": "pyproject.nix",
-        "rev": "8063ec98edc459571d042a640b1c5e334ecfca1e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pyproject-nix",
-        "repo": "pyproject.nix",
-        "type": "github"
-      }
-    },
-    "qmk_firmware": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1741690204,
-        "narHash": "sha256-cB6M7nMb68FHyjPXhwFPgN86U8R0NBhCp8e6Fz6Qee4=",
-        "ref": "bkb-master",
-        "rev": "7c7e3c344e810b50ceab7fd1a55dd717324c4f09",
-        "shallow": true,
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/Bastardkb/bastardkb-qmk"
-      },
-      "original": {
-        "ref": "bkb-master",
-        "shallow": true,
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/Bastardkb/bastardkb-qmk"
-      }
-    },
     "root": {
       "inputs": {
+        "bastardkb_firmware": "bastardkb_firmware",
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
-        "keymap_drawer": "keymap_drawer",
         "nixpkgs": "nixpkgs",
-        "pyproject-nix": "pyproject-nix",
-        "qmk_firmware": "qmk_firmware",
         "svalboard_firmware": "svalboard_firmware",
         "treefmt-nix": "treefmt-nix"
       }
