@@ -21,7 +21,7 @@ jobs:
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
         extraPullNames: yuanwang-wf,nix-community
     - name: Nix build
-      run: nix build .#firmware
+      run: nix flake update qmk_firmware && nix build .#firmware
     # NOTE Workaround for artifacts and deploy not liking symlinks to
     # read-only paths.
     - name: "Copy artifacts"

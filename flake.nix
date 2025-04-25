@@ -6,7 +6,6 @@
     flake-root.url = "github:srid/flake-root";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
-
    
     # must be git not github for submodules
     qmk_firmware = {
