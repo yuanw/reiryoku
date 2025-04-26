@@ -6,16 +6,9 @@
     flake-root.url = "github:srid/flake-root";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
-    keymap_drawer = {
-      url = "github:caksoylar/keymap-drawer?rev=6defcaf80edd0bc916e747ac6041bd232b738c5f";
-      flake = false;
-    };
-    poetry2nix = {
-      url = "github:nix-community/poetry2nix?rev=528d500ea826383cc126a9be1e633fc92b19ce5d";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+   
     # must be git not github for submodules
-    qmk_firmware = {
+    bastardkb_firmware = {
       url =
         "git+https://github.com/Bastardkb/bastardkb-qmk?ref=bkb-master&submodules=1&shallow=1";
       flake = false;
@@ -47,23 +40,10 @@
         , system
         , ...
         }:
-        let
-
-          inherit (inputs.poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) defaultPoetryOverrides mkPoetryApplication;
-        in
+  
         {
-          packages.drawer = mkPoetryApplication {
-            projectDir = inputs.keymap_drawer;
-            overrides = defaultPoetryOverrides.extend
-              (self: super: {
-                deptry = super.deptry.overridePythonAttrs
-                  (
-                    old: {
-                      buildInputs = (old.buildInputs or [ ]) ++ [ super.poetry ];
-                    }
-                  );
-              });
-          };
+          packages.drawer =pkgs.python3Packages.callPackage ./nix/keymap-drawer.nix {};
+           
           treefmt.config = {
             inherit (config.flake-root) projectRootFile;
             package = pkgs.treefmt;
@@ -90,8 +70,8 @@
             '';
 
             buildPhase = ''
-              make VERBOSE=1 svalboard/trackball/right:yuanw
-              make VERBOSE=1 svalboard/trackball/left:yuanw
+              make VERBOSE=1 svalboard/trackball/pmw3360/right:yuanw
+              make VERBOSE=1 svalboard/trackball/pmw3360/left:yuanw
             '';
 
             installPhase = ''
@@ -103,7 +83,7 @@
           };
           packages.firmware = pkgs.stdenv.mkDerivation rec {
             name = "firmware.uf2";
-            src = inputs.qmk_firmware;
+            src = inputs.bastardkb_firmware;
 
             nativeBuildInputs = [ pkgs.qmk ];
             buildInputs = with pkgs; [
@@ -113,7 +93,7 @@
 
             postUnpack = ''
               ln -s ${
-                ./qmk/yuanw/.
+                ./bastardkb/yuanw/.
               } $sourceRoot/keyboards/bastardkb/charybdis/3x5/keymaps/yuanw
               ln -s ${./process.py} $sourceRoot/process.py
             '';
@@ -137,7 +117,8 @@
           packages.flash = pkgs.writeScriptBin "reiryoku-flash" ''
             cd ${inputs.qmk_firmware}
              ${pkgs.qmk}/bin/qmk flash ${config.packages.firmware}/share/bastardkb_charybdis_3x5_yuanw.uf2
-          '';
+           '';
+           
           packages.draw = pkgs.writeShellApplication {
             name = "reiryoku-draw";
             runtimeInputs = with pkgs;
