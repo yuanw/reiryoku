@@ -70,8 +70,8 @@
             '';
 
             buildPhase = ''
-              make VERBOSE=1 svalboard/trackball/pmw3360/right:yuanw
-              make VERBOSE=1 svalboard/trackball/pmw3360/left:yuanw
+              make VERBOSE=1 svalboard/trackball/pmw3360/right:vial
+              make VERBOSE=1 svalboard/trackball/pmw3360/left:vial
             '';
 
             installPhase = ''
