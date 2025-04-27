@@ -139,7 +139,7 @@
           devShells.default = pkgs.mkShell {
             buildInputs = with pkgs; [
               (python3.withPackages (ps: [ ps.pyyaml ]))
-              #config.packages.draw
+              config.packages.drawer
             ];
 
             # See https://haskell.flake.page/devshell#composing-devshells
