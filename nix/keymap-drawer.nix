@@ -25,8 +25,9 @@ buildPythonApplication rec {
     owner = "caksoylar";
     repo = pname;
     rev = "e2f2af055dfa88b77cad9a9874e3ee1a7d237980";
+    sha256 = "sha256-EfFCuqL2/eMUweMip+YUa4iCZouqKC3PbiKRWcLxCvg=";
     # rev = "855933863fcc6f0db6098a03e679319dbf7f8bf2";
-                          sha256 = lib.fakeSha256;
+    #                      sha256 = lib.fakeSha256;
     #hash = "sha256-InddS9NxVrYOufiP7iWQTQ3VBeJgX2UlBA+Gf7ZfFrI=";
   };
 
