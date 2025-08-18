@@ -3,10 +3,9 @@
     "bastardkb_firmware": {
       "flake": false,
       "locked": {
-        "lastModified": 1741690204,
-        "narHash": "sha256-cB6M7nMb68FHyjPXhwFPgN86U8R0NBhCp8e6Fz6Qee4=",
+        "lastModified": 1754834270,
         "ref": "bkb-master",
-        "rev": "7c7e3c344e810b50ceab7fd1a55dd717324c4f09",
+        "rev": "8f3b92fff27e6356120913a4ec6b21a017d0fef6",
         "shallow": true,
         "submodules": true,
         "type": "git",
@@ -25,11 +24,10 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1743550720,
-        "narHash": "sha256-hIshGgKZCgWh6AYJpJmRgFdR3WUbkY04o82X05xqQiY=",
+        "lastModified": 1754487366,
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "c621e8422220273271f52058f618c94e405bb0f5",
+        "rev": "af66ad14b28a127c5c0f3bbb298218fc63528a18",
         "type": "github"
       },
       "original": {
@@ -41,7 +39,6 @@
     "flake-root": {
       "locked": {
         "lastModified": 1723604017,
-        "narHash": "sha256-rBtQ8gg+Dn4Sx/s+pvjdq3CB2wQNzx9XGFq/JVGCB6k=",
         "owner": "srid",
         "repo": "flake-root",
         "rev": "b759a56851e10cb13f6b8e5698af7b59c44be26e",
@@ -55,11 +52,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1745377448,
-        "narHash": "sha256-jhZDfXVKdD7TSEGgzFJQvEEZ2K65UMiqW5YJ2aIqxMA=",
+        "lastModified": 1755268003,
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "507b63021ada5fee621b6ca371c4fca9ca46f52c",
+        "rev": "32f313e49e42f715491e1ea7b306a87c16fe0388",
         "type": "github"
       },
       "original": {
@@ -71,11 +67,11 @@
     },
     "nixpkgs-lib": {
       "locked": {
-        "lastModified": 1743296961,
-        "narHash": "sha256-b1EdN3cULCqtorQ4QeWgLMrd5ZGOjLSLemfa00heasc=",
+        "lastModified": 1753579242,
+        "narHash": "sha256-zvaMGVn14/Zz8hnp4VWT9xVnhc8vuL3TStRqwk22biA=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "e4822aea2a6d1cdd36653c134cacfd64c97ff4fa",
+        "rev": "0f36c44e01a6129be94e3ade315a5883f0228a6e",
         "type": "github"
       },
       "original": {
@@ -97,10 +93,9 @@
     "svalboard_firmware": {
       "flake": false,
       "locked": {
-        "lastModified": 1744949097,
-        "narHash": "sha256-dwvIkzYp4AWLVVo7eOf1KRmM3glbcRj8TX/rcPzqsoU=",
+        "lastModified": 1748323856,
         "ref": "vial",
-        "rev": "3c23bc889168d80313a699978c9a07225dd95b64",
+        "rev": "c9d73367036e465fb79b2f51f428f3a9f103660c",
         "shallow": true,
         "submodules": true,
         "type": "git",
@@ -121,11 +116,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1744961264,
-        "narHash": "sha256-aRmUh0AMwcbdjJHnytg1e5h5ECcaWtIFQa6d9gI85AI=",
+        "lastModified": 1754847726,
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "8d404a69efe76146368885110f29a2ca3700bee6",
+        "rev": "7d81f6fb2e19bf84f1c65135d1060d829fae2408",
         "type": "github"
       },
       "original": {
