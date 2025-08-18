@@ -22,8 +22,8 @@ jobs:
         extraPullNames: yuanwang-wf,nix-community
     - name: Nix build bastardkb
       run: nix flake update bastardkb_firmware && nix build .#firmware
-    - name: Nix build svalboard
-      run: nix flake update svalboard_firmware && nix build .#shijushichishi
+    # - name: Nix build svalboard
+    #   run: nix flake update svalboard_firmware && nix build .#shijushichishi
     # NOTE Workaround for artifacts and deploy not liking symlinks to
     # read-only paths.
     - name: "Copy artifacts"
