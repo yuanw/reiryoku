@@ -140,6 +140,7 @@
             buildInputs = with pkgs; [
               (python3.withPackages (ps: [ ps.pyyaml ]))
               config.packages.drawer
+              qmk
             ];
 
             # See https://haskell.flake.page/devshell#composing-devshells
