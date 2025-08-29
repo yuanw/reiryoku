@@ -1,0 +1,2 @@
+bastardkb/yuanw/secrets.h filter=git-crypt diff=git-crypt
+.gitattributes !filter !diff

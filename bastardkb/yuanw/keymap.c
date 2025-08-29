@@ -26,7 +26,10 @@ enum charybdis_keymap_layers {
 #define _L_PTR(KC) LT(LAYER_POINTER, KC)
 
 
-
+__attribute__ ((weak))
+bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
+  return true;
+}
 
 // Automatically enable sniping-mode on the pointer layer.
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
@@ -62,7 +65,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
                    UND,
                    ALTREP2,
                    ALTREP3,
-                   C_X,
+		   KC_SECRET,
                     };
 
 // clang-format off
@@ -273,6 +276,7 @@ enum combos {
     LEFT_QUESTION,
     CF_X,
     UY_L,
+    PV_SECRET,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
@@ -285,6 +289,7 @@ const uint16_t PROGMEM z_combo[]    = {KC_SCLN, KC_DOT, COMBO_END};
 const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
 const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
 const uint16_t PROGMEM l_combo[]    = {KC_U, KC_Y, COMBO_END};
+const uint16_t PROGMEM secret_combo[]    = {KC_P, KC_V, COMBO_END};
 
 combo_t key_combos[] = {
     [FD_B] = COMBO(b_combo, KC_B),
@@ -295,6 +300,7 @@ combo_t key_combos[] = {
     [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
     [CF_X] = COMBO(x_combo, KC_X),
     [UY_L] = COMBO(l_combo, KC_L),
+    [PV_SECRET] = COMBO(secret_combo, KC_SECRET),
 };
 
 
@@ -355,16 +361,8 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
     }
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case C_X:
-            if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("x"));
-                return false;
-            }
-            return false;
-
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
@@ -442,4 +440,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
        }
         return true; // Process all other keycodes normally
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // your existing macro code here.
+    return process_record_keymap(keycode, record) && process_record_secrets(keycode, record);
 }
